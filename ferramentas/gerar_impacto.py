@@ -44,6 +44,8 @@ BENEFICIOS = {
     'orcamento': ('chat', 'ORÇAMENTO', 'NO WHATSAPP'),
     'linhapesada': ('truck', 'LINHA PESADA', 'CAMINHÕES'),
     'aderencia': ('tire', 'MELHOR', 'ADERÊNCIA'),
+    'entrega': ('truck', 'ENTREGA E', 'INSTALAÇÃO GRÁTIS'),
+    'parcela': ('tag', 'MOURA EM ATÉ', '10X SEM JUROS'),
 }
 WA = '<path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.5c0 3 2.5 6 6 6.5l1.2-1.4-2-1.1-.9.8c-1-.4-2-1.4-2.4-2.4l.8-.9-1.1-2z"/>'
 IG = '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".8" fill="currentColor"/>'

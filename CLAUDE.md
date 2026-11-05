@@ -13,7 +13,8 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
   - Baterias (confirmado pelo dono): **Moura, Pioneiro, Bosch, América, Onbat, Zetta**.
   - Pneus (vistos nas artes/fotos da loja): Michelin, Pirelli, Maggion, Levorin, Vipal, Technic, Goodyear, Dunlop.
 - Informações confirmadas nas artes da própria loja (pode usar): **instalação em até 30 minutos**, **atendimento rápido**, **linha pesada: baterias para caminhões**.
-- NÃO usar: "10x sem juros" e garantias (aparecem só em banners das marcas, não foram confirmados pela loja).
+- CONFIRMADO pelo dono em 05/11/2026 (pode usar nas artes e legendas): **entrega e instalação grátis** e **baterias Moura em até 10x sem juros**.
+- NÃO usar: prazos de garantia e parcelamento de outras marcas (não confirmados).
 - Metricool: brandId/blogId **7896220**, fuso **America/Fortaleza**
 
 ## Estrutura
@@ -35,12 +36,11 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
   - Feed (quadrada): `feed-aqui-tem-moura.jpg` pode ser um dos 4 posts do feed (no máximo 1x por semana).
   - Para usar no Metricool: media = URL raw de `artes-prontas/<arquivo>`.
   - NÃO republicar: artes de "É a última semana com promoções" (promoção com prazo) e "Pediu, chegou" (está com o telefone errado, 9.8866-5130).
-- `marcas/moura-lider/<nome>/feed.jpg|story.jpg`: artes oficiais da Moura adaptadas com a faixa da Líder (prontas). Use no máximo 1 por dia (um Story OU o post do feed), sem repetir a mesma arte em menos de 10 dias. Temas: pesada-1/2/3 (linha pesada, caminhão), moto-vai-de-moura, moto-jornadas, moto-ritmo (bateria de moto), nobreak-1, nobreak-vrla, nobreak-2 (nobreak/VRLA). Para adaptar novas: `python3 ferramentas/adaptar_moura.py marcas/moura-original/<arq>.png marcas/moura-lider/<nome>`.
-- `marcas/moura-lider-pendentes/`: NÃO USAR até o dono confirmar (entrega e instalação grátis; 10x sem juros).
+- `marcas/moura-lider/<nome>/feed.jpg|story.jpg`: artes oficiais da Moura adaptadas com a faixa da Líder (prontas). Use no máximo 1 por dia (um Story OU o post do feed), sem repetir a mesma arte em menos de 10 dias. Temas: pesada-1/2/3 (linha pesada, caminhão), moto-vai-de-moura, moto-jornadas, moto-ritmo (bateria de moto), nobreak-1, nobreak-vrla, nobreak-2 (nobreak/VRLA), entrega-gratis-1/2/3 (entrega e instalação grátis), moto-10x (10x sem juros). NÃO usar a arte da Fiat (`marcas/moura-original/efb-fiat.png`). Para adaptar novas: `python3 ferramentas/adaptar_moura.py marcas/moura-original/<arq>.png marcas/moura-lider/<nome>`.
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
 - Nunca use banco de imagens nem fotos baixadas da internet (direitos autorais). Ilustrações próprias, sem logo de marca, são permitidas.
 - Dois modelos de arte (ambos geram `feed.jpg` 1080x1350 e `story.jpg` 1080x1920):
-  - `ferramentas/gerar_impacto.py` (**modelo principal**, estilo das artes de referência da loja: azul-noite, raios, faixas amarelas, título condensado gigante, tarja amarela, 3 ícones de benefício, rodapé com WhatsApp). Campos: foto, posicao_foto, pergunta, linha1, linha2, destaque, beneficios (3 chaves: partida, rapido, instalacao, qualidade, marcas, seguranca, durabilidade, orcamento, linhapesada, aderencia), cor ("azul" ou "preto"). Textos curtos, em MAIÚSCULAS: pergunta até ~22 letras, linha1 até ~10, linha2 até ~9, destaque até ~18.
+  - `ferramentas/gerar_impacto.py` (**modelo principal**, estilo das artes de referência da loja: azul-noite, raios, faixas amarelas, título condensado gigante, tarja amarela, 3 ícones de benefício, rodapé com WhatsApp). Campos: foto, posicao_foto, pergunta, linha1, linha2, destaque, beneficios (3 chaves: partida, rapido, instalacao, qualidade, marcas, seguranca, durabilidade, orcamento, linhapesada, aderencia, entrega, parcela), cor ("azul" ou "preto"). Textos curtos, em MAIÚSCULAS: pergunta até ~22 letras, linha1 até ~10, linha2 até ~9, destaque até ~18.
   - `ferramentas/gerar_arte.py` (modelo clássico, mais limpo). Use em cerca de 1 a cada 4 artes, para variar.
   - Alterne `cor` azul/preto entre posts seguidos. Crie textos novos todo dia: perguntas que a pessoa faria ("SUA MOTO NÃO PEGA?", "PNEU CARECA?", "VAI VIAJAR?"), sem repetir a mesma combinação na mesma semana.
 - `posts/AAAA-MM-DD/`: artes e `legenda.txt` de cada dia
@@ -65,7 +65,7 @@ Por dia (pedido do dono da loja):
 - **10:00**: o produto do outro par (se as 7h foram par A, use pneu de moto; se B, bateria de carro).
 - **12:30**: dica rápida (ex.: "CARRO DEMORANDO A PEGAR?", "PNEU CARECA É PERIGO", "CALIBRE OS PNEUS") ou uma arte pronta de `artes-prontas/` (máx. 1x por semana cada).
 - **14:00**: o 4º produto que ainda não apareceu no dia (bateria de carro, pneu de carro, pneu de moto ou bateria de moto), ou linha pesada (caminhão) 1x por semana.
-- **15:45**: chamada para ação, alternando: "ORÇAMENTO NO WHATSAPP" / "INSTALAÇÃO EM ATÉ 30 MIN" / "VEM CONHECER A LOJA" / "TEM PROMOÇÃO NA LÍDER" (sem preço; só "consulte no WhatsApp").
+- **15:45**: chamada para ação, alternando: "ORÇAMENTO NO WHATSAPP" / "ENTREGA E INSTALAÇÃO GRÁTIS" / "MOURA EM ATÉ 10X SEM JUROS" / "INSTALAÇÃO EM ATÉ 30 MIN" / "VEM CONHECER A LOJA" / "TEM PROMOÇÃO NA LÍDER" (sem preço; só "consulte no WhatsApp").
 
 ### Post do feed às 10:00 (1 por dia)
 Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda caprichada (gancho na 1ª linha, 2 a 3 linhas de conteúdo, endereço, WhatsApp, "Vem pra Líder! 💛", 5 a 8 hashtags com #LiderBateriasEPneus #Crateús). Não use no feed a mesma arte de um Story do mesmo dia.
