@@ -9,12 +9,20 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - Endereço: Rua Deolino Barreto, 860 - Centro, Crateús/CE
 - WhatsApp: (88) 9.8865-5130
 - Instagram: @liderbateriasepneus
-- Vende: pneus para carros e motos e baterias automotivas (marcas vistas na loja: Moura, Zetta, Pioneiro, Heliar, Goodyear, Dunlop)
+- Vende: pneus para carros e motos e baterias automotivas (marcas vistas na loja: Moura, Zetta, Pioneiro, Onbat, Heliar/América, Goodyear, Dunlop, Michelin, Maggion)
+- Informações confirmadas nas artes da própria loja (pode usar): **instalação em até 30 minutos**, **atendimento rápido**, **linha pesada: baterias para caminhões**.
+- NÃO usar: "10x sem juros" e garantias (aparecem só em banners das marcas, não foram confirmados pela loja).
 - Metricool: brandId/blogId **7896220**, fuso **America/Fortaleza**
 
 ## Estrutura
 - `marca/logo.png`: logo oficial (não alterar)
-- `fotos/`: FOTOS DE VERDADE da loja, nítidas (prioridade máxima). Sempre que o dono mandar fotos novas, elas entram aqui.
+- `fotos/`: FOTOS DE VERDADE da loja, nítidas (prioridade máxima). O nome já diz a categoria:
+  - bateria de carro: `bateria-carro-01.jpg`, `bateria-carro-02.jpg`, `bateria-carro-03-expositor-moura.jpg`
+  - pneu de carro: `pneu-carro-01.jpg` (pneus no alto, baterias embaixo; use posicao_foto "center 20%"), `pneu-carro-02-estoque.jpg`, `pneu-carro-03.jpg` (pilhas de pneus de carro)
+  - pneu de moto: `pneu-moto-01.jpg`, `pneu-moto-02.jpg` (pneus de moto em primeiro plano; use posicao_foto "center 70%")
+  - bateria de moto: `bateria-moto-01-pioneiro.jpg` (banner "A bateria para sua moto"), `bateria-moto-02-prateleiras.jpg` (prateleiras de baterias de moto ao fundo)
+  - loja/fachada: `loja-fachada-01.jpg`, `loja-fachada-02.jpg` (ótimas para o Story "Loja aberta" e posts institucionais)
+- `artes-prontas/`: artes que a própria loja já fez (`linha-pesada-caminhoes.jpg`, `quando-precisar.jpg`, formato 9:16). Podem ser republicadas como Story no máximo 1 vez por semana cada, nos horários de produto, sem alterar.
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
 - Nunca invente imagens nem use banco de imagens.
 - `ferramentas/gerar_arte.py`: gera `feed.jpg` (1080x1350) e `story.jpg` (1080x1920) no padrão visual da marca (preto #0E0F12 + amarelo #FFB800, Exo 2 itálico)
@@ -26,19 +34,19 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 Por dia são 3 Stories às **07:00** e 4 posts no feed: **10:00, 12:30, 14:00 e 15:45** (horários pedidos pelo dono da loja).
 
 ### Stories das 07:00 (pedido do dono da loja)
-1. **"Loja aberta"**, todo dia, sempre igual no formato: selo "BOM DIA!", chamada "BOM DIA, CRATEÚS", linha1 "Loja", linha2 "aberta", subtítulo variando um pouco (ex.: "Pneus e baterias esperando por você.", "Passa aqui hoje!", "Chama no WhatsApp e garanta o seu."). Foto: use a melhor foto de `fotos/` (hoje só existe `estoque-pneus-baterias.jpg`, com posicao_foto "center 30%"); quando houver mais fotos de verdade, alterne entre elas. Domingo: use "Bom domingo!" no selo e não diga "loja aberta" (o horário de domingo não foi confirmado); use linha1 "Bom", linha2 "domingo" e subtítulo "Segunda estamos te esperando!".
+1. **"Loja aberta"**, todo dia, sempre igual no formato: selo "BOM DIA!", chamada "BOM DIA, CRATEÚS", linha1 "Loja", linha2 "aberta", subtítulo variando um pouco (ex.: "Pneus e baterias esperando por você.", "Passa aqui hoje!", "Chama no WhatsApp e garanta o seu."). Foto: alterne entre `loja-fachada-01.jpg`, `loja-fachada-02.jpg` e `bateria-carro-03-expositor-moura.jpg`. Domingo: use "Bom domingo!" no selo e não diga "loja aberta" (o horário de domingo não foi confirmado); use linha1 "Bom", linha2 "domingo" e subtítulo "Segunda estamos te esperando!".
 2. **Duas artes de produto**, revezando em dois pares:
    - **Dia A:** BATERIA (de carro) + PNEU DE CARRO
    - **Dia B:** PNEU DE MOTO + BATERIA DE MOTO
    Alterne A/B: veja em `historico.md` qual par foi usado por último e use o outro.
-   Prefira fotos de `fotos/`. Enquanto não houver fotos de verdade de cada categoria, use as de `fotos/de-video/` (olhe antes; descarte se estiver borrada): baterias de carro → `expositor-moura.jpg`, `baterias-pallet.jpg`, `baterias-zetta.jpg`, `promo-moura.jpg`, `estoque-pneus-baterias.jpg`; pneu de carro → `pneus-goodyear.jpg`, `pneus-carro.jpg`, `parede-pneus.jpg`; pneu de moto → `pneus-e-baterias.jpg`, `parede-pneus.jpg` (pilhas de pneus finos); bateria de moto → `prateleiras-baterias.jpg`, `loja-baterias.jpg` (baterias pequenas nas prateleiras). Se não achar foto boa para uma categoria, use a mais próxima e não afirme modelos específicos.
+   Use as fotos de `fotos/` da categoria certa (lista acima). `fotos/de-video/` só como reserva. Não afirme modelos específicos.
    Textos de exemplo: chamada "PARA SEU CARRO" / linha1 "Bateria" / linha2 "nova"; chamada "PARA SUA MOTO" / linha1 "Pneu de" / linha2 "moto"; chamada "PARA SUA MOTO" / linha1 "Bateria" / linha2 "de moto"; chamada "PARA SEU CARRO" / linha1 "Pneus" / linha2 "de carro". Selo: "PRONTA ENTREGA" ou "CONFIRA". Varie o subtítulo.
 
 ### Posts do feed (4 por dia, cada um com tema diferente)
 - **10:00**: tema do dia, seguindo o "Rodízio de temas" abaixo.
 - **12:30**: produto, revezando BATERIA DE CARRO → PNEU DE CARRO → PNEU DE MOTO → BATERIA DE MOTO (pegue o próximo depois do último registrado em `historico.md`).
 - **14:00**: o produto seguinte nesse mesmo rodízio (diferente do das 12:30).
-- **15:45**: chamada para ação, alternando: "Faça seu orçamento no WhatsApp" / "Venha conhecer a loja" / "Estoque a pronta entrega".
+- **15:45**: chamada para ação, alternando: "Faça seu orçamento no WhatsApp" / "Instalação em até 30 minutos" / "Venha conhecer a loja" / "Linha pesada: baterias para caminhões".
 Use fotos diferentes nos 4 posts do mesmo dia sempre que possível. Se houver poucas fotos, troque ao menos o enquadramento (`posicao_foto`) e os textos. Cada post tem a sua legenda (curta, com gancho diferente), sempre com endereço, WhatsApp e hashtags.
 
 ### Passo a passo
