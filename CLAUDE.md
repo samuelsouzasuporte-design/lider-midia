@@ -76,7 +76,7 @@ Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda ca
 3. Olhe as imagens geradas (Read). Se o texto estourar ou ficar ilegível, ajuste e gere de novo.
 4. Escreva `posts/<data>/legenda.txt` para o post do feed.
 5. Commit e push (`git add -A && git commit -m "post <data>" && git push origin main`). Confirme com `git ls-remote origin` que o commit chegou.
-6. Agende no Metricool (createScheduledPost, blogId 7896220, autoPublish true, fuso America/Fortaleza). Antes, rode getScheduledPosts do dia e não duplique o que já existir:
+6. Agende no Metricool (createScheduledPost, blogId 7896220, autoPublish true, fuso America/Fortaleza). Antes, rode getScheduledPosts do dia e não duplique o que já existir (ignore posts com draft=true, que são rascunhos e não saem):
    - Stories (instagramData.type "STORY", sem text): **07:00** loja aberta, **07:01** e **07:02** produtos, **10:00**, **12:30**, **14:00**, **15:45**.
    - Feed (instagramData.type "POST", text = legenda): **10:00**.
    - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg` (ou `artes-prontas/<arquivo>`)
