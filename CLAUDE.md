@@ -17,7 +17,11 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - Informações confirmadas nas artes da própria loja (pode usar): **instalação em até 30 minutos**, **atendimento rápido**, **linha pesada: baterias para caminhões**.
 - CONFIRMADO pelo dono em 05/11/2026 (pode usar nas artes e legendas): **entrega e instalação grátis** e **baterias Moura em até 10x sem juros**.
 - NÃO usar: prazos de garantia e parcelamento de outras marcas (não confirmados).
-- REGRA DO DONO (05/11/2026): em artes de **PNEUS** (carro ou moto) NUNCA use "entrega e instalação grátis" nem "instalação em até 30 minutos" (nem os ícones `entrega`/`instalacao`). Para pneus use **"ENVIAMOS PARA CRATEÚS E REGIÃO"** (ícone `regiao`). "Entrega e instalação grátis" e "30 minutos" ficam só para BATERIAS. Em artes gerais (loja aberta, institucional) prefira `regiao`.
+- REGRA DO DONO (05/11/2026), por categoria:
+  - **PNEU DE CARRO**: NUNCA usar "entrega e instalação grátis", "troca grátis" nem "instalação em até 30 minutos". Use **"ENVIAMOS PARA CRATEÚS E REGIÃO"** (ícone `regiao`).
+  - **PNEU DE MOTO**: pode usar **"TROCA GRÁTIS"** (ícone `trocagratis`) e "ENVIAMOS PARA CRATEÚS E REGIÃO". Não usar "entrega e instalação grátis" nem "30 minutos".
+  - **BATERIAS**: "entrega e instalação grátis" e "instalação em até 30 minutos" continuam valendo.
+  - Artes gerais (loja aberta, institucional): prefira `regiao`.
 - Metricool: brandId/blogId **7896220**, fuso **America/Fortaleza**
 
 ## Estrutura
@@ -45,7 +49,7 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
 - Nunca use banco de imagens nem fotos baixadas da internet (direitos autorais). Ilustrações próprias, sem logo de marca, são permitidas.
 - Dois modelos de arte (ambos geram `feed.jpg` 1080x1350 e `story.jpg` 1080x1920):
-  - `ferramentas/gerar_impacto.py` (**modelo principal**, estilo das artes de referência da loja: azul-noite, raios, faixas amarelas, título condensado gigante, tarja amarela, 3 ícones de benefício, rodapé com WhatsApp). Campos: foto, posicao_foto, pergunta, linha1, linha2, destaque, beneficios (3 chaves: partida, rapido, instalacao, qualidade, marcas, seguranca, durabilidade, orcamento, linhapesada, aderencia, entrega, parcela, regiao), cor ("azul" ou "preto"). Textos curtos, em MAIÚSCULAS: pergunta até ~22 letras, linha1 até ~10, linha2 até ~9, destaque até ~18.
+  - `ferramentas/gerar_impacto.py` (**modelo principal**, estilo das artes de referência da loja: azul-noite, raios, faixas amarelas, título condensado gigante, tarja amarela, 3 ícones de benefício, rodapé com WhatsApp). Campos: foto, posicao_foto, pergunta, linha1, linha2, destaque, beneficios (3 chaves: partida, rapido, instalacao, qualidade, marcas, seguranca, durabilidade, orcamento, linhapesada, aderencia, entrega, parcela, regiao, trocagratis), cor ("azul" ou "preto"). Textos curtos, em MAIÚSCULAS: pergunta até ~22 letras, linha1 até ~10, linha2 até ~9, destaque até ~18.
   - `ferramentas/gerar_conteudo.py` (**DICAS e MEMES**; veja o cabeçalho do script):
     - `"tipo":"dica"`: cartão "DICA DA LÍDER" com EXATAMENTE 3 dicas numeradas. Categorias: BATERIA DE CARRO, BATERIA DE MOTO, PNEU DE CARRO, PNEU DE MOTO. Dicas curtas (até ~40 caracteres cada), práticas e corretas (ex.: sinais de bateria fraca, não deixar farol ligado, moto parada muito tempo descarrega a bateria, calibrar pneus frios a cada 15 dias, sulco mínimo 1,6 mm (TWI), rodízio de pneus a cada 10 mil km, conferir lateral do pneu de moto por rachaduras). Nada de prazo de garantia nem promessa técnica exagerada.
     - `"tipo":"meme"`: meme no formato clássico (texto em cima + foto + frase embaixo + emoji). Use SÓ fotos da loja ou a ilustração própria; NUNCA imagens de memes famosos, pessoas reais, personagens ou marcas de terceiros. Humor leve e do dia a dia (bateria arriando na segunda de manhã, pneu careca "aguentando", moto parada no sol, a esposa/o chefe perguntando do carro), sem ofender ninguém, sem política, religião ou palavrão.
@@ -73,7 +77,7 @@ Por dia (pedido do dono da loja):
 - **10:00**: o produto do outro par (se as 7h foram par A, use pneu de moto; se B, bateria de carro).
 - **12:30**: alterne dia sim, dia não entre **MEME** e **DICA** (`gerar_conteudo.py`). As dicas revezam as 4 categorias (bateria de carro → pneu de carro → bateria de moto → pneu de moto). Uma vez por semana pode ser uma arte pronta de `artes-prontas/`.
 - **14:00**: o 4º produto que ainda não apareceu no dia (bateria de carro, pneu de carro, pneu de moto ou bateria de moto), ou linha pesada (caminhão) 1x por semana.
-- **15:45**: chamada para ação, alternando: "ORÇAMENTO NO WHATSAPP" / "ENVIAMOS PARA CRATEÚS E REGIÃO" / "ENTREGA E INSTALAÇÃO GRÁTIS" (só se a arte for de bateria) / "MOURA EM ATÉ 10X SEM JUROS" / "INSTALAÇÃO EM ATÉ 30 MIN" / "VEM CONHECER A LOJA" / "TEM PROMOÇÃO NA LÍDER" (sem preço; só "consulte no WhatsApp").
+- **15:45**: chamada para ação, alternando: "ORÇAMENTO NO WHATSAPP" / "ENVIAMOS PARA CRATEÚS E REGIÃO" / "ENTREGA E INSTALAÇÃO GRÁTIS" (só se a arte for de bateria) / "TROCA GRÁTIS NO PNEU DE MOTO" / "MOURA EM ATÉ 10X SEM JUROS" / "INSTALAÇÃO EM ATÉ 30 MIN" / "VEM CONHECER A LOJA" / "TEM PROMOÇÃO NA LÍDER" (sem preço; só "consulte no WhatsApp").
 
 ### Post do feed às 10:00 (1 por dia)
 Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda caprichada (gancho na 1ª linha, 2 a 3 linhas de conteúdo, endereço, WhatsApp, "Vem pra Líder! 💛", 5 a 8 hashtags com #LiderBateriasEPneus #Crateús). Não use no feed a mesma arte de um Story do mesmo dia.
