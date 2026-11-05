@@ -45,6 +45,7 @@ BENEFICIOS = {
     'linhapesada': ('truck', 'LINHA PESADA', 'CAMINHÕES'),
     'aderencia': ('tire', 'MELHOR', 'ADERÊNCIA'),
     'entrega': ('truck', 'ENTREGA E', 'INSTALAÇÃO GRÁTIS'),
+    'regiao': ('truck', 'ENVIAMOS PARA', 'CRATEÚS E REGIÃO'),
     'parcela': ('tag', 'MOURA EM ATÉ', '10X SEM JUROS'),
 }
 WA = '<path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.5c0 3 2.5 6 6 6.5l1.2-1.4-2-1.1-.9.8c-1-.4-2-1.4-2.4-2.4l.8-.9-1.1-2z"/>'
