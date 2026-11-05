@@ -2,7 +2,7 @@
 
 Uso: python3 ferramentas/gerar_conteudo.py arte.json pasta_saida
 
-DICA (cartão com 3 a 4 dicas numeradas):
+DICA (cartão com 3 dicas numeradas):
 {
   "tipo": "dica",
   "categoria": "BATERIA DE CARRO",          # BATERIA DE CARRO | BATERIA DE MOTO | PNEU DE CARRO | PNEU DE MOTO
@@ -56,7 +56,7 @@ def dica(c, W, H):
     foto = c.get('foto'); fh = 600 if story else 400
     topo = 300 if story else 70
     itens = ''
-    for i, d in enumerate(c['dicas'][:4]):
+    for i, d in enumerate(c['dicas'][:3]):
         itens += f'''<div style="display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.06);border:2px solid rgba(255,184,0,.35);border-radius:22px;padding:{'30px 30px' if story else '22px 24px'}">
           <div style="width:{76 if story else 62}px;height:{76 if story else 62}px;flex:none;border-radius:50%;background:{Y};display:flex;align-items:center;justify-content:center;font-family:BC;font-weight:900;font-style:italic;font-size:{48 if story else 40}px;color:#0B0C10">{i+1}</div>
           <div style="font-family:Inter;font-weight:700;font-size:{40 if story else 33}px;line-height:1.2;color:#fff">{e(d)}</div></div>'''
