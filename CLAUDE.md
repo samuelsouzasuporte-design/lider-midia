@@ -41,6 +41,9 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - Nunca use banco de imagens nem fotos baixadas da internet (direitos autorais). Ilustrações próprias, sem logo de marca, são permitidas.
 - Dois modelos de arte (ambos geram `feed.jpg` 1080x1350 e `story.jpg` 1080x1920):
   - `ferramentas/gerar_impacto.py` (**modelo principal**, estilo das artes de referência da loja: azul-noite, raios, faixas amarelas, título condensado gigante, tarja amarela, 3 ícones de benefício, rodapé com WhatsApp). Campos: foto, posicao_foto, pergunta, linha1, linha2, destaque, beneficios (3 chaves: partida, rapido, instalacao, qualidade, marcas, seguranca, durabilidade, orcamento, linhapesada, aderencia, entrega, parcela), cor ("azul" ou "preto"). Textos curtos, em MAIÚSCULAS: pergunta até ~22 letras, linha1 até ~10, linha2 até ~9, destaque até ~18.
+  - `ferramentas/gerar_conteudo.py` (**DICAS e MEMES**; veja o cabeçalho do script):
+    - `"tipo":"dica"`: cartão "DICA DA LÍDER" com 3 a 4 dicas numeradas. Categorias: BATERIA DE CARRO, BATERIA DE MOTO, PNEU DE CARRO, PNEU DE MOTO. Dicas curtas (até ~40 caracteres cada), práticas e corretas (ex.: sinais de bateria fraca, não deixar farol ligado, moto parada muito tempo descarrega a bateria, calibrar pneus frios a cada 15 dias, sulco mínimo 1,6 mm (TWI), rodízio de pneus a cada 10 mil km, conferir lateral do pneu de moto por rachaduras). Nada de prazo de garantia nem promessa técnica exagerada.
+    - `"tipo":"meme"`: meme no formato clássico (texto em cima + foto + frase embaixo + emoji). Use SÓ fotos da loja ou a ilustração própria; NUNCA imagens de memes famosos, pessoas reais, personagens ou marcas de terceiros. Humor leve e do dia a dia (bateria arriando na segunda de manhã, pneu careca "aguentando", moto parada no sol, a esposa/o chefe perguntando do carro), sem ofender ninguém, sem política, religião ou palavrão.
   - `ferramentas/gerar_arte.py` (modelo clássico, mais limpo). Use em cerca de 1 a cada 4 artes, para variar.
   - Alterne `cor` azul/preto entre posts seguidos. Crie textos novos todo dia: perguntas que a pessoa faria ("SUA MOTO NÃO PEGA?", "PNEU CARECA?", "VAI VIAJAR?"), sem repetir a mesma combinação na mesma semana.
 - `posts/AAAA-MM-DD/`: artes e `legenda.txt` de cada dia
@@ -63,7 +66,7 @@ Por dia (pedido do dono da loja):
 
 ### Stories das 10:00, 12:30, 14:00 e 15:45 (1 em cada horário)
 - **10:00**: o produto do outro par (se as 7h foram par A, use pneu de moto; se B, bateria de carro).
-- **12:30**: dica rápida (ex.: "CARRO DEMORANDO A PEGAR?", "PNEU CARECA É PERIGO", "CALIBRE OS PNEUS") ou uma arte pronta de `artes-prontas/` (máx. 1x por semana cada).
+- **12:30**: alterne dia sim, dia não entre **MEME** e **DICA** (`gerar_conteudo.py`). As dicas revezam as 4 categorias (bateria de carro → pneu de carro → bateria de moto → pneu de moto). Uma vez por semana pode ser uma arte pronta de `artes-prontas/`.
 - **14:00**: o 4º produto que ainda não apareceu no dia (bateria de carro, pneu de carro, pneu de moto ou bateria de moto), ou linha pesada (caminhão) 1x por semana.
 - **15:45**: chamada para ação, alternando: "ORÇAMENTO NO WHATSAPP" / "ENTREGA E INSTALAÇÃO GRÁTIS" / "MOURA EM ATÉ 10X SEM JUROS" / "INSTALAÇÃO EM ATÉ 30 MIN" / "VEM CONHECER A LOJA" / "TEM PROMOÇÃO NA LÍDER" (sem preço; só "consulte no WhatsApp").
 
@@ -104,13 +107,15 @@ Todo dia, crie textos NOVOS e criativos para cada arte. Nunca copie os exemplos 
 - Continua proibido: inventar preço, promoção com prazo, garantia, parcelamento, brinde ou serviço não confirmado.
 
 ## Rodízio de temas (post do feed, um por dia)
-1. Estoque / pronta entrega de pneus
-2. Baterias: marcas e garantia (sem inventar prazos ou preços)
-3. Dica: sinais de bateria fraca (carro demorando a pegar, luzes fracas)
-4. Pneus de moto
-5. Dica: calibragem e quando trocar o pneu (indicador TWI de 1,6 mm)
-6. Institucional: venha conhecer a loja / fachada
-7. Chamada para o WhatsApp: "faça seu orçamento"
+1. Estoque / pronta entrega de pneus de carro (nacionais e importados)
+2. DICA de bateria de carro (`gerar_conteudo.py`, tipo dica)
+3. Baterias por marca (Moura, Pioneiro, Bosch, América, Onbat, Zetta) ou arte da Moura adaptada
+4. DICA de pneu de moto
+5. MEME (`gerar_conteudo.py`, tipo meme)
+6. DICA de pneu de carro
+7. DICA de bateria de moto
+8. Institucional: venha conhecer a loja / letreiro / fachada
+9. Chamada para o WhatsApp: orçamento, entrega e instalação grátis, Moura em até 10x
 
 ## Proibido
 - Inventar preços, promoções, prazos de garantia, parcelamento ou serviços que a loja não confirmou.
