@@ -36,7 +36,10 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
   - NÃO republicar: artes de "É a última semana com promoções" (promoção com prazo) e "Pediu, chegou" (está com o telefone errado, 9.8866-5130).
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
 - Nunca use banco de imagens nem fotos baixadas da internet (direitos autorais). Ilustrações próprias, sem logo de marca, são permitidas.
-- `ferramentas/gerar_arte.py`: gera `feed.jpg` (1080x1350) e `story.jpg` (1080x1920) no padrão visual da marca (preto #0E0F12 + amarelo #FFB800, Exo 2 itálico)
+- Dois modelos de arte (ambos geram `feed.jpg` 1080x1350 e `story.jpg` 1080x1920):
+  - `ferramentas/gerar_impacto.py` (**modelo principal**, estilo das artes de referência da loja: azul-noite, raios, faixas amarelas, título condensado gigante, tarja amarela, 3 ícones de benefício, rodapé com WhatsApp). Campos: foto, posicao_foto, pergunta, linha1, linha2, destaque, beneficios (3 chaves: partida, rapido, instalacao, qualidade, marcas, seguranca, durabilidade, orcamento, linhapesada, aderencia), cor ("azul" ou "preto"). Textos curtos, em MAIÚSCULAS: pergunta até ~22 letras, linha1 até ~10, linha2 até ~9, destaque até ~18.
+  - `ferramentas/gerar_arte.py` (modelo clássico, mais limpo). Use em cerca de 1 a cada 4 artes, para variar.
+  - Alterne `cor` azul/preto entre posts seguidos. Crie textos novos todo dia: perguntas que a pessoa faria ("SUA MOTO NÃO PEGA?", "PNEU CARECA?", "VAI VIAJAR?"), sem repetir a mesma combinação na mesma semana.
 - `posts/AAAA-MM-DD/`: artes e `legenda.txt` de cada dia
 - `historico.md`: um registro por dia (tema, foto usada, título). Leia antes de escolher o tema, para não repetir.
 
@@ -63,7 +66,7 @@ Use fotos diferentes nos 4 posts do mesmo dia sempre que possível. Se houver po
 ### Passo a passo
 1. Leia `historico.md` (tema do feed, par A/B e fotos usadas recentemente). Olhe cada foto (Read) antes de usar e evite repetir a mesma foto em dias seguidos.
 2. Para cada arte, crie um JSON em `posts/<data>/` (`aberta.json`, `produto1.json`, `produto2.json`, `feed1000.json`, `feed1230.json`, `feed1400.json`, `feed1545.json`) e rode:
-   `python3 ferramentas/gerar_arte.py posts/<data>/<nome>.json posts/<data>/<nome>`
+   `python3 ferramentas/gerar_impacto.py posts/<data>/<nome>.json posts/<data>/<nome>` (ou `gerar_arte.py` para o modelo clássico)
    (gera `feed.jpg` e `story.jpg` dentro da pasta `<nome>`; para os Stories use o `story.jpg`, para o feed use o `feed.jpg` das pastas `feedHHMM/`).
    Regras de texto: `linha1` com 1 ou 2 palavras curtas; `linha2` com até ~9 letras; `subtitulo` com até ~45 caracteres; `selo` com até 16 caracteres.
 3. Olhe as imagens geradas (Read). Se o texto estourar ou ficar ilegível, ajuste e gere de novo.
