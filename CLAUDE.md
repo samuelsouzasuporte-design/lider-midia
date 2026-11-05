@@ -92,6 +92,15 @@ Na terça e na sexta, além da rotina normal:
 3. Commit + push, e agende no Metricool às 18:00: instagramData.type "REEL", showReelOnFeed true, media = URL raw do mp4, text = legenda com gancho, endereço, WhatsApp e hashtags.
 4. Se já existir `reels/<data>-*.mp4` pronto para o dia (feito à mão), use esse em vez de gerar.
 
+## Criatividade nas mensagens (pedido do dono da loja)
+Todo dia, crie textos NOVOS e criativos para cada arte. Nunca copie os exemplos deste arquivo ao pé da letra e não repita uma mesma frase na mesma semana (confira em `historico.md`, onde você registra os títulos usados).
+- Use ganchos que falem com o dia a dia de Crateús e do sertão: calor, estrada, viagem para Fortaleza/Teresina, moto para trabalhar, chuva, segunda-feira, fim de semana, dia do pagamento, feriados e datas comemorativas (Dia dos Pais, Natal, Ano Novo, Black Friday, volta às aulas).
+- Varie o tom: pergunta ("SEU CARRO TÁ FAZENDO TEC-TEC?"), humor leve ("BATERIA ARRIADA? A GENTE LEVANTA!"), urgência ("NÃO FIQUE NA MÃO"), orgulho local ("A LOJA DE CRATEÚS QUE RESOLVE"), dica útil ("CALOR ACABA COM BATERIA"), trocadilho ("ENERGIA QUE NÃO TE DEIXA NA MÃO").
+- Combine o texto com a foto escolhida (o que aparece na foto deve bater com a frase).
+- Varie também os benefícios (ícones), a tarja de destaque, a cor (azul/preto) e o modelo (impacto/clássico).
+- Legendas: gancho diferente todo dia, linguagem simples e próxima do cliente, emojis com moderação.
+- Continua proibido: inventar preço, promoção com prazo, garantia, parcelamento, brinde ou serviço não confirmado.
+
 ## Rodízio de temas (post do feed, um por dia)
 1. Estoque / pronta entrega de pneus
 2. Baterias: marcas e garantia (sem inventar prazos ou preços)
