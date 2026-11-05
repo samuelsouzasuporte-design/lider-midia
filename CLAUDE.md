@@ -17,10 +17,11 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 ## Estrutura
 - `marca/logo.png`: logo oficial (não alterar)
 - `fotos/`: FOTOS DE VERDADE da loja, nítidas (prioridade máxima). O nome já diz a categoria:
-  - bateria de carro: `bateria-carro-01.jpg`, `bateria-carro-02.jpg`, `bateria-carro-03-expositor-moura.jpg`
+  - bateria de carro: `bateria-carro-01.jpg`, `bateria-carro-02.jpg`, `bateria-carro-03-expositor-moura.jpg`, `bateria-carro-04-pioneiro-onbat.jpg` (baterias de CARRO Pioneiro/Onbat; o banner ao fundo é de moto, mas as baterias não são)
   - pneu de carro: `pneu-carro-01.jpg` (pneus no alto, baterias embaixo; use posicao_foto "center 20%"), `pneu-carro-02-estoque.jpg`, `pneu-carro-03.jpg` (pilhas de pneus de carro)
   - pneu de moto: `pneu-moto-01.jpg`, `pneu-moto-02.jpg` (pneus de moto em primeiro plano; use posicao_foto "center 70%")
-  - bateria de moto: `bateria-moto-01-pioneiro.jpg` (banner "A bateria para sua moto"), `bateria-moto-02-prateleiras.jpg` (prateleiras de baterias de moto ao fundo)
+  - bateria de moto: AINDA SEM FOTO CONFIRMADA. Até o dono mandar, faça a arte de bateria de moto com uma foto da loja (`loja-interior-prateleiras.jpg` ou fachada) e texto genérico ("Bateria para sua moto? Temos!"), sem mostrar baterias de carro como se fossem de moto.
+  - loja/interior: `loja-interior-prateleiras.jpg` (interior com expositor Moura e prateleiras)
   - loja/fachada: `loja-fachada-01.jpg`, `loja-fachada-02.jpg` (ótimas para o Story "Loja aberta" e posts institucionais)
 - `artes-prontas/`: artes que a própria loja já fez (`linha-pesada-caminhoes.jpg`, `quando-precisar.jpg`, formato 9:16). Podem ser republicadas como Story no máximo 1 vez por semana cada, nos horários de produto, sem alterar.
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
