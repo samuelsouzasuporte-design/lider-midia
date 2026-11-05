@@ -35,6 +35,8 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
   - Feed (quadrada): `feed-aqui-tem-moura.jpg` pode ser um dos 4 posts do feed (no máximo 1x por semana).
   - Para usar no Metricool: media = URL raw de `artes-prontas/<arquivo>`.
   - NÃO republicar: artes de "É a última semana com promoções" (promoção com prazo) e "Pediu, chegou" (está com o telefone errado, 9.8866-5130).
+- `marcas/moura-lider/<nome>/feed.jpg|story.jpg`: artes oficiais da Moura adaptadas com a faixa da Líder (prontas). Use no máximo 1 por dia (um Story OU o post do feed), sem repetir a mesma arte em menos de 10 dias. Temas: pesada-1/2/3 (linha pesada, caminhão), moto-vai-de-moura, moto-jornadas, moto-ritmo (bateria de moto), nobreak-1, nobreak-vrla, nobreak-2 (nobreak/VRLA). Para adaptar novas: `python3 ferramentas/adaptar_moura.py marcas/moura-original/<arq>.png marcas/moura-lider/<nome>`.
+- `marcas/moura-lider-pendentes/`: NÃO USAR até o dono confirmar (entrega e instalação grátis; 10x sem juros).
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
 - Nunca use banco de imagens nem fotos baixadas da internet (direitos autorais). Ilustrações próprias, sem logo de marca, são permitidas.
 - Dois modelos de arte (ambos geram `feed.jpg` 1080x1350 e `story.jpg` 1080x1920):
