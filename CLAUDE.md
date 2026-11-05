@@ -9,7 +9,9 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - Endereço: Rua Deolino Barreto, 860 - Centro, Crateús/CE
 - WhatsApp: (88) 9.8865-5130
 - Instagram: @liderbateriasepneus
-- Vende: pneus para carros e motos e baterias automotivas (marcas vistas na loja: Moura, Zetta, Pioneiro, Onbat, Heliar/América, Goodyear, Dunlop, Michelin, Maggion)
+- Vende: pneus para carros e motos e baterias (carro, moto, caminhão).
+  - Baterias (confirmado pelo dono): **Moura, Pioneiro, Bosch, América, Onbat, Zetta**.
+  - Pneus (vistos nas artes/fotos da loja): Michelin, Pirelli, Maggion, Levorin, Vipal, Technic, Goodyear, Dunlop.
 - Informações confirmadas nas artes da própria loja (pode usar): **instalação em até 30 minutos**, **atendimento rápido**, **linha pesada: baterias para caminhões**.
 - NÃO usar: "10x sem juros" e garantias (aparecem só em banners das marcas, não foram confirmados pela loja).
 - Metricool: brandId/blogId **7896220**, fuso **America/Fortaleza**
@@ -20,12 +22,20 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
   - bateria de carro: `bateria-carro-01.jpg`, `bateria-carro-02.jpg`, `bateria-carro-03-expositor-moura.jpg`, `bateria-carro-04-pioneiro-onbat.jpg` (baterias de CARRO Pioneiro/Onbat; o banner ao fundo é de moto, mas as baterias não são)
   - pneu de carro: `pneu-carro-01.jpg` (pneus no alto, baterias embaixo; use posicao_foto "center 20%"), `pneu-carro-02-estoque.jpg`, `pneu-carro-03.jpg` (pilhas de pneus de carro)
   - pneu de moto: `pneu-moto-01.jpg`, `pneu-moto-02.jpg` (pneus de moto em primeiro plano; use posicao_foto "center 70%")
-  - bateria de moto: AINDA SEM FOTO CONFIRMADA. Até o dono mandar, faça a arte de bateria de moto com uma foto da loja (`loja-interior-prateleiras.jpg` ou fachada) e texto genérico ("Bateria para sua moto? Temos!"), sem mostrar baterias de carro como se fossem de moto.
+  - bateria de moto: `bateria-moto-01-inflavel-moura.jpg` (inflável Moura de bateria de moto, na frente da loja; use posicao_foto "center 45%") e `ilustracao-bateria-moto.jpg` (ilustração própria, sem marca; posicao_foto "center 25%"). Também há a arte pronta `story-energia-bateria-moto.jpg`. Nunca mostre bateria de carro como se fosse de moto.
   - loja/interior: `loja-interior-prateleiras.jpg` (interior com expositor Moura e prateleiras)
-  - loja/fachada: `loja-fachada-01.jpg`, `loja-fachada-02.jpg` (ótimas para o Story "Loja aberta" e posts institucionais)
-- `artes-prontas/`: artes que a própria loja já fez (`linha-pesada-caminhoes.jpg`, `quando-precisar.jpg`, formato 9:16). Podem ser republicadas como Story no máximo 1 vez por semana cada, nos horários de produto, sem alterar.
+  - loja/fachada: `loja-fachada-01.jpg`, `loja-fachada-02.jpg`, `loja-fachada-03-inflaveis.jpg` (fachada com infláveis Pioneiro/Moura; ótimas para o Story "Loja aberta" e posts institucionais)
+- `artes-prontas/`: artes que a própria loja já fez. Republique sem alterar, cada uma no máximo 1 vez por semana (registre no histórico):
+  - Stories (9:16), podem substituir um Story de produto das 07:00 da categoria certa:
+    - bateria de carro: `story-precisou-de-bateria.jpg`, `story-quando-precisar.jpg`, `story-linha-pesada-caminhoes.jpg`
+    - pneu de moto: `story-precisou-pneu-moto.jpg`, `story-seguranca-duas-rodas-pneu-moto.jpg`
+    - bateria de moto: `story-energia-bateria-moto.jpg`
+    - chamada: `story-chama-no-whatsapp.jpg`
+  - Feed (quadrada): `feed-aqui-tem-moura.jpg` pode ser um dos 4 posts do feed (no máximo 1x por semana).
+  - Para usar no Metricool: media = URL raw de `artes-prontas/<arquivo>`.
+  - NÃO republicar: artes de "É a última semana com promoções" (promoção com prazo) e "Pediu, chegou" (está com o telefone errado, 9.8866-5130).
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
-- Nunca invente imagens nem use banco de imagens.
+- Nunca use banco de imagens nem fotos baixadas da internet (direitos autorais). Ilustrações próprias, sem logo de marca, são permitidas.
 - `ferramentas/gerar_arte.py`: gera `feed.jpg` (1080x1350) e `story.jpg` (1080x1920) no padrão visual da marca (preto #0E0F12 + amarelo #FFB800, Exo 2 itálico)
 - `posts/AAAA-MM-DD/`: artes e `legenda.txt` de cada dia
 - `historico.md`: um registro por dia (tema, foto usada, título). Leia antes de escolher o tema, para não repetir.
