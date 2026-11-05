@@ -136,8 +136,8 @@ def montar(cfg, W, H):
 
     return f'''<div style="width:{W}px;height:{H}px;position:relative;overflow:hidden;background:radial-gradient(120% 80% at 70% 30%,{bg1} 0%,{bg2} 70%);font-family:Inter">
   <img src="{foto}" style="position:absolute;left:0;top:{int(H*0.16) if story else int(H*0.13)}px;width:{W}px;height:{fh}px;object-fit:cover;object-position:{pos};filter:saturate(1.15) contrast(1.05)">
-  <div style="position:absolute;left:0;top:{int(H*0.16) if story else int(H*0.13)}px;width:{W}px;height:{fh}px;background:linear-gradient(180deg,{tint}1) 0%,{tint}.25) 30%,{tint}.15) 55%,{tint}1) 100%)"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(90deg,{tint}.85) 0%,{tint}.25) 60%,{tint}0) 100%)"></div>
+  <div style="position:absolute;left:0;top:{int(H*0.16) if story else int(H*0.13)}px;width:{W}px;height:{fh}px;background:linear-gradient(180deg,{tint}1) 0%,{tint}.15) 28%,{tint}.05) 55%,{tint}1) 100%)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,{tint}.7) 0%,{tint}.15) 55%,{tint}0) 100%)"></div>
   <!-- faixas amarelas -->
   <div style="position:absolute;right:-160px;top:-60px;width:520px;height:46px;background:{Y};transform:rotate(-38deg);opacity:.95"></div>
   <div style="position:absolute;right:-120px;top:40px;width:420px;height:14px;background:{Y};transform:rotate(-38deg);opacity:.7"></div>
@@ -166,6 +166,14 @@ def main():
     cfg = json.load(open(sys.argv[1]))
     out = os.path.abspath(sys.argv[2]); os.makedirs(out, exist_ok=True)
     tmp = tempfile.mkdtemp(); jobs = []
+    # nitidez: foto em 1500px de largura + unsharp mask (evita foto "borrada" na arte)
+    from PIL import ImageFilter, ImageEnhance
+    ft = Image.open(os.path.join(RAIZ, cfg['foto'])).convert('RGB')
+    if ft.width > 1500: ft = ft.resize((1500, int(ft.height * 1500 / ft.width)), Image.LANCZOS)
+    ft = ft.filter(ImageFilter.UnsharpMask(radius=2.2, percent=110, threshold=2))
+    ft = ImageEnhance.Contrast(ft).enhance(1.06)
+    ft.save(os.path.join(tmp, 'foto.jpg'), quality=95)
+    cfg = dict(cfg, foto=os.path.join(tmp, 'foto.jpg'))
     for nome, W, H in (('feed', 1080, 1350), ('story', 1080, 1920)):
         page = f"<!doctype html><html><head><meta charset='utf-8'><style>{fontes()}body{{margin:0}}</style></head><body>{montar(cfg, W, H)}</body></html>"
         p = os.path.join(tmp, nome + '.html'); open(p, 'w').write(page)
