@@ -11,7 +11,7 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - Instagram: @liderbateriasepneus
 - Vende: pneus para carros e motos e baterias (carro, moto, caminhão).
   - Baterias (confirmado pelo dono): **Moura, Pioneiro, Bosch, América, Onbat, Zetta**.
-  - Linhas Moura confirmadas pelo dono: **Moura EFB e Moura AGM** (carros com Start-Stop / alternador inteligente) e **Moura Nobreak**. Bons ganchos: "SEU CARRO TEM START-STOP?", "TEM EFB E AGM", "NOBREAK SEM BATERIA?".
+  - Linhas Moura confirmadas pelo dono: **Moura EFB e Moura AGM** (carros com Start-Stop / alternador inteligente) e **Moura Nobreak**. ATENÇÃO: o dono disse em 05/11 que a arte de Start-Stop estava errada — NÃO faça artes de Start-Stop/EFB/AGM até nova orientação registrada aqui. Nobreak pode ("NOBREAK SEM BATERIA?").
   - Baterias de MOTO (confirmado pelo dono em 05/11/2026): **5Ah, 6Ah e 7Ah em cada marca** — Moura, Bosch, Heliar, Pioneiro, Onbat, Júpiter e Naja. Bons ganchos: "5AH, 6AH E 7AH", "TODAS AS MARCAS", "PRA TODA MOTO".
   - Pneus (confirmado pelo dono): **pneus de carro de várias marcas, nacionais e importadas** (ex.: Goodyear, Dunlop, Golden Crown, Michelin) e **pneus de moto de várias marcas originais** (ex.: Michelin, Pirelli, Maggion, Levorin, Vipal, Technic). Bons ganchos: "NACIONAIS E IMPORTADOS", "MARCAS ORIGINAIS", "VÁRIAS MARCAS".
 - Informações confirmadas nas artes da própria loja (pode usar): **instalação em até 30 minutos**, **atendimento rápido**, **linha pesada: baterias para caminhões**.
