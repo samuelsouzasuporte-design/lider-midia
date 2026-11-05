@@ -19,12 +19,13 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 ## Estrutura
 - `marca/logo.png`: logo oficial (não alterar)
 - `fotos/`: FOTOS DE VERDADE da loja, nítidas (prioridade máxima). O nome já diz a categoria:
-  - bateria de carro: `bateria-carro-01.jpg`, `bateria-carro-02.jpg`, `bateria-carro-03-expositor-moura.jpg`, `bateria-carro-04-pioneiro-onbat.jpg` (baterias de CARRO Pioneiro/Onbat; o banner ao fundo é de moto, mas as baterias não são)
-  - pneu de carro: `pneu-carro-01.jpg` (pneus no alto, baterias embaixo; use posicao_foto "center 20%"), `pneu-carro-02-estoque.jpg`, `pneu-carro-03.jpg` (pilhas de pneus de carro)
-  - pneu de moto: `pneu-moto-01.jpg`, `pneu-moto-02.jpg` (pneus de moto em primeiro plano; use posicao_foto "center 70%")
+  - bateria de carro: `bateria-carro-01.jpg`, `bateria-carro-02.jpg`, `bateria-carro-03-expositor-moura.jpg`, `bateria-carro-04-pioneiro-onbat.jpg` (baterias de CARRO; o banner ao fundo é de moto), `bateria-carro-05-pioneiro.jpg`, `bateria-carro-06-america.jpg`, `bateria-carro-07-moura.jpg`, `bateria-carro-08-onbat.jpg`, `bateria-carro-09-estoque-moura.jpg`, `bateria-carro-10-expositor-moura.jpg`
+  - bateria de caminhão (linha pesada): `bateria-caminhao-01-onbat.jpg`
+  - pneu de carro: `pneu-carro-01.jpg` (pneus no alto, baterias embaixo; use posicao_foto "center 20%"), `pneu-carro-02-estoque.jpg`, `pneu-carro-03.jpg` (pilhas de pneus de carro), `pneu-carro-04-estoque.jpg`, `pneu-carro-05-estoque.jpg` (paredes de pneus de carro + baterias)
+  - pneu de moto: `pneu-moto-01.jpg`, `pneu-moto-02.jpg` (use posicao_foto "center 70%"), `pneu-moto-03.jpg`, `pneu-moto-04.jpg`, `pneu-moto-05.jpg` (pneus de moto em primeiro plano), `pneu-moto-06-michelin.jpg` (expositor Michelin com pneus de moto)
   - bateria de moto: `bateria-moto-01-inflavel-moura.jpg` (inflável Moura de bateria de moto, na frente da loja; use posicao_foto "center 45%") e `ilustracao-bateria-moto.jpg` (ilustração própria, sem marca; posicao_foto "center 25%"). Também há a arte pronta `story-energia-bateria-moto.jpg`. Nunca mostre bateria de carro como se fosse de moto.
-  - loja/interior: `loja-interior-prateleiras.jpg` (interior com expositor Moura e prateleiras)
-  - loja/fachada: `loja-fachada-01.jpg`, `loja-fachada-02.jpg`, `loja-fachada-03-inflaveis.jpg` (fachada com infláveis Pioneiro/Moura; ótimas para o Story "Loja aberta" e posts institucionais)
+  - loja/interior: `loja-interior-prateleiras.jpg`, `loja-interior-02.jpg`, `loja-interior-03-heliar.jpg`
+  - loja/fachada: `loja-fachada-01.jpg`, `loja-fachada-02.jpg`, `loja-fachada-04.jpg` (FACHADA NOVA, a melhor: letreiro Líder + totem; prioridade no Story "Loja aberta"), `loja-fachada-03-inflaveis.jpg` (fachada com infláveis Pioneiro/Moura; ótimas para o Story "Loja aberta" e posts institucionais)
 - `artes-prontas/`: artes que a própria loja já fez. Republique sem alterar, cada uma no máximo 1 vez por semana (registre no histórico):
   - Stories (9:16), podem substituir um Story de produto das 07:00 da categoria certa:
     - bateria de carro: `story-precisou-de-bateria.jpg`, `story-quando-precisar.jpg`, `story-linha-pesada-caminhoes.jpg`
@@ -48,7 +49,7 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 Por dia são 3 Stories às **07:00** e 4 posts no feed: **10:00, 12:30, 14:00 e 15:45** (horários pedidos pelo dono da loja).
 
 ### Stories das 07:00 (pedido do dono da loja)
-1. **"Loja aberta"**, todo dia, sempre igual no formato: selo "BOM DIA!", chamada "BOM DIA, CRATEÚS", linha1 "Loja", linha2 "aberta", subtítulo variando um pouco (ex.: "Pneus e baterias esperando por você.", "Passa aqui hoje!", "Chama no WhatsApp e garanta o seu."). Foto: alterne entre `loja-fachada-01.jpg`, `loja-fachada-02.jpg` e `bateria-carro-03-expositor-moura.jpg`. Domingo: use "Bom domingo!" no selo e não diga "loja aberta" (o horário de domingo não foi confirmado); use linha1 "Bom", linha2 "domingo" e subtítulo "Segunda estamos te esperando!".
+1. **"Loja aberta"**, todo dia, sempre igual no formato: selo "BOM DIA!", chamada "BOM DIA, CRATEÚS", linha1 "Loja", linha2 "aberta", subtítulo variando um pouco (ex.: "Pneus e baterias esperando por você.", "Passa aqui hoje!", "Chama no WhatsApp e garanta o seu."). Foto: alterne entre `loja-fachada-04.jpg` (preferida), `loja-fachada-01.jpg`, `loja-fachada-02.jpg`, `loja-interior-02.jpg`. Domingo: use "Bom domingo!" no selo e não diga "loja aberta" (o horário de domingo não foi confirmado); use linha1 "Bom", linha2 "domingo" e subtítulo "Segunda estamos te esperando!".
 2. **Duas artes de produto**, revezando em dois pares:
    - **Dia A:** BATERIA (de carro) + PNEU DE CARRO
    - **Dia B:** PNEU DE MOTO + BATERIA DE MOTO
@@ -78,6 +79,15 @@ Use fotos diferentes nos 4 posts do mesmo dia sempre que possível. Se houver po
    - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg`
    - Se algum horário já passou, agende 5 minutos à frente do horário atual.
 7. Acrescente uma linha em `historico.md` com: data, tema das 10h, produtos das 12:30 e 14h, chamada das 15:45, par de Stories (A ou B), fotos usadas. Commit e push.
+
+## Reels (2 por semana: TERÇA e SEXTA às 18:00)
+Na terça e na sexta, além da rotina normal:
+1. Monte `posts/<data>/reel.json` para `ferramentas/reels/fazer_reel.py` (veja o cabeçalho do script: 20 segmentos, textos do gancho/temas/pausa/palavras, `musica_seed` diferente do último Reels registrado no histórico).
+   Clipes disponíveis em `videos/` (1080x1920, 30fps): loja-8272/8273/8274/8275/8297 (loja, pneus e baterias), loja-IMG_6295 e loja-IMG_6295_1 (pneus Dunlop, expositor Moura), loja-IMG_6195 (baterias Zetta/Pioneiro/Onbat, corredor), loja-IMG_7023_1 (pilhas de pneus de carro), loja-IMG_4532. Veja a duração com ffprobe e extraia quadros para conferir o conteúdo antes de escolher os trechos.
+   Varie o tema do Reels: só baterias / só pneus / loja completa / promoção (sem preço) / linha pesada.
+2. Rode `python3 ferramentas/reels/fazer_reel.py posts/<data>/reel.json reels/<data>.mp4` (~10 min). Confira 3 quadros (Read) antes de publicar.
+3. Commit + push, e agende no Metricool às 18:00: instagramData.type "REEL", showReelOnFeed true, media = URL raw do mp4, text = legenda com gancho, endereço, WhatsApp e hashtags.
+4. Se já existir `reels/<data>-*.mp4` pronto para o dia (feito à mão), use esse em vez de gerar.
 
 ## Rodízio de temas (post das 10:00, um por dia)
 1. Estoque / pronta entrega de pneus
