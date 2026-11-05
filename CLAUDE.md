@@ -32,10 +32,10 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
     - bateria de carro: `story-precisou-de-bateria.jpg`, `story-quando-precisar.jpg`, `story-linha-pesada-caminhoes.jpg`
     - pneu de moto: `story-precisou-pneu-moto.jpg`, `story-seguranca-duas-rodas-pneu-moto.jpg`
     - bateria de moto: `story-energia-bateria-moto.jpg`
-    - chamada: `story-chama-no-whatsapp.jpg`
+    - chamada: `story-chama-no-whatsapp.jpg`, `story-pediu-chegou.jpg` (entregas; telefone já corrigido para 9.8865-5130)
   - Feed (quadrada): `feed-aqui-tem-moura.jpg` pode ser um dos 4 posts do feed (no máximo 1x por semana).
   - Para usar no Metricool: media = URL raw de `artes-prontas/<arquivo>`.
-  - NÃO republicar: artes de "É a última semana com promoções" (promoção com prazo) e "Pediu, chegou" (está com o telefone errado, 9.8866-5130).
+  - NÃO republicar: artes de "É a última semana com promoções" (promoção com prazo).
 - `marcas/moura-lider/<nome>/feed.jpg|story.jpg`: artes oficiais da Moura adaptadas com a faixa da Líder (prontas). Use no máximo 1 por dia (um Story OU o post do feed), sem repetir a mesma arte em menos de 10 dias. Temas: pesada-1/2/3 (linha pesada, caminhão), moto-vai-de-moura, moto-jornadas, moto-ritmo (bateria de moto), nobreak-1, nobreak-vrla, nobreak-2 (nobreak/VRLA), entrega-gratis-1/2/3 (entrega e instalação grátis), moto-10x (10x sem juros). NÃO usar a arte da Fiat (`marcas/moura-original/efb-fiat.png`). Para adaptar novas: `python3 ferramentas/adaptar_moura.py marcas/moura-original/<arq>.png marcas/moura-lider/<nome>`.
 - `fotos/de-video/`: quadros tirados de vídeos, menos nítidos. Use só se não houver foto boa da categoria em `fotos/`.
 - Nunca use banco de imagens nem fotos baixadas da internet (direitos autorais). Ilustrações próprias, sem logo de marca, são permitidas.
