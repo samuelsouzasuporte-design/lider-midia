@@ -46,39 +46,42 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 
 ## Rotina diária (a tarefa roda às 5h37; tudo é agendado para o MESMO dia)
 
-Por dia são 3 Stories às **07:00** e 4 posts no feed: **10:00, 12:30, 14:00 e 15:45** (horários pedidos pelo dono da loja).
+Por dia (pedido do dono da loja):
+- **Stories: 07:00 (3 Stories), 10:00, 12:30, 14:00 e 15:45 (1 Story em cada)** = 7 Stories por dia.
+- **Feed: 1 post por dia às 10:00** (melhor horário segundo o Metricool para este perfil, todos os dias da semana).
+- **Reels: terça e sexta às 18:00** (seção abaixo).
 
-### Stories das 07:00 (pedido do dono da loja)
-1. **"Loja aberta"**, todo dia, sempre igual no formato: selo "BOM DIA!", chamada "BOM DIA, CRATEÚS", linha1 "Loja", linha2 "aberta", subtítulo variando um pouco (ex.: "Pneus e baterias esperando por você.", "Passa aqui hoje!", "Chama no WhatsApp e garanta o seu."). Foto: alterne entre `loja-fachada-04.jpg` (preferida), `loja-fachada-01.jpg`, `loja-fachada-02.jpg`, `loja-interior-02.jpg`. Domingo: use "Bom domingo!" no selo e não diga "loja aberta" (o horário de domingo não foi confirmado); use linha1 "Bom", linha2 "domingo" e subtítulo "Segunda estamos te esperando!".
+### Stories das 07:00
+1. **"Loja aberta"**, todo dia: pergunta "BOM DIA, CRATEÚS!", linha1 "LOJA", linha2 "ABERTA!", destaque variando ("VEM PRA LÍDER", "PASSA AQUI HOJE", "CHAMA NO ZAP"). Foto: alterne entre `loja-fachada-04.jpg` (preferida), `loja-fachada-01.jpg`, `loja-fachada-02.jpg`, `loja-interior-02.jpg`. Domingo: não diga "loja aberta" (horário de domingo não confirmado); use "BOM DOMINGO!" e destaque "SEGUNDA TE ESPERAMOS".
 2. **Duas artes de produto**, revezando em dois pares:
    - **Dia A:** BATERIA (de carro) + PNEU DE CARRO
    - **Dia B:** PNEU DE MOTO + BATERIA DE MOTO
    Alterne A/B: veja em `historico.md` qual par foi usado por último e use o outro.
    Use as fotos de `fotos/` da categoria certa (lista acima). `fotos/de-video/` só como reserva. Não afirme modelos específicos.
-   Textos de exemplo: chamada "PARA SEU CARRO" / linha1 "Bateria" / linha2 "nova"; chamada "PARA SUA MOTO" / linha1 "Pneu de" / linha2 "moto"; chamada "PARA SUA MOTO" / linha1 "Bateria" / linha2 "de moto"; chamada "PARA SEU CARRO" / linha1 "Pneus" / linha2 "de carro". Selo: "PRONTA ENTREGA" ou "CONFIRA". Varie o subtítulo.
 
-### Posts do feed (4 por dia, cada um com tema diferente)
-- **10:00**: tema do dia, seguindo o "Rodízio de temas" abaixo.
-- **12:30**: produto, revezando BATERIA DE CARRO → PNEU DE CARRO → PNEU DE MOTO → BATERIA DE MOTO (pegue o próximo depois do último registrado em `historico.md`).
-- **14:00**: o produto seguinte nesse mesmo rodízio (diferente do das 12:30).
-- **15:45**: chamada para ação, alternando: "Faça seu orçamento no WhatsApp" / "Instalação em até 30 minutos" / "Venha conhecer a loja" / "Linha pesada: baterias para caminhões".
-Use fotos diferentes nos 4 posts do mesmo dia sempre que possível. Se houver poucas fotos, troque ao menos o enquadramento (`posicao_foto`) e os textos. Cada post tem a sua legenda (curta, com gancho diferente), sempre com endereço, WhatsApp e hashtags.
+### Stories das 10:00, 12:30, 14:00 e 15:45 (1 em cada horário)
+- **10:00**: o produto do outro par (se as 7h foram par A, use pneu de moto; se B, bateria de carro).
+- **12:30**: dica rápida (ex.: "CARRO DEMORANDO A PEGAR?", "PNEU CARECA É PERIGO", "CALIBRE OS PNEUS") ou uma arte pronta de `artes-prontas/` (máx. 1x por semana cada).
+- **14:00**: o 4º produto que ainda não apareceu no dia (bateria de carro, pneu de carro, pneu de moto ou bateria de moto), ou linha pesada (caminhão) 1x por semana.
+- **15:45**: chamada para ação, alternando: "ORÇAMENTO NO WHATSAPP" / "INSTALAÇÃO EM ATÉ 30 MIN" / "VEM CONHECER A LOJA" / "TEM PROMOÇÃO NA LÍDER" (sem preço; só "consulte no WhatsApp").
+
+### Post do feed às 10:00 (1 por dia)
+Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda caprichada (gancho na 1ª linha, 2 a 3 linhas de conteúdo, endereço, WhatsApp, "Vem pra Líder! 💛", 5 a 8 hashtags com #LiderBateriasEPneus #Crateús). Não use no feed a mesma arte de um Story do mesmo dia.
 
 ### Passo a passo
 1. Leia `historico.md` (tema do feed, par A/B e fotos usadas recentemente). Olhe cada foto (Read) antes de usar e evite repetir a mesma foto em dias seguidos.
-2. Para cada arte, crie um JSON em `posts/<data>/` (`aberta.json`, `produto1.json`, `produto2.json`, `feed1000.json`, `feed1230.json`, `feed1400.json`, `feed1545.json`) e rode:
-   `python3 ferramentas/gerar_impacto.py posts/<data>/<nome>.json posts/<data>/<nome>` (ou `gerar_arte.py` para o modelo clássico)
-   (gera `feed.jpg` e `story.jpg` dentro da pasta `<nome>`; para os Stories use o `story.jpg`, para o feed use o `feed.jpg` das pastas `feedHHMM/`).
-   Regras de texto: `linha1` com 1 ou 2 palavras curtas; `linha2` com até ~9 letras; `subtitulo` com até ~45 caracteres; `selo` com até 16 caracteres.
+2. Para cada arte, crie um JSON em `posts/<data>/` (`s0700a.json` loja aberta, `s0700b.json`, `s0700c.json`, `s1000.json`, `s1230.json`, `s1400.json`, `s1545.json`, `feed.json`) e rode:
+   `python3 ferramentas/gerar_impacto.py posts/<data>/<nome>.json posts/<data>/<nome>` (ou `gerar_arte.py` para o modelo clássico, ~1 a cada 4 artes)
+   (gera `feed.jpg` e `story.jpg` na pasta `<nome>`; Stories usam `story.jpg`, o post do feed usa `feed/feed.jpg`).
 3. Olhe as imagens geradas (Read). Se o texto estourar ou ficar ilegível, ajuste e gere de novo.
-4. Escreva uma legenda por post do feed (`posts/<data>/legenda1000.txt`, `legenda1230.txt`, `legenda1400.txt`, `legenda1545.txt`): gancho na 1ª linha, 2 a 3 linhas de conteúdo, endereço, WhatsApp, "Vem pra Líder! 💛" e 5 a 8 hashtags (#LiderBateriasEPneus #Crateús sempre).
+4. Escreva `posts/<data>/legenda.txt` para o post do feed.
 5. Commit e push (`git add -A && git commit -m "post <data>" && git push origin main`). Confirme com `git ls-remote origin` que o commit chegou.
 6. Agende no Metricool (createScheduledPost, blogId 7896220, autoPublish true, fuso America/Fortaleza). Antes, rode getScheduledPosts do dia e não duplique o que já existir:
-   - **07:00** Story "Loja aberta", depois **07:01** Story produto 1 e **07:02** Story produto 2 (instagramData.type "STORY", sem text).
-   - **10:00, 12:30, 14:00 e 15:45** Posts no feed (instagramData.type "POST", text = legenda correspondente, media = `feedHHMM/feed.jpg`).
-   - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg`
+   - Stories (instagramData.type "STORY", sem text): **07:00** loja aberta, **07:01** e **07:02** produtos, **10:00**, **12:30**, **14:00**, **15:45**.
+   - Feed (instagramData.type "POST", text = legenda): **10:00**.
+   - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg` (ou `artes-prontas/<arquivo>`)
    - Se algum horário já passou, agende 5 minutos à frente do horário atual.
-7. Acrescente uma linha em `historico.md` com: data, tema das 10h, produtos das 12:30 e 14h, chamada das 15:45, par de Stories (A ou B), fotos usadas. Commit e push.
+7. Acrescente uma linha em `historico.md` com: data, tema do feed, par de Stories das 7h (A ou B), temas dos Stories de 10h a 15h45, artes prontas usadas, fotos usadas. Commit e push.
 
 ## Reels (2 por semana: TERÇA e SEXTA às 18:00)
 Na terça e na sexta, além da rotina normal:
@@ -89,7 +92,7 @@ Na terça e na sexta, além da rotina normal:
 3. Commit + push, e agende no Metricool às 18:00: instagramData.type "REEL", showReelOnFeed true, media = URL raw do mp4, text = legenda com gancho, endereço, WhatsApp e hashtags.
 4. Se já existir `reels/<data>-*.mp4` pronto para o dia (feito à mão), use esse em vez de gerar.
 
-## Rodízio de temas (post das 10:00, um por dia)
+## Rodízio de temas (post do feed, um por dia)
 1. Estoque / pronta entrega de pneus
 2. Baterias: marcas e garantia (sem inventar prazos ou preços)
 3. Dica: sinais de bateria fraca (carro demorando a pegar, luzes fracas)
