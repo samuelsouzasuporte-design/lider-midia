@@ -11,7 +11,7 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - Instagram: @liderbateriasepneus
 - Vende: pneus para carros e motos e baterias (carro, moto, caminhão).
   - Baterias (confirmado pelo dono): **Moura, Pioneiro, Bosch, América, Onbat, Zetta**.
-  - Pneus (vistos nas artes/fotos da loja): Michelin, Pirelli, Maggion, Levorin, Vipal, Technic, Goodyear, Dunlop.
+  - Pneus (confirmado pelo dono): **pneus de carro de várias marcas, nacionais e importadas** (ex.: Goodyear, Dunlop, Golden Crown, Michelin) e **pneus de moto de várias marcas originais** (ex.: Michelin, Pirelli, Maggion, Levorin, Vipal, Technic). Bons ganchos: "NACIONAIS E IMPORTADOS", "MARCAS ORIGINAIS", "VÁRIAS MARCAS".
 - Informações confirmadas nas artes da própria loja (pode usar): **instalação em até 30 minutos**, **atendimento rápido**, **linha pesada: baterias para caminhões**.
 - CONFIRMADO pelo dono em 05/11/2026 (pode usar nas artes e legendas): **entrega e instalação grátis** e **baterias Moura em até 10x sem juros**.
 - NÃO usar: prazos de garantia e parcelamento de outras marcas (não confirmados).
@@ -22,8 +22,8 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - `fotos/`: FOTOS DE VERDADE da loja, nítidas (prioridade máxima). O nome já diz a categoria:
   - bateria de carro: `bateria-carro-01.jpg`, `bateria-carro-02.jpg`, `bateria-carro-03-expositor-moura.jpg`, `bateria-carro-04-pioneiro-onbat.jpg` (baterias de CARRO; o banner ao fundo é de moto), `bateria-carro-05-pioneiro.jpg`, `bateria-carro-06-america.jpg`, `bateria-carro-07-moura.jpg`, `bateria-carro-08-onbat.jpg`, `bateria-carro-09-estoque-moura.jpg`, `bateria-carro-10-expositor-moura.jpg`
   - bateria de caminhão (linha pesada): `bateria-caminhao-01-onbat.jpg`
-  - pneu de carro: `pneu-carro-01.jpg` (pneus no alto, baterias embaixo; use posicao_foto "center 20%"), `pneu-carro-02-estoque.jpg`, `pneu-carro-03.jpg` (pilhas de pneus de carro), `pneu-carro-04-estoque.jpg`, `pneu-carro-05-estoque.jpg` (paredes de pneus de carro + baterias)
-  - pneu de moto: `pneu-moto-01.jpg`, `pneu-moto-02.jpg` (use posicao_foto "center 70%"), `pneu-moto-03.jpg`, `pneu-moto-04.jpg`, `pneu-moto-05.jpg` (pneus de moto em primeiro plano), `pneu-moto-06-michelin.jpg` (expositor Michelin com pneus de moto)
+  - pneu de carro: `pneu-carro-01.jpg` (pneus no alto, baterias embaixo; use posicao_foto "center 20%"), `pneu-carro-02-estoque.jpg`, `pneu-carro-03.jpg` (pilhas de pneus de carro), `pneu-carro-04-estoque.jpg`, `pneu-carro-05-estoque.jpg` (paredes de pneus de carro + baterias), ,  (paredes só de pneus de carro, ótimas para "nacionais e importados")
+  - pneu de moto: `pneu-moto-01.jpg`, `pneu-moto-02.jpg` (use posicao_foto "center 70%"), `pneu-moto-03.jpg`, `pneu-moto-04.jpg`, `pneu-moto-05.jpg` (pneus de moto em primeiro plano), `pneu-moto-06-michelin.jpg` (expositor Michelin com pneus de moto),  (pneus de moto trilha/uso misto, close),  (pneus de moto de rua, close)
   - bateria de moto: `bateria-moto-01-inflavel-moura.jpg` (inflável Moura de bateria de moto, na frente da loja; use posicao_foto "center 45%") e `ilustracao-bateria-moto.jpg` (ilustração própria, sem marca; posicao_foto "center 25%"). Também há a arte pronta `story-energia-bateria-moto.jpg`. Nunca mostre bateria de carro como se fosse de moto.
   - loja/interior: `loja-interior-prateleiras.jpg`, `loja-interior-02.jpg`, `loja-interior-03-heliar.jpg`
   - loja/fachada: `loja-fachada-01.jpg`, `loja-fachada-02.jpg`, `loja-fachada-04.jpg` (FACHADA NOVA, a melhor: letreiro Líder + totem; prioridade no Story "Loja aberta"), `loja-fachada-03-inflaveis.jpg` (fachada com infláveis Pioneiro/Moura; ótimas para o Story "Loja aberta" e posts institucionais)
