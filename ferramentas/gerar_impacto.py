@@ -12,7 +12,7 @@ arte.json:
   "linha2": "BATERIA!",                    # título amarelo (até ~9 letras)
   "destaque": "PRONTA ENTREGA",            # tarja amarela (até ~18 letras)
   "beneficios": ["partida", "rapido", "instalacao"],   # 3 chaves (ver BENEFICIOS)
-  "cor": "azul"                            # opcional: "azul" (padrão) ou "preto"
+  "cor": "azul"                            # azul | preto | grafite | laranja | dourado | noite (alterne sempre)
 }
 """
 import json, os, sys, subprocess, tempfile, html
@@ -80,14 +80,13 @@ def fontes():
         css += f"@font-face{{font-family:'Inter';font-weight:{w};font-style:normal;src:url('file://{f}/inter-latin-{w}-normal.woff2')}}\n"
     return css
 
-def montar(cfg, W, H):
+def _montar(cfg, W, H):
     e = lambda k, d='': html.escape(cfg.get(k, d))
     foto = 'file://' + os.path.join(RAIZ, cfg['foto'])
     logo = 'file://' + os.path.join(RAIZ, 'marca', 'logo.png')
     pos = cfg.get('posicao_foto', 'center 40%')
-    preto = cfg.get('cor') == 'preto'
-    bg1, bg2 = ('#0B0C10', '#020203') if preto else ('#0C1A4A', '#040817')
-    tint = 'rgba(4,8,23,' if not preto else 'rgba(2,2,3,'
+    tema = TEMAS.get(cfg.get('cor', 'azul'), TEMAS['azul'])
+    bg1, bg2, tint = tema['bg1'], tema['bg2'], tema['tint']
     story = H > 1500
     # medidas
     fh = int(H * (0.62 if story else 0.60))          # altura da foto
@@ -163,6 +162,22 @@ def montar(cfg, W, H):
   <div style="position:absolute;left:50px;right:50px;top:{ben_top}px;display:flex;gap:18px;align-items:center;background:rgba(5,9,25,.78);border:2px solid rgba(255,184,0,.45);border-radius:24px;padding:{'26px 26px' if story else '18px 20px'}">{bens}</div>
   {rodape}
 </div>'''
+
+# Temas de cor, todos dentro da identidade da logo (amarelo/laranja do raio + branco + fundo escuro)
+TEMAS = {
+    'azul':    dict(bg1='#0C1A4A', bg2='#040817', tint='rgba(4,8,23,',  ac='#FFB800', ac2='#FFCC33', rgb='255,184,0'),
+    'preto':   dict(bg1='#0B0C10', bg2='#020203', tint='rgba(2,2,3,',   ac='#FFB800', ac2='#FFCC33', rgb='255,184,0'),
+    'grafite': dict(bg1='#2A2E35', bg2='#111317', tint='rgba(17,19,23,', ac='#FFC21A', ac2='#FFD75E', rgb='255,194,26'),
+    'laranja': dict(bg1='#2B1405', bg2='#0A0502', tint='rgba(10,5,2,',  ac='#FF8A00', ac2='#FFB347', rgb='255,138,0'),
+    'dourado': dict(bg1='#1F1606', bg2='#070502', tint='rgba(7,5,2,',   ac='#F5C04A', ac2='#FFE08A', rgb='245,192,74'),
+    'noite':   dict(bg1='#14123A', bg2='#05040F', tint='rgba(5,4,15,',  ac='#FFB800', ac2='#FF8A00', rgb='255,184,0'),
+}
+
+def montar(cfg, W, H):
+    t = TEMAS.get(cfg.get('cor', 'azul'), TEMAS['azul'])
+    h = _montar(cfg, W, H)
+    return (h.replace('#FFCC33', t['ac2']).replace('#FFB800', t['ac'])
+             .replace('rgba(255,184,0,', 'rgba(' + t['rgb'] + ','))
 
 def main():
     cfg = json.load(open(sys.argv[1]))
