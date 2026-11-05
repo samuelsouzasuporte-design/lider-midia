@@ -95,7 +95,8 @@ Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda ca
 5. Commit e push (`git add -A && git commit -m "post <data>" && git push origin main`). Confirme com `git ls-remote origin` que o commit chegou.
 6. Agende no Metricool (createScheduledPost, blogId 7896220, autoPublish true, fuso America/Fortaleza). Antes, rode getScheduledPosts do dia e não duplique o que já existir (ignore posts com draft=true, que são rascunhos e não saem):
    - Stories (instagramData.type "STORY", sem text): **07:00** loja aberta, **07:01** e **07:02** produtos, **10:00**, **12:30**, **14:00**, **15:45**.
-   - Feed (instagramData.type "POST", text = legenda): **10:00**.
+   - Feed (instagramData.type "POST", text = legenda, firstCommentText = hashtags): **10:00**. Na QUARTA é carrossel (media = lista de 4–6 URLs).
+   - Stories animados: media = URL raw do `story.mp4`.
    - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg` (ou `artes-prontas/<arquivo>`)
    - Se algum horário já passou, agende 5 minutos à frente do horário atual.
 7. Acrescente uma linha em `historico.md` com: data, tema do feed, par de Stories das 7h (A ou B), temas dos Stories de 10h a 15h45, artes prontas usadas, fotos usadas. Commit e push.
@@ -109,6 +110,16 @@ Na terça e na sexta, além da rotina normal:
 2. Rode `python3 ferramentas/reels/fazer_reel.py posts/<data>/reel.json reels/<data>.mp4` (~10 min). Confira 3 quadros (Read) antes de publicar.
 3. Commit + push, e agende no Metricool às 18:00: instagramData.type "REEL", showReelOnFeed true, media = URL raw do mp4, text = legenda com gancho, endereço, WhatsApp e hashtags.
 4. Se já existir `reels/<data>-*.mp4` pronto para o dia (feito à mão), use esse em vez de gerar.
+
+## ALAVANCAR O PERFIL (pedido do dono, 05/11/2026) — impacto em toda publicação
+1. **Stories animados**: todo dia, 2 dos 7 Stories saem em VÍDEO (7s, zoom, flash, brilho e trilha): rode `python3 ferramentas/story_animado.py posts/<data>/<nome>/story.jpg posts/<data>/<nome>/story.mp4 <seed>` e agende o mp4 como STORY. Use nos horários 07:00 (Loja aberta) e 15:45 (chamada). Varie o seed.
+2. **Story em vídeo real**: 2x por semana, um Story com trecho de 10–15s dos vídeos da loja (ex.: tour IMG_8341), cortado com ffmpeg em 1080x1920.
+3. **Carrossel semanal (toda QUARTA, no lugar do post único do feed às 10:00)**: 4 a 6 imagens 1080x1350 numa mesma publicação (media = lista de URLs). Temas: "3 sinais de bateria fraca" (capa + 1 dica por slide + slide final com WhatsApp), "Marcas que você encontra na Líder" (1 marca por slide com foto real), "Pneu de carro x pneu de moto: quando trocar". O 1º slide é a capa com gancho forte ("ARRASTA PRO LADO ➜").
+4. **Legendas que geram alcance**: 1ª linha = gancho forte (pergunta ou frase curiosa, até 60 caracteres). Sempre termine com UMA chamada de ação variada: "Salva esse post pra não esquecer 📌", "Marca aquele amigo que tá precisando 👇", "Comenta EU que a gente te chama no WhatsApp", "Manda pra quem vai viajar". Coloque as hashtags no **primeiro comentário** (`firstCommentText`), não na legenda. Hashtags locais sempre: #Crateús #CrateúsCE #SertãoDosInhamuns #NovoOriente #Independência #Tamboril + 4–6 do tema.
+5. **Gancho visual nos 3 primeiros segundos/primeira olhada**: títulos curtos e grandes, perguntas diretas, números ("3 SINAIS", "5AH, 6AH E 7AH"), contraste forte (temas royal/roxo/laranja).
+6. **Reels**: título forte na abertura (gancho em texto nos 2 primeiros segundos) e legenda com chamada para comentar. Prefira o tour da loja (IMG_8341) e vídeos de pneus/baterias em movimento.
+7. **Datas e oportunidades**: aproveite datas (Black Friday, Natal, Ano Novo, férias/viagens de fim de ano, volta às aulas, Dia dos Pais/Mães, São João, chuva/inverno no sertão) com artes temáticas — sem inventar promoção, só "consulte no WhatsApp".
+8. **Relatório semanal** (segunda-feira): a tarefa "Relatório semanal Instagram Líder" lê as métricas no Metricool e grava em `relatorios/AAAA-MM-DD.md` o que mais deu alcance/engajamento. Antes de criar as artes do dia, leia o relatório mais recente e faça MAIS do tipo que performou melhor (tema, cor, horário, formato).
 
 ## Criatividade nas mensagens (pedido do dono da loja)
 Todo dia, crie textos NOVOS e criativos para cada arte. Nunca copie os exemplos deste arquivo ao pé da letra e não repita uma mesma frase na mesma semana (confira em `historico.md`, onde você registra os títulos usados).
