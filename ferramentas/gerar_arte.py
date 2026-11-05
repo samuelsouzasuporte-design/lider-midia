@@ -61,7 +61,7 @@ const { chromium } = require('playwright');
   const jobs = JSON.parse(process.argv[2]);
   const b = await chromium.launch();
   for (const [src, png, h] of jobs) {
-    const p = await b.newPage({ viewport: { width: 1080, height: h }, deviceScaleFactor: 1 });
+    const p = await b.newPage({ viewport: { width: 1080, height: h }, deviceScaleFactor: 2 });
     await p.goto('file://' + src);
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(400);
@@ -72,7 +72,7 @@ const { chromium } = require('playwright');
 """)
     subprocess.run(['node', js, json.dumps([j[:3] for j in jobs])], check=True)
     for _, png, _, jpg in jobs:
-        Image.open(png).convert('RGB').save(jpg, quality=93)
+        Image.open(png).convert('RGB').resize((1080, Image.open(png).height // 2), Image.LANCZOS).save(jpg, quality=95, subsampling=0)
         print(jpg)
 
 if __name__ == '__main__':

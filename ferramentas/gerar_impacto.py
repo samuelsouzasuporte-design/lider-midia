@@ -169,8 +169,8 @@ def main():
     # nitidez: foto em 1500px de largura + unsharp mask (evita foto "borrada" na arte)
     from PIL import ImageFilter, ImageEnhance
     ft = Image.open(os.path.join(RAIZ, cfg['foto'])).convert('RGB')
-    if ft.width > 1500: ft = ft.resize((1500, int(ft.height * 1500 / ft.width)), Image.LANCZOS)
-    ft = ft.filter(ImageFilter.UnsharpMask(radius=2.2, percent=110, threshold=2))
+    if ft.width > 2200: ft = ft.resize((2200, int(ft.height * 2200 / ft.width)), Image.LANCZOS)
+    ft = ft.filter(ImageFilter.UnsharpMask(radius=1.6, percent=90, threshold=2))
     ft = ImageEnhance.Contrast(ft).enhance(1.06)
     ft.save(os.path.join(tmp, 'foto.jpg'), quality=95)
     cfg = dict(cfg, foto=os.path.join(tmp, 'foto.jpg'))
@@ -182,14 +182,14 @@ def main():
     open(js, 'w').write("""
 const { chromium } = require('playwright');
 (async () => { const jobs = JSON.parse(process.argv[2]); const b = await chromium.launch();
-  for (const [src, png, h] of jobs) { const p = await b.newPage({ viewport: { width: 1080, height: h } });
+  for (const [src, png, h] of jobs) { const p = await b.newPage({ viewport: { width: 1080, height: h }, deviceScaleFactor: 2 });
     await p.goto('file://' + src); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(400);
     await p.screenshot({ path: png }); }
   await b.close(); })();
 """)
     subprocess.run(['node', js, json.dumps([j[:3] for j in jobs])], check=True)
     for _, png, _, jpg in jobs:
-        Image.open(png).convert('RGB').save(jpg, quality=93); print(jpg)
+        Image.open(png).convert('RGB').resize((1080, Image.open(png).height // 2), Image.LANCZOS).save(jpg, quality=95, subsampling=0); print(jpg)
 
 if __name__ == '__main__':
     main()

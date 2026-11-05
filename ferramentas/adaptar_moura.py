@@ -57,11 +57,11 @@ def main():
         jobs.append((p, f'{tmp}/{nome}.png', h))
     js = f'{tmp}/s.js'; open(js, 'w').write("""const { chromium } = require('playwright');
 (async () => { const j = JSON.parse(process.argv[2]); const b = await chromium.launch();
-for (const [s, o, h] of j) { const p = await b.newPage({ viewport: { width: 1080, height: h } }); await p.goto('file://' + s);
+for (const [s, o, h] of j) { const p = await b.newPage({ viewport: { width: 1080, height: h }, deviceScaleFactor: 2 }); await p.goto('file://' + s);
 await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(300); await p.screenshot({ path: o }); } await b.close(); })();""")
     subprocess.run(['node', js, json.dumps(jobs)], check=True)
     for nome in ('feed', 'story'):
-        Image.open(f'{tmp}/{nome}.png').convert('RGB').save(f'{out}/{nome}.jpg', quality=92)
+        Image.open(f'{tmp}/{nome}.png').convert('RGB').resize((1080, Image.open(f'{tmp}/{nome}.png').height // 2), Image.LANCZOS).save(f'{out}/{nome}.jpg', quality=95, subsampling=0)
     print(out)
 
 if __name__ == '__main__':
