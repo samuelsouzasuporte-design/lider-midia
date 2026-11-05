@@ -12,7 +12,7 @@ arte.json:
   "linha2": "BATERIA!",                    # título amarelo (até ~9 letras)
   "destaque": "PRONTA ENTREGA",            # tarja amarela (até ~18 letras)
   "beneficios": ["partida", "rapido", "instalacao"],   # 3 chaves (ver BENEFICIOS)
-  "cor": "azul"                            # azul | preto | grafite | laranja | dourado | noite (alterne sempre)
+  "cor": "azul"                            # azul | preto | grafite | laranja | dourado | noite | royal | roxo (alterne sempre)
 }
 """
 import json, os, sys, subprocess, tempfile, html
@@ -171,6 +171,8 @@ TEMAS = {
     'laranja': dict(bg1='#2B1405', bg2='#0A0502', tint='rgba(10,5,2,',  ac='#FF8A00', ac2='#FFB347', rgb='255,138,0'),
     'dourado': dict(bg1='#1F1606', bg2='#070502', tint='rgba(7,5,2,',   ac='#F5C04A', ac2='#FFE08A', rgb='245,192,74'),
     'noite':   dict(bg1='#14123A', bg2='#05040F', tint='rgba(5,4,15,',  ac='#FFB800', ac2='#FF8A00', rgb='255,184,0'),
+    'royal':   dict(bg1='#1E4FD8', bg2='#0A1F66', tint='rgba(10,31,102,', ac='#FFC21A', ac2='#FFD75E', rgb='255,194,26'),
+    'roxo':    dict(bg1='#6A3FD6', bg2='#24105E', tint='rgba(36,16,94,',  ac='#FFC21A', ac2='#FFB347', rgb='255,194,26'),
 }
 
 def montar(cfg, W, H):
