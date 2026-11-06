@@ -86,7 +86,7 @@ Por dia (pedido do dono da loja):
 Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda caprichada (gancho na 1ª linha, 2 a 3 linhas de conteúdo, endereço, WhatsApp, "Vem pra Líder! 💛", 5 a 8 hashtags com #LiderBateriasEPneus #Crateús). Não use no feed a mesma arte de um Story do mesmo dia.
 
 ### Passo a passo
-1. Leia `historico.md` (tema do feed, par A/B e fotos usadas recentemente). Olhe cada foto (Read) antes de usar e evite repetir a mesma foto em dias seguidos.
+1. Leia a seção **"Recomendações do relatório (em vigor)"** abaixo e siga cada item. Leia `historico.md` (tema do feed, par A/B e fotos usadas recentemente). Olhe cada foto (Read) antes de usar e evite repetir a mesma foto em dias seguidos.
 2. Para cada arte, crie um JSON em `posts/<data>/` (`s0700a.json` loja aberta, `s0700b.json`, `s0700c.json`, `s1000.json`, `s1230.json`, `s1400.json`, `s1545.json`, `feed.json`) e rode:
    `python3 ferramentas/gerar_impacto.py posts/<data>/<nome>.json posts/<data>/<nome>` (ou `gerar_arte.py` para o modelo clássico, ~1 a cada 4 artes)
    (gera `feed.jpg` e `story.jpg` na pasta `<nome>`; Stories usam `story.jpg`, o post do feed usa `feed/feed.jpg`).
@@ -120,6 +120,14 @@ Na terça e na sexta, além da rotina normal:
 6. **Reels**: título forte na abertura (gancho em texto nos 2 primeiros segundos) e legenda com chamada para comentar. Prefira o tour da loja (IMG_8341) e vídeos de pneus/baterias em movimento.
 7. **Datas e oportunidades**: aproveite datas (Black Friday, Natal, Ano Novo, férias/viagens de fim de ano, volta às aulas, Dia dos Pais/Mães, São João, chuva/inverno no sertão) com artes temáticas — sem inventar promoção, só "consulte no WhatsApp".
 8. **Relatório semanal** (segunda-feira): a tarefa "Relatório semanal Instagram Líder" lê as métricas no Metricool e grava em `relatorios/AAAA-MM-DD.md` o que mais deu alcance/engajamento. Antes de criar as artes do dia, leia o relatório mais recente e faça MAIS do tipo que performou melhor (tema, cor, horário, formato).
+
+## Recomendações do relatório (em vigor) — OBRIGATÓRIO seguir
+Fonte: `relatorios/2026-11-05.md` (pedido do dono em 05/11/2026: "passe essas sugestões pra IA fazer"). Vale até o próximo relatório; o relatório semanal atualiza esta seção.
+1. **Reels é o formato que mais alcança** (137 de alcance x 58 e 28 dos posts de feed). Nunca pule o Reels de terça e sexta. Abra com o tour da loja (`videos/loja-IMG_8341`) ou pneus/baterias em movimento, com gancho de pergunta em texto nos 2 primeiros segundos.
+2. **Gancho de PROBLEMA, não de promoção genérica.** "Pneu careca ou bateria fraca?" e "Estoque completo" foram melhores que "Tem PROMOÇÃO". Na pergunta das artes e na 1ª linha das legendas, use o problema do cliente ("BATERIA FRACA?", "MOTO NÃO PEGA?", "PNEU CARECA?"). Evite "TEM PROMOÇÃO" no feed nesta semana (pode ficar só como Story das 15:45, no máximo 1x).
+3. **Gerar SALVOS e COMPARTILHAMENTOS** (zero salvos na semana). Dê prioridade às DICAS no feed quando o rodízio permitir, faça o carrossel de quarta ("3 sinais de bateria fraca" ou similar) e termine as legendas de dica/carrossel com "Salva esse post pra não esquecer 📌" ou "Manda pra quem precisa 👇".
+4. **Feed SEMPRE às 10:00** (Fortaleza). Não agende o post do feed em outro horário, para o próximo relatório comparar direito. Se 10:00 já passou, siga a regra dos 5 minutos.
+5. **Registre no `historico.md`** a cor, o formato (produto/dica/meme/carrossel/reels/story animado) e o horário de cada publicação, para o relatório conseguir comparar.
 
 ## Criatividade nas mensagens (pedido do dono da loja)
 Todo dia, crie textos NOVOS e criativos para cada arte. Nunca copie os exemplos deste arquivo ao pé da letra e não repita uma mesma frase na mesma semana (confira em `historico.md`, onde você registra os títulos usados).
