@@ -100,7 +100,7 @@ Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda ca
 6. Agende no Metricool (createScheduledPost, blogId 7896220, autoPublish true, fuso America/Fortaleza). Antes, rode getScheduledPosts do dia e não duplique o que já existir (ignore posts com draft=true, que são rascunhos e não saem):
    - Stories (instagramData.type "STORY", sem text): **07:00** loja aberta, **07:01** e **07:02** produtos, **10:00**, **12:30**, **14:00**, **15:45**.
    - Feed (instagramData.type "POST", text = legenda, firstCommentText = hashtags): **10:00**. Na QUARTA é carrossel (media = lista de 4–6 URLs).
-   - Stories animados: media = URL raw do `story.mp4`.
+   - Stories animados (e qualquer Story/Reels em VÍDEO): media = URL raw do `story.mp4`, e agende **4 minutos ANTES** do horário (ex.: 06:56 para aparecer às 07:00; 15:41 para 15:45). O Instagram leva ~3–4 min para processar vídeo; o dono quer que apareça no horário certo. Imagens continuam no horário exato.
    - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg` (ou `artes-prontas/<arquivo>`)
    - Se algum horário já passou, agende 5 minutos à frente do horário atual.
 7. Acrescente uma linha em `historico.md` com: data, tema do feed, par de Stories das 7h (A ou B), temas dos Stories de 10h a 15h45, artes prontas usadas, fotos usadas. Commit e push.
