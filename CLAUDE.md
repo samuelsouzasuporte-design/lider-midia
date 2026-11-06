@@ -68,7 +68,7 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 ## Rotina diária (a tarefa roda às 5h37; tudo é agendado para o MESMO dia)
 
 Por dia (pedido do dono da loja):
-- **Stories: 07:00 (3 Stories), 10:00, 12:30, 14:00 e 15:45 (1 Story em cada)** = 7 Stories por dia.
+- **Stories: 07:00 (3 Stories), 08:50, 10:00, 12:30, 14:00 e 15:45 (1 Story em cada)** = 8 Stories por dia (08:50 pedido do dono em 06/11/2026).
 - **Feed: 1 post por dia às 10:00** (melhor horário segundo o Metricool para este perfil, todos os dias da semana).
 - **Reels: terça e sexta às 18:00** (seção abaixo).
 
@@ -80,7 +80,8 @@ Por dia (pedido do dono da loja):
    Alterne A/B: veja em `historico.md` qual par foi usado por último e use o outro.
    Use as fotos de `fotos/` da categoria certa (lista acima). `fotos/de-video/` só como reserva. Não afirme modelos específicos.
 
-### Stories das 10:00, 12:30, 14:00 e 15:45 (1 em cada horário)
+### Stories das 08:50, 10:00, 12:30, 14:00 e 15:45 (1 em cada horário)
+- **08:50**: SERVIÇO ou CONFIANÇA (teste da bateria, carga, instalação, "a maior variedade" com o tipo `marcas`, ou Story em vídeo real da loja). Pegue o público chegando no trabalho; gancho de problema ("CARRO FALHOU CEDO?").
 - **10:00**: o produto do outro par (se as 7h foram par A, use pneu de moto; se B, bateria de carro).
 - **12:30**: alterne dia sim, dia não entre **MEME** e **DICA** (`gerar_conteudo.py`). As dicas revezam as 4 categorias (bateria de carro → pneu de carro → bateria de moto → pneu de moto). Uma vez por semana pode ser uma arte pronta de `artes-prontas/`.
 - **14:00**: o 4º produto que ainda não apareceu no dia (bateria de carro, pneu de carro, pneu de moto ou bateria de moto), ou linha pesada (caminhão) 1x por semana.
@@ -91,14 +92,14 @@ Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda ca
 
 ### Passo a passo
 1. Leia a seção **"Recomendações do relatório (em vigor)"** abaixo e siga cada item. Leia `historico.md` (tema do feed, par A/B e fotos usadas recentemente). Olhe cada foto (Read) antes de usar e evite repetir a mesma foto em dias seguidos.
-2. Para cada arte, crie um JSON em `posts/<data>/` (`s0700a.json` loja aberta, `s0700b.json`, `s0700c.json`, `s1000.json`, `s1230.json`, `s1400.json`, `s1545.json`, `feed.json`) e rode:
+2. Para cada arte, crie um JSON em `posts/<data>/` (`s0700a.json` loja aberta, `s0700b.json`, `s0700c.json`, `s0850.json`, `s1000.json`, `s1230.json`, `s1400.json`, `s1545.json`, `feed.json`) e rode:
    `python3 ferramentas/gerar_impacto.py posts/<data>/<nome>.json posts/<data>/<nome>` (ou `gerar_arte.py` para o modelo clássico, ~1 a cada 4 artes)
    (gera `feed.jpg` e `story.jpg` na pasta `<nome>`; Stories usam `story.jpg`, o post do feed usa `feed/feed.jpg`).
 3. Olhe as imagens geradas (Read). Se o texto estourar ou ficar ilegível, ajuste e gere de novo.
 4. Escreva `posts/<data>/legenda.txt` para o post do feed.
 5. Commit e push (`git add -A && git commit -m "post <data>" && git push origin main`). Confirme com `git ls-remote origin` que o commit chegou.
 6. Agende no Metricool (createScheduledPost, blogId 7896220, autoPublish true, fuso America/Fortaleza). Antes, rode getScheduledPosts do dia e não duplique o que já existir (ignore posts com draft=true, que são rascunhos e não saem):
-   - Stories (instagramData.type "STORY", sem text): **07:00** loja aberta, **07:01** e **07:02** produtos, **10:00**, **12:30**, **14:00**, **15:45**.
+   - Stories (instagramData.type "STORY", sem text): **07:00** loja aberta, **07:01** e **07:02** produtos, **08:50**, **10:00**, **12:30**, **14:00**, **15:45**.
    - Feed (instagramData.type "POST", text = legenda, firstCommentText = hashtags): **10:00**. Na QUARTA é carrossel (media = lista de 4–6 URLs).
    - Stories animados (e qualquer Story/Reels em VÍDEO): media = URL raw do `story.mp4`, e agende **4 minutos ANTES** do horário (ex.: 06:56 para aparecer às 07:00; 15:41 para 15:45). O Instagram leva ~3–4 min para processar vídeo; o dono quer que apareça no horário certo. Imagens continuam no horário exato.
    - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg` (ou `artes-prontas/<arquivo>`)
