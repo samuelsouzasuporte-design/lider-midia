@@ -95,10 +95,72 @@ def meme(c, W, H):
         <div style="font-family:BC;font-weight:800;font-style:italic;font-size:{44 if story else 38}px;color:{Y};{'width:100%;text-align:center' if story else ''}">{e(c.get('chamada','Na Líder você não fica na mão! ⚡'))}</div></div>
       {rodape(story)}</div>'''
 
+
+CORES = {  # pares (cor A, cor B) para o modelo split; o amarelo da marca é sempre o destaque
+    'vermelho_azul': ('#C8102E', '#0B2A8A'), 'azul_laranja': ('#0B2A8A', '#E87A00'), 'roxo_amarelo': ('#4B1FA8', '#C98A00'),
+    'preto_amarelo': ('#0B0C10', '#C98A00'), 'royal_vermelho': ('#1E4FD8', '#B3121F'),
+}
+
+def marcas(c, W, H):
+    """Vitrine 'A MAIOR VARIEDADE' com as marcas em selos de texto (sem logos de terceiros)."""
+    story = H > 1500
+    acc = c.get('acento', Y)
+    def chips(lst):
+        return ''.join(
+            f'<div style="background:#fff;border-radius:14px;padding:{16 if story else 11}px 8px;text-align:center;font-family:BC;font-weight:900;font-style:italic;font-size:{40 if story else 32}px;color:#0B0C10;box-shadow:0 6px 18px rgba(0,0,0,.4)">{e(m)}</div>'
+            for m in lst)
+    pneu_ic = svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>', 40, acc)
+    bat_ic = svg('<rect x="3" y="7" width="18" height="12" rx="1"/><path d="M7 7V5h3v2M14 7V5h3v2M7 13h3M15.5 11.5v3M14 13h3"/>', 40, acc)
+    secs = ''
+    for g in c['grupos']:
+        ic = pneu_ic if 'PNEU' in g['titulo'].upper() else bat_ic
+        secs += (f'<div><div style="display:flex;align-items:center;gap:12px;justify-content:center;border:2px solid {acc};border-radius:16px;padding:8px 0;margin-bottom:14px;'
+                 f'font-family:BC;font-weight:900;font-style:italic;font-size:{48 if story else 38}px;color:#fff">{ic}{e(g["titulo"])}</div>'
+                 f'<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">{chips(g["marcas"])}</div></div>')
+    foto = c.get('foto'); fh = 620 if story else 380
+    img = ''
+    if foto:
+        img = (f'<img src="file://{os.path.join(RAIZ, foto)}" style="position:absolute;left:0;bottom:0;width:{W}px;height:{fh}px;object-fit:cover;object-position:{c.get("posicao_foto", "center 60%")};opacity:.6">'
+               f'<div style="position:absolute;left:0;bottom:0;width:{W}px;height:{fh}px;background:linear-gradient(180deg,#05060A 0%,rgba(5,6,10,.15) 45%,rgba(5,6,10,.55) 100%)"></div>')
+    raios = ''.join(f'<div style="position:absolute;left:{x}px;top:{y}px;width:600px;height:{h}px;background:{acc};opacity:{o};transform:rotate(-35deg)"></div>'
+                    for x, y, h, o in ((-260, 120, 10, .5), (-300, 190, 4, .4), (760, H - 560, 10, .45), (800, H - 500, 4, .35)))
+    sub = e(c.get('subtitulo', 'EM BATERIAS E PNEUS'))
+    return (f'<div style="width:{W}px;height:{H}px;position:relative;overflow:hidden;background:radial-gradient(110% 70% at 50% 20%,#1A1C24 0%,#05060A 70%)">'
+            f'{raios}{img}'
+            f'<img src="{LOGO}" style="position:absolute;left:50%;transform:translateX(-50%);top:{150 if story else 34}px;width:{440 if story else 300}px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.7))">'
+            f'<div style="position:absolute;left:0;right:0;top:{330 if story else 165}px;text-align:center;font-family:BC;font-weight:900;font-style:italic;line-height:.88">'
+            f'<div style="font-size:{110 if story else 86}px;color:#fff">{e(c.get("titulo1", "A MAIOR"))}</div>'
+            f'<div style="font-size:{130 if story else 100}px;color:{acc};text-shadow:0 0 30px {acc}55">{e(c.get("titulo2", "VARIEDADE"))}</div>'
+            f'<div style="font-weight:800;font-size:{46 if story else 36}px;color:#fff;margin-top:10px;letter-spacing:1px">&#8212; {sub} &#8212;</div></div>'
+            f'<div style="position:absolute;left:56px;right:56px;top:{690 if story else 430}px;display:grid;grid-template-columns:repeat({len(c["grupos"])},minmax(0,1fr));gap:28px">{secs}</div>'
+            f'{rodape(story)}</div>')
+
+def split(c, W, H):
+    """Diagonal de duas cores com foto no topo (estilo 'SEM BATERIA? TEMOS A SOLUÇÃO!')."""
+    story = H > 1500
+    a, b = CORES.get(c.get('cores', 'vermelho_azul'), CORES['vermelho_azul'])
+    foto = os.path.join(RAIZ, c['foto'])
+    fh = int(H * (0.50 if story else 0.46))
+    l1, l2, l3 = (list(c.get('linhas', ['SEM', 'BATERIA?', 'TEMOS A SOLUÇÃO!'])) + ['', '', ''])[:3]
+    clip = 'clip-path:polygon(0 0,100% 0,100% 72%,0 100%)'
+    dest = c.get('destaque', '')
+    dest_html = (f'<div style="display:inline-flex;margin-top:24px;background:#fff;color:#0B0C10;border-radius:14px;padding:10px 26px;font-size:{46 if story else 36}px;transform:skewX(-8deg)">{e(dest)}</div>') if dest else ''
+    return (f'<div style="width:{W}px;height:{H}px;position:relative;overflow:hidden;background:{b}">'
+            f'<div style="position:absolute;inset:0;background:linear-gradient(135deg,{a} 0%,{a} 49.8%,{b} 50.2%,{b} 100%)"></div>'
+            f'<img src="file://{foto}" style="position:absolute;left:0;top:0;width:{W}px;height:{fh}px;object-fit:cover;object-position:{c.get("posicao_foto", "center 40%")};{clip}">'
+            f'<div style="position:absolute;left:0;top:0;width:{W}px;height:{fh}px;{clip};background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 40%)"></div>'
+            f'<img src="{LOGO}" style="position:absolute;right:44px;top:{110 if story else 30}px;width:{300 if story else 230}px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.9))">'
+            f'<div style="position:absolute;left:60px;right:60px;top:{fh + (40 if story else 10)}px;font-family:BC;font-weight:900;font-style:italic;text-transform:uppercase;line-height:.9;color:#fff;text-shadow:0 6px 22px rgba(0,0,0,.6)">'
+            f'<div style="font-size:{150 if story else 112}px">{e(l1)}</div>'
+            f'<div style="font-size:{150 if story else 112}px;color:{Y}">{e(l2)}</div>'
+            f'<div style="font-size:{80 if story else 60}px;margin-top:12px">{e(l3)}</div>{dest_html}</div>'
+            f'{rodape(story)}</div>')
+
+
 def main():
     c = json.load(open(sys.argv[1])); out = os.path.abspath(sys.argv[2]); os.makedirs(out, exist_ok=True)
     tmp = tempfile.mkdtemp(); jobs = []
-    fn = dica if c.get('tipo') == 'dica' else meme
+    fn = {'dica': dica, 'meme': meme, 'marcas': marcas, 'split': split}.get(c.get('tipo'), meme)
     for nome, H in (('feed', 1350), ('story', 1920)):
         p = f'{tmp}/{nome}.html'
         open(p, 'w').write(f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}body{{margin:0}}</style></head><body>{fn(c, 1080, H)}</body></html>")
