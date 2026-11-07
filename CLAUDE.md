@@ -69,11 +69,11 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 
 Por dia (pedido do dono da loja):
 - **Stories: 07:00 (3 Stories), 08:50, 10:00, 12:30, 14:00 e 15:45 (1 Story em cada)** = 8 Stories por dia (08:50 pedido do dono em 06/11/2026).
-- **Feed: 1 post por dia às 10:00** (melhor horário segundo o Metricool para este perfil, todos os dias da semana).
+- **Feed: 1 post por dia às 10:00, de segunda a sábado (domingo sem feed)** (melhor horário segundo o Metricool para este perfil, todos os dias da semana).
 - **Reels: terça e sexta às 18:00** (seção abaixo).
 
 ### Stories das 07:00
-1. **"Loja aberta"**, todo dia: pergunta "BOM DIA, CRATEÚS!", linha1 "LOJA", linha2 "ABERTA!", destaque variando ("VEM PRA LÍDER", "PASSA AQUI HOJE", "CHAMA NO ZAP"). Foto: alterne entre `loja-fachada-04.jpg` (preferida), `loja-interior-07-corredor.jpg`, `loja-interior-05-expositores.jpg`, `loja-letreiro-parede.jpg`, `loja-fachada-01.jpg`. Domingo: não diga "loja aberta" (horário de domingo não confirmado); use "BOM DOMINGO!" e destaque "SEGUNDA TE ESPERAMOS".
+1. **"Loja aberta"**, todo dia: pergunta "BOM DIA, CRATEÚS!", linha1 "LOJA", linha2 "ABERTA!", destaque variando ("VEM PRA LÍDER", "PASSA AQUI HOJE", "CHAMA NO ZAP"). Foto: alterne entre `loja-fachada-04.jpg` (preferida), `loja-interior-07-corredor.jpg`, `loja-interior-05-expositores.jpg`, `loja-letreiro-parede.jpg`, `loja-fachada-01.jpg`. SÁBADO: destaque "HOJE ATÉ 12H" (a loja fecha ao meio-dia). DOMINGO não tem Story de loja aberta (veja "Fim de semana" abaixo).
 2. **Duas artes de produto**, revezando em dois pares:
    - **Dia A:** BATERIA (de carro) + PNEU DE CARRO
    - **Dia B:** PNEU DE MOTO + BATERIA DE MOTO
@@ -105,6 +105,23 @@ Siga o "Rodízio de temas" abaixo. Use o `feed.jpg` (1080x1350) e uma legenda ca
    - media = `https://raw.githubusercontent.com/samuelsouzasuporte-design/lider-midia/main/posts/<data>/<nome>/<story|feed>.jpg` (ou `artes-prontas/<arquivo>`)
    - Se algum horário já passou, agende 5 minutos à frente do horário atual.
 7. Acrescente uma linha em `historico.md` com: data, tema do feed, par de Stories das 7h (A ou B), temas dos Stories de 10h a 15h45, artes prontas usadas, fotos usadas. Commit e push.
+
+## Fim de semana (pedido do dono, 07/11/2026) — VALE SOBRE A ROTINA ACIMA
+Horário confirmado: segunda a sexta normal; **sábado a loja abre só até 12:00**; **sábado à tarde e domingo a loja fica FECHADA**, com **PLANTÃO ON-LINE pelo WhatsApp (88) 9.8865-5130** (atendimento só pelo WhatsApp, sem loja aberta).
+Nunca diga "loja aberta", "passa aqui" ou "vem pra loja" em publicação de sábado depois das 12:00 nem de domingo. Não prometa entrega, instalação ou troca no fim de semana (não confirmado); fale só em "plantão on-line", "chama no WhatsApp", "a gente responde no zap".
+
+**SÁBADO**
+- Manhã igual à rotina: 07:00 (3 Stories; Loja aberta com destaque "HOJE ATÉ 12H", animado às 06:56), 08:50, 10:00 (Story + feed).
+- **12:00**: Story de despedida + plantão (pedido do dono): ex. "ÓTIMO FIM DE SEMANA! / ESTAMOS DE PLANTÃO! / PRECISOU? CHAMA NO ZAP" — Story ANIMADO, agendado às 11:56. Varie o texto toda semana ("BOM FIM DE SEMANA, CRATEÚS!", "PLANTÃO NO ZAP", "PRECISOU DE BATERIA OU PNEU?").
+- **12:30**: DICA ou MEME (como na rotina).
+- **14:00**: NÃO publicar no sábado.
+- **15:45**: Story de PLANTÃO ON-LINE (ex. "FICOU NA MÃO? PLANTÃO ON-LINE / RESPONDEMOS NO ZAP"), animado às 15:41. Ícones: orcamento, rapido, regiao.
+- Sem Reels no sábado.
+
+**DOMINGO**
+- **Só 1 Story, às 10:00**: DICA (`gerar_conteudo.py`, tipo dica, com `"rodape":"Plantão on-line no WhatsApp!"`) ou MEME, alternando a cada domingo. Pode ser animado (agendar 09:56).
+- Sem Stories das 07:00, 08:50, 12:30, 14:00 e 15:45, sem post no feed e sem Reels.
+- O post do feed do rodízio que seria de domingo passa para segunda (o rodízio não anda no domingo).
 
 ## Reels (2 por semana: TERÇA e SEXTA às 18:00)
 Na terça e na sexta, além da rotina normal:
