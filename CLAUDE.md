@@ -72,7 +72,7 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 Por dia (pedido do dono da loja):
 - **Stories: 07:00 (3 Stories), 08:50, 10:00, 12:30, 14:00 e 15:45 (1 Story em cada)** = 8 Stories por dia (08:50 pedido do dono em 06/11/2026).
 - **Feed: 1 post por dia às 10:00, de segunda a sábado (domingo sem feed)** (melhor horário segundo o Metricool para este perfil, todos os dias da semana).
-- **Reels: terça e sexta às 18:00** (seção abaixo).
+- **Reels: SEGUNDA, TERÇA, QUINTA e SEXTA às 18:00** (4 por semana, pedido do dono em 07/11/2026 para ganhar seguidores; vídeo agendado às 17:56; veja "Estratégia de Reels").
 
 ### Stories das 07:00
 1. **"Loja aberta"**, todo dia: pergunta "BOM DIA, CRATEÚS!", linha1 "LOJA", linha2 "ABERTA!", destaque variando ("VEM PRA LÍDER", "PASSA AQUI HOJE", "CHAMA NO ZAP"). Foto: alterne entre `loja-fachada-04.jpg` (preferida), `loja-interior-07-corredor.jpg`, `loja-interior-05-expositores.jpg`, `loja-letreiro-parede.jpg`, `loja-fachada-01.jpg`. SÁBADO: destaque "HOJE ATÉ 12H" (a loja fecha ao meio-dia). DOMINGO não tem Story de loja aberta (veja "Fim de semana" abaixo).
@@ -125,8 +125,18 @@ Nunca diga "loja aberta", "passa aqui" ou "vem pra loja" em publicação de sáb
 - Sem Stories das 07:00, 08:50, 12:30, 14:00 e 15:45, sem post no feed e sem Reels.
 - O post do feed do rodízio que seria de domingo passa para segunda (o rodízio não anda no domingo).
 
-## Reels (2 por semana: TERÇA e SEXTA às 18:00)
-Na terça e na sexta, além da rotina normal:
+## Estratégia de Reels para GANHAR SEGUIDORES (pedido do dono, 07/11/2026) — VALE SOBRE A SEÇÃO ABAIXO
+Reels é o único formato que o Instagram mostra para quem NÃO segue. Meta: 4 Reels/semana (seg, ter, qui, sex 18:00; agendar 17:56).
+- **Rodízio de formatos** (um por dia, nesta ordem): SEG = promoção/oferta (Black Novembro até 30/11); TER = tour/estoque ("estoque completo", pneus e baterias em movimento); QUI = DICA em vídeo (ex.: "3 sinais de bateria fraca", "quando trocar o pneu da moto") — conteúdo que gera salvos/compartilhamentos; agende a quinta como `instagramData.type "TRIAL_REEL"` (Reels de teste, mostrado só para quem não segue) para testar alcance novo; SEX = serviço/confiança (instalação real IMG_8388, "a gente instala", atendimento) ou fim de semana/viagem.
+- **Gancho nos 2 primeiros segundos**: pergunta de PROBLEMA ou número ("BATERIA OU PNEU EM ATÉ 10X?", "3 SINAIS DE BATERIA FRACA", "SEU PNEU TÁ ASSIM?"). Nunca abrir com logo.
+- **Pedir para seguir**: uma das "palavras" do final deve ser "SEGUE A GENTE" e a legenda termina com "Segue a @liderbateriasepneus pra mais dicas 👉" + outra CTA (salva/marca um amigo).
+- **Legenda**: 1ª linha = gancho; 2–3 linhas; endereço; WhatsApp; hashtags no primeiro comentário (locais + tema).
+- **Capa**: use `videoCoverMilliseconds` num quadro bonito (ex.: 1500) para o grid ficar profissional.
+- Nunca repetir o mesmo vídeo de Reels já postado; varie clipes e `musica_seed` (veja histórico). Clipes novos de 07/11: IMG_8388, 8392, 8394, 8395, 8396.
+- Quando o dono mandar vídeos falando para a câmera (rosto da loja), PRIORIZE: Reels com pessoa falando rende mais seguidores do que só imagens.
+
+## Reels (4 por semana: SEGUNDA, TERÇA, QUINTA e SEXTA às 18:00)
+Na segunda, terça, quinta e sexta, além da rotina normal:
 1. Monte `posts/<data>/reel.json` para `ferramentas/reels/fazer_reel.py` (veja o cabeçalho do script: 20 segmentos, textos do gancho/temas/pausa/palavras, `musica_seed` diferente do último Reels registrado no histórico).
    Clipes disponíveis em `videos/` (1080x1920, 30fps): loja-8272/8273/8274/8275/8297 (loja, pneus e baterias), loja-IMG_6295 (pneus Dunlop, expositor Moura), loja-IMG_6195 (baterias Zetta/Pioneiro/Onbat, corredor), loja-IMG_7023_1 (pilhas de pneus de carro), loja-IMG_4532, loja-IMG_8326 (17s, paredes de pneus de carro, ótimo para Reels só de pneus), loja-IMG_8327 (21s, pneus de carro + bandeira Goodyear), loja-IMG_8328 (20s, pilhas de pneus de MOTO e paletes de baterias Zetta), loja-IMG_8341 (27s, TOUR DA LOJA INTEIRA: pneus, prateleiras de baterias de moto, expositores Moura 10x — o melhor para abertura de Reels e para Story de vídeo "vem conhecer a loja"), loja-IMG_8329 (1s, pneus de moto; só para corte rápido). loja-IMG_3048 (9s, prateleira de baterias de MOTO: Naja, Júpiter, Moura, Heliar — ótimo para Story de vídeo de bateria de moto). NOVOS (07/11/2026): loja-IMG_8388 (7,5s, funcionário da Líder INSTALANDO bateria num carro na rua — ótimo para Reels/Story "A GENTE INSTALA"; bateria), loja-IMG_8392 (16s, paredões de pneus de carro, câmera andando, piso claro), loja-IMG_8395 (3,7s, mesma cena da 8392, corte rápido — não usar as duas em sequência), loja-IMG_8394 (17,6s, pilhas de pneus de MOTO de perto; o final (depois de ~13s) fica tremido/girando — corte antes), loja-IMG_8396 (6s, prateleira de baterias de MOTO: Júpiter, Pioneiro, Moura, Bosch). Repetidos que o dono reenviou e JÁ estão aqui: 8326, 8327, 8328, 8329, 8341.
    Esses vídeos também podem ir como Story de vídeo (instagramData.type "STORY", media = mp4 de até 15s cortado com ffmpeg) no lugar de uma arte, no máximo 2x por semana. Veja a duração com ffprobe e extraia quadros para conferir o conteúdo antes de escolher os trechos.

@@ -1,0 +1,30 @@
+{
+  "musica_seed": 61,
+  "gancho": ["BATERIA OU PNEU", "EM ATÉ 10X?"],
+  "tema1": ["PNEUS", "carro e moto em 10x"],
+  "tema2": ["BATERIAS", "todas as marcas"],
+  "pausa": ["10X", "SEM JUROS", "no cartão, preço à vista"],
+  "palavras": ["BLACK NOVEMBRO", "SÓ ATÉ 30/11", "SEGUE A GENTE", "VEM PRA LÍDER!"],
+  "segmentos": [
+    ["loja-IMG_8341.mp4", 0.5, 1.0],
+    ["loja-IMG_8392.mp4", 1.0, 1.3],
+    ["loja-IMG_8392.mp4", 9.0, 1.3],
+    ["loja-IMG_8327.mp4", 3.0, 1.3],
+    ["loja-IMG_8394.mp4", 2.0, 1.3],
+    ["loja-IMG_6195.mp4", 1.0, 1.3],
+    ["loja-IMG_8396.mp4", 0.5, 1.3],
+    ["loja-IMG_3048.mp4", 2.0, 1.3],
+    ["loja-IMG_8328.mp4", 12.0, 1.3],
+    ["loja-IMG_8388.mp4", 0.5, 1.0],
+    ["loja-IMG_8388.mp4", 4.0, 1.0],
+    ["loja-IMG_8326.mp4", 3.0, 1.4],
+    ["loja-IMG_8395.mp4", 0.5, 1.4],
+    ["loja-IMG_8341.mp4", 8.0, 1.4],
+    ["loja-IMG_8394.mp4", 7.0, 1.4],
+    ["loja-IMG_6295.mp4", 5.0, 1.4],
+    ["loja-8297.mp4", 4.0, 1.4],
+    ["loja-8274.mp4", 6.0, 1.4],
+    ["loja-IMG_7023_1.mp4", 5.0, 1.4],
+    ["loja-IMG_8341.mp4", 20.0, 0.8]
+  ]
+}
