@@ -96,6 +96,56 @@ def meme(c, W, H):
       {rodape(story)}</div>'''
 
 
+CAL = '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'
+CARD = '<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/>'
+
+def black(c, W, H):
+    """BLACK NOVEMBRO: condição especial com data (só com confirmação do dono)."""
+    story = H > 1500
+    R = '#E3122B'
+    foto = os.path.join(RAIZ, c['foto'])
+    t1, t2 = c.get('titulo1', 'BLACK'), c.get('titulo2', 'NOVEMBRO')
+    prod = c.get('produtos', 'BATERIAS E PNEUS')
+    num = c.get('numero', '10X'); sub = c.get('sub', 'SEM JUROS NO CARTÃO')
+    tarja = c.get('tarja', 'NO PREÇO DE À VISTA!'); val = c.get('validade', 'VÁLIDO ATÉ 30/11/2026')
+    glow = f'text-shadow:0 0 18px {R},0 0 40px {R}aa'
+    head_top = 100 if story else 40
+    titulo = (f'<div style="position:absolute;left:0;right:0;top:{head_top + (150 if story else 150)}px;text-align:center;font-family:BC;font-weight:900;font-style:italic;line-height:.82">'
+              f'<div style="display:inline-block;border:5px solid {R};border-radius:26px;padding:{"18px 46px 26px" if story else "10px 36px 18px"};box-shadow:0 0 30px {R}99,inset 0 0 30px {R}55">'
+              f'<div style="font-size:{150 if story else 130}px;background:linear-gradient(180deg,#fff 0%,#cfd3da 55%,#8a8f99 100%);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 4px 0 #000)">{e(t1)}</div>'
+              f'<div style="font-size:{122 if story else 106}px;color:{R};{glow}">{e(t2)}</div></div></div>')
+    if story:
+        ft, fhh = 640, 380
+        foto_html = (f'<div style="position:absolute;left:0;right:0;top:{ft}px;height:{fhh}px;overflow:hidden">'
+                     f'<img src="file://{foto}" style="width:100%;height:100%;object-fit:cover;object-position:{c.get("posicao_foto","center 55%")}">'
+                     f'<div style="position:absolute;inset:0;background:linear-gradient(180deg,#07070A 0%,rgba(7,7,10,0) 20%,rgba(7,7,10,0) 65%,#07070A 100%)"></div></div>')
+        oferta = (f'<div style="position:absolute;left:40px;right:40px;top:{ft + fhh - 40}px;text-align:center;font-family:BC;font-weight:900;font-style:italic;line-height:.85">'
+                  f'<div style="font-size:66px;color:#fff;text-shadow:0 4px 18px #000">{e(prod)} <span style="font-size:52px">EM ATÉ</span></div>'
+                  f'<div style="font-size:230px;color:{Y};text-shadow:0 8px 0 {R},0 0 40px {Y}66">{e(num)}</div>'
+                  f'<div style="display:inline-flex;align-items:center;gap:14px;font-size:58px;color:#fff;margin-top:4px">{svg(CARD, 54, Y)}{e(sub)}</div><br>'
+                  f'<div style="display:inline-block;margin-top:20px;background:{Y};color:#111;padding:8px 34px;border-radius:14px;font-size:62px;transform:skewX(-8deg)">{e(tarja)}</div><br>'
+                  f'<div style="display:inline-flex;align-items:center;gap:14px;margin-top:22px;border:4px solid {R};border-radius:16px;padding:8px 28px;font-size:46px;color:#fff;box-shadow:0 0 22px {R}88">{svg(CAL, 46, R)}{e(val)}</div></div>')
+        validade = ''
+    else:
+        ft = 520; fw = 520
+        foto_html = (f'<div style="position:absolute;left:0;top:{ft}px;width:{fw}px;bottom:120px;overflow:hidden">'
+                     f'<img src="file://{foto}" style="width:100%;height:100%;object-fit:cover;object-position:{c.get("posicao_foto","center 55%")}">'
+                     f'<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,7,10,0) 60%,#07070A 100%),linear-gradient(180deg,#07070A 0%,rgba(7,7,10,0) 18%)"></div></div>')
+        oferta = (f'<div style="position:absolute;left:{fw - 30}px;right:40px;top:{ft + 20}px;text-align:center;font-family:BC;font-weight:900;font-style:italic;line-height:.85">'
+                  f'<div style="font-size:58px;color:#fff">{e(prod)}</div><div style="font-size:46px;color:#fff;margin-top:6px">EM ATÉ</div>'
+                  f'<div style="font-size:210px;color:{Y};text-shadow:0 7px 0 {R},0 0 36px {Y}66">{e(num)}</div>'
+                  f'<div style="display:inline-flex;align-items:center;gap:10px;font-size:46px;color:#fff">{svg(CARD, 44, Y)}{e(sub)}</div><br>'
+                  f'<div style="display:inline-block;margin-top:18px;background:{Y};color:#111;padding:8px 22px;border-radius:12px;font-size:48px;transform:skewX(-8deg)">{e(tarja)}</div><br>'
+                  f'<div style="display:inline-flex;align-items:center;gap:12px;margin-top:26px;border:3px solid {R};border-radius:14px;padding:8px 20px;font-size:38px;color:#fff;box-shadow:0 0 18px {R}88">{svg(CAL, 38, R)}{e(val)}</div></div>')
+        validade = ''
+    raios = ''.join(f'<div style="position:absolute;left:{x}px;top:{y}px;width:700px;height:{h}px;background:{R};opacity:{o};transform:rotate(-30deg);box-shadow:0 0 20px {R}"></div>'
+                    for x, y, h, o in ((-300, 60, 8, .7), (-320, 120, 3, .5), (700, H - 520, 8, .6), (740, H - 470, 3, .45)))
+    return (f'<div style="width:{W}px;height:{H}px;position:relative;overflow:hidden;background:radial-gradient(90% 60% at 50% 25%,#2a0a10 0%,#07070A 65%)">'
+            f'{raios}{foto_html}'
+            f'<img src="{LOGO}" style="position:absolute;left:50%;transform:translateX(-50%);top:{head_top}px;width:{330 if story else 300}px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.8))">'
+            f'{titulo}{oferta}{validade}{rodape(story)}</div>')
+
+
 CORES = {  # pares (cor A, cor B) para o modelo split; o amarelo da marca é sempre o destaque
     'vermelho_azul': ('#C8102E', '#0B2A8A'), 'azul_laranja': ('#0B2A8A', '#E87A00'), 'roxo_amarelo': ('#4B1FA8', '#C98A00'),
     'preto_amarelo': ('#0B0C10', '#C98A00'), 'royal_vermelho': ('#1E4FD8', '#B3121F'),
@@ -160,7 +210,7 @@ def split(c, W, H):
 def main():
     c = json.load(open(sys.argv[1])); out = os.path.abspath(sys.argv[2]); os.makedirs(out, exist_ok=True)
     tmp = tempfile.mkdtemp(); jobs = []
-    fn = {'dica': dica, 'meme': meme, 'marcas': marcas, 'split': split}.get(c.get('tipo'), meme)
+    fn = {'dica': dica, 'meme': meme, 'marcas': marcas, 'split': split, 'black': black}.get(c.get('tipo'), meme)
     for nome, H in (('feed', 1350), ('story', 1920)):
         p = f'{tmp}/{nome}.html'
         open(p, 'w').write(f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}body{{margin:0}}</style></head><body>{fn(c, 1080, H)}</body></html>")

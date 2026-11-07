@@ -16,7 +16,8 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
   - Pneus (confirmado pelo dono): **pneus de carro de várias marcas, nacionais e importadas** (ex.: Goodyear, Dunlop, Golden Crown, Michelin) e **pneus de moto de várias marcas originais** (ex.: Michelin, Pirelli, Maggion, Levorin, Vipal, Technic). Bons ganchos: "NACIONAIS E IMPORTADOS", "MARCAS ORIGINAIS", "VÁRIAS MARCAS".
 - Informações confirmadas nas artes da própria loja (pode usar): **instalação em até 30 minutos**, **atendimento rápido**, **linha pesada: baterias para caminhões**.
 - CONFIRMADO pelo dono em 05/11/2026 (pode usar nas artes e legendas): **entrega e instalação grátis** e **baterias Moura em até 10x sem juros**.
-- NÃO usar: prazos de garantia e parcelamento de outras marcas (não confirmados).
+- **BLACK NOVEMBRO (CONFIRMADO pelo dono em 07/11/2026, VALE ATÉ 30/11/2026)**: **TODAS as baterias e TODOS os pneus (carro e moto) em até 10x SEM JUROS NO CARTÃO, NO PREÇO DE À VISTA.** Pode usar em artes, Stories e legendas até 30/11 (sempre com "válido até 30/11/2026"). Arte pronta: `posts/black-novembro/black/` (feed.jpg, story.jpg, story.mp4), gerada com `gerar_conteudo.py` tipo `"black"`. Sugestão: 1 Story de Black Novembro por dia (15:45, chamada) e 1 post de feed por semana até 30/11; varie a foto e o texto (ex.: "SÓ ATÉ 30/11", "PNEU NOVO EM 10X", "BATERIA EM 10X SEM JUROS"). A partir de 01/12 VOLTA a valer só "Moura em até 10x" — não use mais o Black Novembro.
+- NÃO usar: prazos de garantia; parcelamento de outras marcas FORA do Black Novembro (não confirmados).
 - REGRA DO DONO (05/11/2026), por categoria:
   - **PNEU DE CARRO**: NUNCA usar "entrega e instalação grátis", "troca grátis" nem "instalação em até 30 minutos". Use **"ENVIAMOS PARA CRATEÚS E REGIÃO"** (ícone `regiao`).
   - **PNEU DE MOTO**: pode usar **"TROCA GRÁTIS"** (ícone `trocagratis`) e "ENVIAMOS PARA CRATEÚS E REGIÃO". Não usar "entrega e instalação grátis" nem "30 minutos".
