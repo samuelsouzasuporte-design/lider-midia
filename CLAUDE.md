@@ -133,6 +133,8 @@ Na terça e na sexta, além da rotina normal:
 3. Commit + push, e agende no Metricool às 18:00: instagramData.type "REEL", showReelOnFeed true, media = URL raw do mp4, text = legenda com gancho, endereço, WhatsApp e hashtags.
 4. Se já existir `reels/<data>-*.mp4` pronto para o dia (feito à mão), use esse em vez de gerar.
 
+- **MEME ANIMADO** (pedido do dono, 07/11/2026): todo meme que vai para STORY sai em vídeo contado em 3 tempos (texto de cima → foto entra com "pop" → punchline com flash, tremida e som de impacto, 8s, trilha própria): `python3 ferramentas/meme_animado.py posts/<data>/<nome>.json posts/<data>/<nome>/story.mp4 <seed>` (mesmo JSON do meme de `gerar_conteudo.py`; "baixo" + "emoji" são a punchline, então escreva o "baixo" como a virada da piada). Agende o mp4 como STORY 4 min antes (12:26 para 12:30; 09:56 para 10:00 no domingo). Também gere o `story.jpg`/`feed.jpg` com `gerar_conteudo.py` quando o meme for para o feed. Confira 3 quadros (Read) antes de publicar. Conta como um dos Stories animados do dia.
+
 ## ALAVANCAR O PERFIL (pedido do dono, 05/11/2026) — impacto em toda publicação
 1. **Stories animados**: todo dia, 2 dos 7 Stories saem em VÍDEO (7s, zoom, flash, brilho e trilha): rode `python3 ferramentas/story_animado.py posts/<data>/<nome>/story.jpg posts/<data>/<nome>/story.mp4 <seed>` e agende o mp4 como STORY. Use nos horários 07:00 (Loja aberta) e 15:45 (chamada). Varie o seed.
 2. **Story em vídeo real**: 2x por semana, um Story com trecho de 10–15s dos vídeos da loja (ex.: tour IMG_8341), cortado com ffmpeg em 1080x1920.
