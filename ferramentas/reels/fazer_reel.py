@@ -157,7 +157,7 @@ def main():
     T_P = [fit(p1, 150, 1000), fit(p2, 150, 1000, YEL), fit(p3, 64, 1000, (255, 255, 255), FM)]
     WORDS = cfg.get('palavras', ['QUALIDADE', 'VARIEDADE', 'CONFIANÇA', 'VEM PRA LÍDER!'])[:4]
     T_W = [fit(w, 130, 1000, YEL if i == 3 else (255, 255, 255)) for i, w in enumerate(WORDS)]
-    T_END = text_img('Venha nos visitar!', 84)
+    T_FIM = text_img(cfg.get('fim', 'Venha nos visitar!'), 84)
     T_ADDR, T_WA, T_IG = card_final()
 
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
@@ -215,7 +215,7 @@ def main():
             if t >= T_END:
                 te = t - T_END
                 comp(f, LOGO_BIG, W / 2, 640, alpha=min(1, max(0, te - 0.15) / 0.2), s=max(0.05, 0.5 + 0.5 * back_out((te - 0.15) / 0.6)))
-                q = ease_out((te - 0.6) / 0.5); comp(f, T_END, W / 2, 900 + 50 * (1 - q), alpha=q)
+                q = ease_out((te - 0.6) / 0.5); comp(f, T_FIM, W / 2, 900 + 50 * (1 - q), alpha=q)
                 q = ease_out((te - 0.95) / 0.5); comp(f, T_ADDR, W / 2, 1065 + 50 * (1 - q), alpha=q)
                 q = ease_out((te - 1.25) / 0.5); comp(f, T_WA, W / 2, 1255 + 50 * (1 - q), alpha=q)
                 comp(f, T_IG, W / 2, 1410, alpha=min(1, max(0, te - 1.6) / 0.15), s=max(0.05, 0.6 + 0.4 * back_out((te - 1.6) / 0.5)))
