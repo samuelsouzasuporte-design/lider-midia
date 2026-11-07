@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      :root {
+        --noite: #0a1230;
+        --amarelo: #ffd400;
+        --branco: #ffffff;
+        --vermelho: #ff2d3d;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--noite); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Archivo Black", sans-serif; }
+      video.bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .sombra { position: absolute; inset: 0; z-index: 10;
+        background: linear-gradient(180deg, rgba(10,18,48,.55) 0%, rgba(10,18,48,.05) 30%, rgba(10,18,48,.15) 45%, rgba(10,18,48,.85) 78%, rgba(10,18,48,.95) 100%); }
+      .faixa { position: absolute; left: 0; right: 0; top: 0; height: 14px; z-index: 30; background: var(--amarelo); }
+
+      /* GANCHO */
+      #gancho { position: absolute; left: 0; right: 0; top: 520px; z-index: 40; text-align: center; }
+      #g-alerta { display: inline-block; background: var(--vermelho); color: var(--branco); font-size: 54px; padding: 10px 34px; border-radius: 14px; letter-spacing: 2px; }
+      #g-num { font-family: "League Gothic", sans-serif; color: var(--amarelo); font-size: 360px; line-height: .9; margin-top: 10px;
+        text-shadow: 0 10px 0 rgba(0,0,0,.35); }
+      #g-txt { font-family: "League Gothic", sans-serif; color: var(--branco); font-size: 150px; line-height: .95; text-shadow: 0 8px 0 rgba(0,0,0,.4); }
+
+      /* SINAIS */
+      .sinal { position: absolute; left: 70px; right: 70px; top: 760px; z-index: 40; }
+      .s-num { width: 190px; height: 190px; border-radius: 50%; background: var(--amarelo); color: var(--noite);
+        font-family: "League Gothic", sans-serif; font-size: 170px; line-height: 190px; text-align: center; box-shadow: 0 12px 0 rgba(0,0,0,.35); }
+      .s-tit { font-family: "League Gothic", sans-serif; color: var(--branco); font-size: 175px; line-height: .95; margin-top: 26px; text-shadow: 0 8px 0 rgba(0,0,0,.45); }
+      .s-sub { display: inline-block; margin-top: 22px; background: var(--amarelo); color: var(--noite); font-size: 50px; padding: 12px 26px; border-radius: 10px; }
+
+      /* contador 1/3 */
+      #pontos { position: absolute; left: 0; right: 0; top: 230px; z-index: 40; display: flex; justify-content: center; gap: 22px; }
+      .pt { width: 120px; height: 16px; border-radius: 8px; background: rgba(255,255,255,.3); overflow: hidden; }
+      .pt i { display: block; height: 100%; width: 100%; background: var(--amarelo); transform-origin: left center; }
+
+      /* SOLUÇÃO */
+      #sol { position: absolute; left: 60px; right: 60px; top: 780px; z-index: 40; text-align: center; }
+      #sol-a { font-family: "League Gothic", sans-serif; color: var(--branco); font-size: 140px; line-height: .95; text-shadow: 0 8px 0 rgba(0,0,0,.45); }
+      #sol-b { font-family: "League Gothic", sans-serif; color: var(--amarelo); font-size: 175px; line-height: .95; text-shadow: 0 8px 0 rgba(0,0,0,.45); }
+
+      /* FINAL */
+      #fim-bg { position: absolute; inset: 0; z-index: 50; background: var(--noite); }
+      #fim { position: absolute; left: 0; right: 0; top: 330px; z-index: 60; text-align: center; color: var(--branco); }
+      #fim-logo { width: 760px; }
+      #fim-segue { display: inline-block; margin-top: 70px; background: var(--amarelo); color: var(--noite); font-size: 92px; padding: 18px 50px; border-radius: 18px; }
+      #fim-at { margin-top: 24px; font-size: 52px; color: var(--branco); }
+      #fim-zap { margin-top: 90px; font-family: "League Gothic", sans-serif; font-size: 120px; color: var(--amarelo); }
+      #fim-end { margin-top: 10px; font-family: "Oswald", sans-serif; font-size: 44px; color: rgba(255,255,255,.85); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.4" data-width="1080" data-height="1920">
+      <!-- vídeos da loja -->
+      <video id="v1" class="clip bg" src="assets/loja-IMG_6195.mp4" data-start="0" data-duration="2.8" data-media-start="1" data-track-index="0" muted playsinline></video>
+      <video id="v2" class="clip bg" src="assets/loja-IMG_8341.mp4" data-start="2.8" data-duration="3.2" data-media-start="4" data-track-index="0" muted playsinline></video>
+      <video id="v3" class="clip bg" src="assets/loja-IMG_6195.mp4" data-start="6" data-duration="3.2" data-media-start="8" data-track-index="0" muted playsinline></video>
+      <video id="v4" class="clip bg" src="assets/loja-IMG_8341.mp4" data-start="9.2" data-duration="3.2" data-media-start="18" data-track-index="0" muted playsinline></video>
+      <video id="v5" class="clip bg" src="assets/loja-IMG_8388.mp4" data-start="12.4" data-duration="2" data-media-start="1.5" data-track-index="0" muted playsinline></video>
+
+      <div id="sombra" class="clip sombra" data-start="0" data-duration="14.4" data-track-index="1"></div>
+      <div id="faixa" class="clip faixa" data-start="0" data-duration="17.4" data-track-index="2"></div>
+
+      <div id="gancho" class="clip" data-start="0" data-duration="2.8" data-track-index="3">
+        <div id="g-alerta">⚠ ATENÇÃO</div>
+        <div id="g-num">3 SINAIS</div>
+        <div id="g-txt">DE BATERIA FRACA</div>
+      </div>
+
+      <div id="pontos" class="clip" data-start="2.8" data-duration="9.6" data-track-index="4">
+        <div class="pt"><i id="p1"></i></div>
+        <div class="pt"><i id="p2"></i></div>
+        <div class="pt"><i id="p3"></i></div>
+      </div>
+
+      <div id="s1" class="clip sinal" data-start="2.8" data-duration="3.2" data-track-index="5">
+        <div class="s-num" id="s1n">1</div>
+        <div class="s-tit" id="s1t">PARTIDA<br />LENTA</div>
+        <div class="s-sub" id="s1s">o carro demora pra pegar</div>
+      </div>
+      <div id="s2" class="clip sinal" data-start="6" data-duration="3.2" data-track-index="5">
+        <div class="s-num" id="s2n">2</div>
+        <div class="s-tit" id="s2t">LUZES<br />FRACAS</div>
+        <div class="s-sub" id="s2s">farol e painel sem força</div>
+      </div>
+      <div id="s3" class="clip sinal" data-start="9.2" data-duration="3.2" data-track-index="5">
+        <div class="s-num" id="s3n">3</div>
+        <div class="s-tit" id="s3t">TEC-TEC NA<br />PARTIDA</div>
+        <div class="s-sub" id="s3s">faz clique e não pega</div>
+      </div>
+
+      <div id="sol" class="clip" data-start="12.4" data-duration="2" data-track-index="6">
+        <div id="sol-a">NA LÍDER A GENTE</div>
+        <div id="sol-b">TESTA ANTES<br />DE TROCAR</div>
+      </div>
+
+      <div id="fim-bg" class="clip" data-start="14.4" data-duration="3" data-track-index="7"></div>
+      <div id="fim" class="clip" data-start="14.4" data-duration="3" data-track-index="8">
+        <img id="fim-logo" src="assets/logo.png" alt="Líder Baterias e Pneus" />
+        <div><div id="fim-segue">SEGUE A GENTE</div></div>
+        <div id="fim-at">@liderbateriasepneus</div>
+        <div id="fim-zap">(88) 9.8865-5130</div>
+        <div id="fim-end">Rua Deolino Barreto, 860 · Centro · Crateús/CE</div>
+      </div>
+
+      <audio id="musica" class="clip" src="assets/musica.mp3" data-start="0" data-duration="17.4" data-volume="0.9" data-track-index="9"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // gancho: entra já no quadro 0 (capa) com leve punch
+      tl.fromTo("#g-alerta", { scale: 0.9, opacity: 1 }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 0);
+      tl.fromTo("#g-num", { scale: 1.06 }, { scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#g-txt", { y: 20 }, { y: 0, duration: 0.35, ease: "power3.out" }, 0);
+      tl.fromTo("#g-alerta", { rotation: 0 }, { rotation: -3, duration: 0.12, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.6);
+      tl.to("#gancho", { scale: 1.06, duration: 1.5, ease: "none" }, 1.2);
+
+      // sinais
+      [["s1", 2.8, "#p1"], ["s2", 6.0, "#p2"], ["s3", 9.2, "#p3"]].forEach(([id, t, p]) => {
+        tl.fromTo(`#${id}n`, { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.2)" }, t);
+        tl.fromTo(`#${id}t`, { x: -120, opacity: 0.0001 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, t + 0.12);
+        tl.fromTo(`#${id}s`, { y: 30, opacity: 0.0001 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, t + 0.35);
+        tl.fromTo(p, { scaleX: 0 }, { scaleX: 1, duration: 3.1, ease: "none" }, t);
+        tl.to(`#${id}`, { x: -60, opacity: 0, duration: 0.18, ease: "power2.in" }, t + 3.0);
+      });
+
+      // solução
+      tl.fromTo("#sol-a", { y: 40, opacity: 0.0001 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 12.4);
+      tl.fromTo("#sol-b", { scale: 1.4, opacity: 0.0001 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 12.6);
+
+      // final
+      tl.fromTo("#fim-bg", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 14.4);
+      tl.fromTo("#fim-logo", { scale: 0.7, opacity: 0.0001 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }, 14.5);
+      tl.fromTo("#fim-segue", { scale: 0.5, opacity: 0.0001 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.5)" }, 14.7);
+      tl.fromTo("#fim-at", { opacity: 0.0001 }, { opacity: 1, duration: 0.3 }, 14.9);
+      tl.fromTo("#fim-zap", { y: 30, opacity: 0.0001 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 15.0);
+      tl.fromTo("#fim-end", { opacity: 0.0001 }, { opacity: 1, duration: 0.3 }, 15.15);
+      tl.to("#fim-segue", { scale: 1.06, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, 15.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
