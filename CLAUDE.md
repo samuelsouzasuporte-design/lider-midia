@@ -133,6 +133,7 @@ Na terça e na sexta, além da rotina normal:
 3. Commit + push, e agende no Metricool às 18:00: instagramData.type "REEL", showReelOnFeed true, media = URL raw do mp4, text = legenda com gancho, endereço, WhatsApp e hashtags.
 4. Se já existir `reels/<data>-*.mp4` pronto para o dia (feito à mão), use esse em vez de gerar.
 
+- ATENÇÃO MEMES (07/11/2026): o dono REPROVOU 2 memes seguidos ("voltinha de moto / bateria parada a semana toda" e "família no carro pro açude / tec-tec-tec"). Até ele aprovar um formato de meme, prefira DICA nos horários de meme/dica; meme só se a piada for muito clara e a foto mostrar exatamente a situação da piada.
 - **MEME ANIMADO** (pedido do dono, 07/11/2026): todo meme que vai para STORY sai em vídeo contado em 3 tempos (texto de cima → foto entra com "pop" → punchline com flash, tremida e som de impacto, 8s, trilha própria): `python3 ferramentas/meme_animado.py posts/<data>/<nome>.json posts/<data>/<nome>/story.mp4 <seed>` (mesmo JSON do meme de `gerar_conteudo.py`; "baixo" + "emoji" são a punchline, então escreva o "baixo" como a virada da piada). Agende o mp4 como STORY 4 min antes (12:26 para 12:30; 09:56 para 10:00 no domingo). Também gere o `story.jpg`/`feed.jpg` com `gerar_conteudo.py` quando o meme for para o feed. Confira 3 quadros (Read) antes de publicar. Conta como um dos Stories animados do dia.
 
 ## ALAVANCAR O PERFIL (pedido do dono, 05/11/2026) — impacto em toda publicação
