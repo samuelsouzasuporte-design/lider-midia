@@ -134,6 +134,7 @@ Reels é o único formato que o Instagram mostra para quem NÃO segue. Meta: 4 R
 - **Capa**: use `videoCoverMilliseconds` num quadro bonito (ex.: 1500) para o grid ficar profissional.
 - Nunca repetir o mesmo vídeo de Reels já postado; varie clipes e `musica_seed` (veja histórico). Clipes novos de 07/11: IMG_8388, 8392, 8394, 8395, 8396.
 - Quando o dono mandar vídeos falando para a câmera (rosto da loja), PRIORIZE: Reels com pessoa falando rende mais seguidores do que só imagens.
+- **Pesquisa vidIQ (07/11/2026, Reels BR de autopeças/pneus/bateria que viralizaram 10x–200x acima da média do perfil):** quase todos têm VOZ HUMANA desde o 1º segundo + texto-gancho grande, gravados no celular em POV, simples (menos de 1h de produção). Padrões que funcionam: (1) POV atendimento real ("Bom dia!" → problema do cliente → solução; ex. "SERÁ QUE ELE ME INDICOU O LUGAR CERTO?"); (2) ALERTA + tutorial curto ("CUIDADO NA TROCA DA BATERIA PRA EVITAR ESSE PROBLEMA"); (3) dedo apontando detalhe do pneu + texto ("DICA DE PNEU QUE NINGUÉM TE CONTA", "VELOCIDADE MÁXIMA QUE SEU PNEU SUPORTA", idade do pneu pelo DOT); (4) mostrar o problema real (pneu careca/estourado retirado do cliente, "😬"); (5) comparação ("pneu nacional ou importado?"). Montagens só com música alcançam menos: sempre que houver vídeo do dono/funcionário falando, use-o como base e acrescente só texto, logo e tela final.
 
 ## Reels (4 por semana: SEGUNDA, TERÇA, QUINTA e SEXTA às 18:00)
 Na segunda, terça, quinta e sexta, além da rotina normal:
