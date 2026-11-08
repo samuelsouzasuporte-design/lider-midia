@@ -161,6 +161,22 @@ Na segunda, terça, quinta e sexta, além da rotina normal:
 7. **Datas e oportunidades**: aproveite datas (Black Friday, Natal, Ano Novo, férias/viagens de fim de ano, volta às aulas, Dia dos Pais/Mães, São João, chuva/inverno no sertão) com artes temáticas — sem inventar promoção, só "consulte no WhatsApp".
 8. **Relatório semanal** (segunda-feira): a tarefa "Relatório semanal Instagram Líder" lê as métricas no Metricool e grava em `relatorios/AAAA-MM-DD.md` o que mais deu alcance/engajamento. Antes de criar as artes do dia, leia o relatório mais recente e faça MAIS do tipo que performou melhor (tema, cor, horário, formato).
 
+## LABORATÓRIO DE CRESCIMENTO (pedido do dono, 08/11/2026: "se comporte como analista profissional e sempre mude de estratégia") — OBRIGATÓRIO
+Diagnóstico (25/10–07/11, Metricool): alcance da conta 1.169–1.897/dia nos dias bons, mas seguidores parados (1.485; +6 / -11 em 2 semanas). Reels: 205 de alcance médio; feed: 72; salvos = 0. Ou seja: as pessoas VEEM, mas não seguem nem conversam. O problema principal é CONVERSÃO (perfil, motivo para seguir, chamada para o WhatsApp), não alcance.
+Metas (medidas toda segunda no relatório): (1) seguidores ganhos líquidos/semana (meta inicial +30); (2) conversas no WhatsApp vindas do Instagram (link com "Vi no Instagram"); (3) salvos + compartilhamentos; (4) alcance médio dos Reels.
+Regra do laboratório: TODA semana roda 1 experimento principal NOVO (tabela abaixo), com uma hipótese e uma métrica. Na segunda, o relatório compara com a semana anterior e decide: MANTER (virou rotina), AJUSTAR ou MATAR — e escolhe o próximo experimento. Nunca repetir a mesma estratégia por mais de 2 semanas se a meta de seguidores não for batida. Registre a decisão em `relatorios/` e atualize a linha "Experimento da semana" abaixo.
+Backlog de experimentos (ordem sugerida; o relatório pode reordenar pelos dados):
+- E1 Black Novembro + 4 Reels/semana + Trial Reel na quinta + CTA "Comenta EU" nas legendas (mede comentários e seguidores).
+- E2 CARROSSEL SALVÁVEL 2x/semana (quarta e sábado): "3 sinais", "idade do pneu", "calibragem certa", "o que fazer quando a bateria descarrega" — fim com "Salva 📌" (mede salvos/compartilhamentos).
+- E3 COLLAB com parceiros de `parceiros.md` (instagramData.collaborators no Metricool; o parceiro aceita o convite no app) — post aparece também para os seguidores deles (mede seguidores novos).
+- E4 MENOS É MAIS nos Stories: 6 em vez de 8, com 3 em vídeo real; tirar os horários com menor alcance (mede alcance por Story).
+- E5 SORTEIO "segue + marca 2 amigos" (SÓ com prêmio e data confirmados pelo dono) — maior alavanca de seguidores.
+- E6 IMPULSIONAR o melhor Reels da semana (raio ~20 km de Crateús, orçamento confirmado pelo dono).
+- E7 PESSOA FALANDO: Reels com o dono/funcionário (ou influencer de IA com rótulo "Informações de IA"/isAiGenerated true quando a HeyGen for liberada).
+- E8 PROVA SOCIAL REAL: cliente real (com autorização) recebendo a bateria/pneu, sem depoimento inventado.
+Experimento da semana (09–15/11): **E1**. Próximo candidato: E2 (carrossel salvável) + E3 (collab), se seguidores < +30.
+VENDAS: em toda legenda, Story de chamada e Reels, a chamada final para o WhatsApp é "Chama no zap e diz que viu no Instagram 📲". Link da bio recomendado: https://wa.me/5588988655130?text=Vi%20no%20Instagram — assim o dono conta quantas vendas vieram do Instagram.
+
 ## Recomendações do relatório (em vigor) — OBRIGATÓRIO seguir
 Fonte: `relatorios/2026-11-05.md` (pedido do dono em 05/11/2026: "passe essas sugestões pra IA fazer"). Vale até o próximo relatório; o relatório semanal atualiza esta seção.
 1. **Reels é o formato que mais alcança** (137 de alcance x 58 e 28 dos posts de feed). Nunca pule o Reels de terça e sexta. Abra com o tour da loja (`videos/loja-IMG_8341`) ou pneus/baterias em movimento, com gancho de pergunta em texto nos 2 primeiros segundos.
