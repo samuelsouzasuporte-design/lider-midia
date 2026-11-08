@@ -175,6 +175,7 @@ Backlog de experimentos (ordem sugerida; o relatório pode reordenar pelos dados
 - E7 PESSOA FALANDO: Reels com o dono/funcionário (ou influencer de IA com rótulo "Informações de IA"/isAiGenerated true quando a HeyGen for liberada).
 - E8 PROVA SOCIAL REAL: cliente real (com autorização) recebendo a bateria/pneu, sem depoimento inventado.
 Experimento da semana (09–15/11): **E1**. Próximo candidato: E2 (carrossel salvável) + E3 (collab), se seguidores < +30.
+PLANO DE 30 DIAS (09/11–08/12, doc "Plano de Instagram – Líder Baterias e Pneus": https://claude.ai/artifact/2J7TJnXABHLkAJxwZyQ1qC): S1 lançamento Black + confiança; S2 conteúdo salvável + parcerias; S3 prova social + Black Friday (27/11); S4 último dia da Black (30/11) + viagens de fim de ano. Siga os temas de Reels/carrossel do plano quando não conflitarem com o rodízio. 20/11 é feriado nacional (Consciência Negra): sem confirmação do dono, trate como plantão on-line (sem "loja aberta"). Site e Google ainda mostram horário errado (sábado até 17h, domingo aberto) — nas artes vale o horário do CLAUDE.md.
 VENDAS: em toda legenda, Story de chamada e Reels, a chamada final para o WhatsApp é "Chama no zap e diz que viu no Instagram 📲". Link da bio recomendado: https://wa.me/5588988655130?text=Vi%20no%20Instagram — assim o dono conta quantas vendas vieram do Instagram.
 
 ## Recomendações do relatório (em vigor) — OBRIGATÓRIO seguir
