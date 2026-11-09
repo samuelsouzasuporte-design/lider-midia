@@ -72,7 +72,11 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 ## Rotina diária (a tarefa roda às 5h37; tudo é agendado para o MESMO dia)
 
 Por dia (pedido do dono da loja):
-- **Stories: 07:00 (3 Stories), 08:50, 10:00, 12:30, 14:00 e 15:45 (1 Story em cada)** = 8 Stories por dia (08:50 pedido do dono em 06/11/2026).
+- ⚠️ **MENOS É MAIS (aprovado pelo dono em 08/11/2026 21:42, vale a partir de 09/11 — sobrepõe o resto deste arquivo):**
+  - **Feed: NO MÁXIMO 1 post por dia (10:00).** Nunca 2 ou 3 posts de feed no mesmo dia. Se já houver um post de feed pré-agendado para o dia (ex.: 09/11 "10x pneu e bateria" e 10/11 "pneu de moto", ambos às 10:00), a rotina NÃO cria outro feed — o rodízio não anda nesse dia.
+  - **Stories: 6 a 7 por dia (seg–sex):** 07:00 Loja aberta (animado 06:56) + **1** produto (07:01); 10:00 produto; 12:30 dica; 14:00 produto; 15:45 chamada (animado 15:41). SEM o Story das 08:50 e sem o 2º produto das 07:00. Se houver Story de vídeo real pré-agendado (ex.: 09/11 06:57), ele conta como o 7º. Sábado: 07:00 Loja aberta + 1 produto, 10:00, 12:00 plantão, 15:45 plantão (5) — sem 08:50, 12:30 e 14:00. Domingo: só 1 Story às 10:00.
+  - É o experimento E4 do laboratório; o relatório de segunda compara alcance por Story com a semana anterior.
+- (Antigo, substituído pela regra acima) Stories: 07:00 (3 Stories), 08:50, 10:00, 12:30, 14:00 e 15:45 = 8 Stories por dia.
 - **Feed: 1 post por dia às 10:00, de segunda a sábado (domingo sem feed)** (melhor horário segundo o Metricool para este perfil, todos os dias da semana).
 - **Reels: 3 por semana — SEGUNDA, QUARTA e SEXTA às 18:00** (pedido do dono em 08/11/2026 21:37: "o reels vai ser 3x por semana"; vídeo agendado às 17:56; veja "Estratégia de Reels"). Terça e quinta NÃO têm Reels.
 
