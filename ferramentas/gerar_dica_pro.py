@@ -66,7 +66,7 @@ def montar(cfg, W, H, foto):
     chev = (f'<svg width="{40 if story else 34}" height="{24 if story else 20}" viewBox="0 0 24 14" style="margin-top:18px" fill="none" stroke="#fff" stroke-width="3" '
             f'stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l9 8 9-8"/></svg>')
     if cfg.get('lista_posicao') == 'topo':   # lista logo abaixo do subtítulo (quando a parte de baixo da foto é a cena principal)
-        lista_topo = f'<div style="margin-top:{26 if story else 20}px;margin-left:30px">{bloco}</div>'
+        lista_topo = f'<div style="margin-top:{26 if story else 20}px;display:inline-block;background:rgba(5,9,25,.62);border-radius:18px;padding:{"22px 30px" if story else "18px 26px"};box-shadow:0 10px 30px rgba(0,0,0,.35)">{bloco}</div>'
         lista_baixo = ''
     else:
         lista_topo = chev
