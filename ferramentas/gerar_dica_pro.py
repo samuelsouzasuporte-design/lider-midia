@@ -13,6 +13,7 @@ arte.json:
   "subtitulo": "Antes de trocar, a gente confere com você:",
   "lista": ["Teste da bateria atual", "Amperagem certa", "Modelo do carro", "Encaixe e polos"],
   "selo": "ARRASTA PRO LADO ➜",         # opcional (capa de carrossel) — ou "1/5"
+  "frase": "A BATERIA CERTA É PARTE DO ATENDIMENTO",   # opcional: fecho em amarelo abaixo da lista
   "lista_posicao": "baixo",              # opcional: baixo (padrão) | topo (lista logo abaixo do subtítulo)
   "cor": "azul"                          # azul | noite | grafite | royal
 }
@@ -64,9 +65,12 @@ def montar(cfg, W, H, foto):
         grad = f'linear-gradient(180deg,{tint}.92) 0%,{tint}.80) 40%,{tint}.15) 62%,{tint}0) 80%)'
     else:
         grad = f'linear-gradient(90deg,{tint}.96) 0%,{tint}.88) 38%,{tint}.45) 68%,{tint}.10) 100%)'
+    frase = cfg.get('frase', '')   # opcional: frase de fechamento em destaque abaixo da lista
+    frase_html = (f'<div style="margin-top:{26 if story else 20}px;display:flex;gap:28px;align-items:stretch"><div style="width:7px;border-radius:4px;background:{Y}"></div>'
+                  f'<div style="font-family:EX;font-weight:800;font-style:italic;font-size:{44 if story else 38}px;line-height:1.15;color:{Y};text-transform:uppercase;max-width:{760 if story else 680}px;text-shadow:0 3px 12px rgba(0,0,0,.7)">{e(frase)}</div></div>') if frase else ''
     bloco = (f'<div style="display:flex;gap:28px;align-items:stretch">'
              f'<div style="width:7px;border-radius:4px;background:{Y}"></div>'
-             f'<div style="font-family:EX;font-weight:600;font-size:{50 if story else 44}px;line-height:1.32;color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.7)">{lista}</div></div>')
+             f'<div style="font-family:EX;font-weight:600;font-size:{50 if story else 44}px;line-height:1.32;color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.7)">{lista}</div></div>' + frase_html)
     chev = (f'<svg width="{40 if story else 34}" height="{24 if story else 20}" viewBox="0 0 24 14" style="margin-top:18px" fill="none" stroke="#fff" stroke-width="3" '
             f'stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l9 8 9-8"/></svg>')
     if cfg.get('lista_posicao') == 'topo':   # lista logo abaixo do subtítulo (quando a parte de baixo da foto é a cena principal)
