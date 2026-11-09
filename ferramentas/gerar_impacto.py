@@ -13,7 +13,7 @@ arte.json:
   "destaque": "PRONTA ENTREGA",            # tarja amarela (até ~18 letras)
   "beneficios": ["partida", "rapido", "instalacao"],   # 3 chaves (ver BENEFICIOS)
   "cor": "azul",                           # azul | preto | grafite | laranja | dourado | noite | royal | roxo (alterne sempre)
-  "letra": "classico",                     # opcional: classico | invertido | contorno | degrade | branco | amarelo | contorno2 (se faltar, varia sozinho)
+  "letra": "classico",                     # opcional: classico | invertido | contorno | branco | amarelo | contorno2 (se faltar, varia sozinho)
   "tarja": "amarela",                      # opcional: amarela | branca | escura | laranja (se faltar, varia sozinho)
   "alinhamento": "esquerda"                # opcional: esquerda | centro (se faltar, varia sozinho)
 }
@@ -101,7 +101,7 @@ def _montar(cfg, W, H):
     # Se o JSON não disser, escolhe sozinho pelo texto (cada arte nova sai diferente).
     import hashlib
     hsh = int(hashlib.md5((cfg.get('linha1', '') + cfg.get('linha2', '') + cfg.get('destaque', '')).encode()).hexdigest(), 16)
-    LETRAS = ['classico', 'invertido', 'contorno', 'degrade', 'branco', 'amarelo', 'contorno2']
+    LETRAS = ['classico', 'invertido', 'contorno', 'branco', 'amarelo', 'contorno2']  # 'degrade' removido: o dono achou esquisito (09/11)
     TARJAS = ['amarela', 'branca', 'escura', 'laranja']
     letra = cfg.get('letra') or LETRAS[hsh % len(LETRAS)]
     tarja = cfg.get('tarja') or TARJAS[(hsh // 7) % len(TARJAS)]
@@ -115,9 +115,8 @@ def _montar(cfg, W, H):
         'classico':  (f'color:#fff;{sh_w}', f'color:{Y};{sh_y}'),
         'invertido': (f'color:{Y};{sh_y}', f'color:#fff;{sh_w}'),
         'contorno':  (outl('#fff'), f'color:{Y};{sh_y}'),
-        'degrade':   (grad_w, grad),
         'branco':    (f'color:#fff;{sh_w}', f'color:#fff;{sh_w}'),
-        'amarelo':   (f'color:{Y};{sh_y}', grad),
+        'amarelo':   (f'color:{Y};{sh_y}', f'color:{Y};{sh_y}'),
         'contorno2': (f'color:#fff;{sh_w}', outl(Y)),
     }.get(letra, (f'color:#fff;{sh_w}', f'color:{Y};{sh_y}'))
     c_perg = Y if letra in ('branco', 'invertido') else '#fff'
