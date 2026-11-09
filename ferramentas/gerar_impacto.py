@@ -12,7 +12,10 @@ arte.json:
   "linha2": "BATERIA!",                    # título amarelo (até ~9 letras)
   "destaque": "PRONTA ENTREGA",            # tarja amarela (até ~18 letras)
   "beneficios": ["partida", "rapido", "instalacao"],   # 3 chaves (ver BENEFICIOS)
-  "cor": "azul"                            # azul | preto | grafite | laranja | dourado | noite | royal | roxo (alterne sempre)
+  "cor": "azul",                           # azul | preto | grafite | laranja | dourado | noite | royal | roxo (alterne sempre)
+  "letra": "classico",                     # opcional: classico | invertido | contorno | degrade | branco | amarelo | contorno2 (se faltar, varia sozinho)
+  "tarja": "amarela",                      # opcional: amarela | branca | escura | laranja (se faltar, varia sozinho)
+  "alinhamento": "esquerda"                # opcional: esquerda | centro (se faltar, varia sozinho)
 }
 """
 import json, os, sys, subprocess, tempfile, html
@@ -94,6 +97,41 @@ def _montar(cfg, W, H):
     s_l1 = 178 if story else 138
     s_l2 = 200 if story else 152
     ben_top = H - (560 if story else 300)
+    # ---- variações de LETRA, TARJA e ALINHAMENTO (pedido do dono, 09/11/2026: não repetir sempre as mesmas cores das letras)
+    # Se o JSON não disser, escolhe sozinho pelo texto (cada arte nova sai diferente).
+    import hashlib
+    hsh = int(hashlib.md5((cfg.get('linha1', '') + cfg.get('linha2', '') + cfg.get('destaque', '')).encode()).hexdigest(), 16)
+    LETRAS = ['classico', 'invertido', 'contorno', 'degrade', 'branco', 'amarelo', 'contorno2']
+    TARJAS = ['amarela', 'branca', 'escura', 'laranja']
+    letra = cfg.get('letra') or LETRAS[hsh % len(LETRAS)]
+    tarja = cfg.get('tarja') or TARJAS[(hsh // 7) % len(TARJAS)]
+    alinh = cfg.get('alinhamento') or ('centro' if (hsh // 31) % 3 == 0 else 'esquerda')
+    sh_w = 'text-shadow:0 6px 24px rgba(0,0,0,.75)'
+    sh_y = 'text-shadow:0 0 30px rgba(255,184,0,.35),0 6px 24px rgba(0,0,0,.8)'
+    grad = f'background:linear-gradient(180deg,#FFE14D 0%,{Y} 45%,#FF7A00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 18px rgba(0,0,0,.7))'
+    grad_w = 'background:linear-gradient(180deg,#FFFFFF 0%,#DDE6FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 18px rgba(0,0,0,.7))'
+    outl = lambda c: f'color:transparent;-webkit-text-stroke:{7 if story else 5}px {c};filter:drop-shadow(0 0 3px rgba(0,0,0,.9)) drop-shadow(0 6px 18px rgba(0,0,0,.85))'
+    st1, st2 = {
+        'classico':  (f'color:#fff;{sh_w}', f'color:{Y};{sh_y}'),
+        'invertido': (f'color:{Y};{sh_y}', f'color:#fff;{sh_w}'),
+        'contorno':  (outl('#fff'), f'color:{Y};{sh_y}'),
+        'degrade':   (grad_w, grad),
+        'branco':    (f'color:#fff;{sh_w}', f'color:#fff;{sh_w}'),
+        'amarelo':   (f'color:{Y};{sh_y}', grad),
+        'contorno2': (f'color:#fff;{sh_w}', outl(Y)),
+    }.get(letra, (f'color:#fff;{sh_w}', f'color:{Y};{sh_y}'))
+    c_perg = Y if letra in ('branco', 'invertido') else '#fff'
+    fs = 'normal' if letra in ('contorno', 'contorno2') else 'italic'
+    ls = '1px' if letra in ('contorno', 'contorno2') else 'normal'
+    t_bg, t_bd, t_tx, t_cbg, t_cic = {
+        'amarela': (Y, 'none', '#0B0B0B', '#0B0B0B', Y),
+        'branca':  ('#FFFFFF', 'none', '#0B0B0B', Y, '#0B0B0B'),
+        'escura':  ('rgba(5,9,25,.85)', f'3px solid {Y}', Y, Y, '#0B0B0B'),
+        'laranja': ('linear-gradient(90deg,#FF7A00,#FFB800)', 'none', '#0B0B0B', '#0B0B0B', '#FFB800'),
+    }.get(tarja, (Y, 'none', '#0B0B0B', '#0B0B0B', Y))
+    t_rad = '999px' if tarja in ('branca', 'escura') else '16px'
+    t_tr = 'skewX(-10deg) rotate(-2deg)' if tarja in ('amarela', 'laranja') else 'none'
+    al, jf = ('center', 'center') if alinh == 'centro' else ('left', 'flex-start')
     bens = ''
     for k in cfg.get('beneficios', ['partida', 'rapido', 'instalacao'])[:3]:
         ic, a, b = BENEFICIOS.get(k, BENEFICIOS['qualidade'])
@@ -148,14 +186,14 @@ def _montar(cfg, W, H):
   {lightning(40, int(H*0.42), 110, 330, -12, '#8CC4FF', .6)}
   {BOLT_BIG.format(w=150 if story else 110, h=300 if story else 220, pos=f"right:60px;top:{int(H*0.50)}px")}
   <img src="{logo}" style="position:absolute;left:56px;top:{110 if story else 48}px;width:{400 if story else 300}px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))">
-  <div style="position:absolute;left:60px;right:60px;top:{t_kick}px">
-    <div style="display:flex;align-items:center;gap:12px;font-family:BC;font-weight:800;font-style:italic;font-size:{62 if story else 48}px;color:#fff;letter-spacing:.5px;text-shadow:0 4px 18px rgba(0,0,0,.7)">{e('pergunta')}{svg(ICON['bolt'], 54 if story else 42, Y, 2.4)}</div>
-    <div style="font-family:BC;font-weight:900;font-style:italic;text-transform:uppercase;line-height:.86;margin-top:6px">
-      <div style="font-size:{s_l1}px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.75)">{e('linha1')}</div>
-      <div style="font-size:{s_l2}px;color:{Y};text-shadow:0 0 30px rgba(255,184,0,.35),0 6px 24px rgba(0,0,0,.8)">{e('linha2')}</div>
+  <div style="position:absolute;left:60px;right:60px;top:{t_kick}px;text-align:{al}">
+    <div style="display:flex;align-items:center;justify-content:{jf};gap:12px;font-family:BC;font-weight:800;font-style:italic;font-size:{62 if story else 48}px;color:{c_perg};letter-spacing:.5px;text-shadow:0 4px 18px rgba(0,0,0,.7)">{e('pergunta')}{svg(ICON['bolt'], 54 if story else 42, Y, 2.4)}</div>
+    <div style="font-family:BC;font-weight:900;font-style:{fs};text-transform:uppercase;line-height:.86;margin-top:6px;letter-spacing:{ls}">
+      <div style="font-size:{s_l1}px;{st1}">{e('linha1')}</div>
+      <div style="font-size:{s_l2}px;{st2}">{e('linha2')}</div>
     </div>
-    <div style="display:inline-flex;align-items:center;gap:14px;margin-top:22px;background:{Y};color:#0B0B0B;padding:{'14px 34px' if story else '10px 26px'};border-radius:16px;transform:skewX(-10deg) rotate(-2deg);box-shadow:0 10px 30px rgba(0,0,0,.5)">
-      <div style="width:{50 if story else 40}px;height:{50 if story else 40}px;border-radius:50%;background:#0B0B0B;display:flex;align-items:center;justify-content:center">{svg(CHECK, 30 if story else 24, Y, 3.4)}</div>
+    <div style="display:inline-flex;align-items:center;gap:14px;margin-top:22px;background:{t_bg};border:{t_bd};color:{t_tx};padding:{'14px 34px' if story else '10px 26px'};border-radius:{t_rad};transform:{t_tr};box-shadow:0 10px 30px rgba(0,0,0,.5)">
+      <div style="width:{50 if story else 40}px;height:{50 if story else 40}px;border-radius:50%;background:{t_cbg};display:flex;align-items:center;justify-content:center">{svg(CHECK, 30 if story else 24, t_cic, 3.4)}</div>
       <span style="font-family:BC;font-weight:900;font-style:italic;font-size:{58 if story else 44}px;letter-spacing:.5px">{e('destaque')}</span>
     </div>
   </div>
