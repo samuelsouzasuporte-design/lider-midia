@@ -15,7 +15,8 @@ arte.json:
   "cor": "azul",                           # azul | preto | grafite | laranja | dourado | noite | royal | roxo (alterne sempre)
   "letra": "classico",                     # opcional: classico | invertido | contorno | branco | amarelo | contorno2 (se faltar, varia sozinho)
   "tarja": "amarela",                      # opcional: amarela | branca | escura | laranja (se faltar, varia sozinho)
-  "alinhamento": "esquerda"                # opcional: esquerda | centro (se faltar, varia sozinho)
+  "alinhamento": "esquerda",               # opcional: esquerda | centro (se faltar, varia sozinho)
+  "beneficios_estilo": "barra"             # opcional: barra | lateral (cartões empilhados à direita) | cartoes (3 cartões separados) — se faltar, varia sozinho
 }
 """
 import json, os, sys, subprocess, tempfile, html
@@ -150,6 +151,28 @@ def _montar(cfg, W, H):
                      f'<div style="font-weight:900;font-size:{34 if story else 27}px;color:{Y}">{b}</div></div></div>')
     bens = sep.join(items)
 
+    # ---- estilo dos BENEFÍCIOS (pedido do dono, 09/11/2026: variar, às vezes de lado, mais profissional)
+    ben_est = cfg.get('beneficios_estilo') or ['barra', 'lateral', 'cartoes'][(hsh // 101) % 3]
+    lista = [BENEFICIOS.get(k, BENEFICIOS['qualidade']) for k in cfg.get('beneficios', ['partida', 'rapido', 'instalacao'])[:3]]
+    if ben_est == 'lateral':
+        top0 = 1080 if story else 900
+        cw = 360 if story else 320
+        cards = ''.join(
+            f'<div style="display:flex;align-items:center;gap:16px;background:rgba(5,9,25,.82);border-left:6px solid {Y};border-radius:14px;padding:{"18px 20px" if story else "12px 16px"};box-shadow:0 8px 24px rgba(0,0,0,.45)">'
+            f'<div style="width:{64 if story else 52}px;height:{64 if story else 52}px;border-radius:50%;background:{Y};display:flex;align-items:center;justify-content:center;flex:none">{svg(ICON[ic], 36 if story else 28, "#0B0B0B", 2.4)}</div>'
+            f'<div style="font-family:BC;font-style:italic;line-height:1.02;color:#fff"><div style="font-weight:700;font-size:{27 if story else 22}px">{a}</div>'
+            f'<div style="font-weight:900;font-size:{33 if story else 26}px;color:{Y}">{b}</div></div></div>' for ic, a, b in lista)
+        ben_html = f'<div style="position:absolute;right:40px;top:{top0}px;width:{cw}px;display:flex;flex-direction:column;gap:{18 if story else 12}px">{cards}</div>'
+    elif ben_est == 'cartoes':
+        cards = ''.join(
+            f'<div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:{10 if story else 6}px;background:rgba(5,9,25,.82);border-top:5px solid {Y};border-radius:16px;padding:{"16px 10px" if story else "12px 8px"}">'
+            f'<div style="width:{70 if story else 46}px;height:{70 if story else 46}px;border-radius:50%;background:{Y};display:flex;align-items:center;justify-content:center">{svg(ICON[ic], 40 if story else 26, "#0B0B0B", 2.4)}</div>'
+            f'<div style="font-family:BC;font-style:italic;line-height:1.0;color:#fff"><div style="font-weight:700;font-size:{27 if story else 20}px">{a}</div>'
+            f'<div style="font-weight:900;font-size:{33 if story else 24}px;color:{Y}">{b}</div></div></div>' for ic, a, b in lista)
+        ben_html = f'<div style="position:absolute;left:50px;right:50px;top:{ben_top - (20 if story else 22)}px;display:flex;gap:{18 if story else 14}px">{cards}</div>'
+    else:
+        ben_html = f'<div style="position:absolute;left:50px;right:50px;top:{ben_top}px;display:flex;gap:18px;align-items:center;background:rgba(5,9,25,.78);border:2px solid rgba(255,184,0,.45);border-radius:24px;padding:{"26px 26px" if story else "18px 20px"}">{bens}</div>'
+
     if story:
         rodape = f'''
   <div style="position:absolute;left:60px;right:60px;top:{H-370}px;display:flex;align-items:center;gap:22px;background:linear-gradient(90deg,{Y},#FFCC33);border-radius:26px;padding:22px 34px;box-shadow:0 10px 40px rgba(255,184,0,.35)">
@@ -183,7 +206,7 @@ def _montar(cfg, W, H):
   <div style="position:absolute;left:-140px;top:{ben_top-64}px;width:280px;height:9px;background:{Y};transform:rotate(-22deg);opacity:.6"></div>
   {lightning(W-210, int(H*0.30), 150, 450, 18)}
   {lightning(40, int(H*0.42), 110, 330, -12, '#8CC4FF', .6)}
-  {BOLT_BIG.format(w=150 if story else 110, h=300 if story else 220, pos=f"right:60px;top:{int(H*0.50)}px")}
+  {'' if ben_est == 'lateral' else BOLT_BIG.format(w=150 if story else 110, h=300 if story else 220, pos=f"right:60px;top:{int(H*0.50)}px")}
   <img src="{logo}" style="position:absolute;left:56px;top:{110 if story else 48}px;width:{400 if story else 300}px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))">
   <div style="position:absolute;left:60px;right:60px;top:{t_kick}px;text-align:{al}">
     <div style="display:flex;align-items:center;justify-content:{jf};gap:12px;font-family:BC;font-weight:800;font-style:italic;font-size:{62 if story else 48}px;color:{c_perg};letter-spacing:.5px;text-shadow:0 4px 18px rgba(0,0,0,.7)">{e('pergunta')}{svg(ICON['bolt'], 54 if story else 42, Y, 2.4)}</div>
@@ -196,7 +219,7 @@ def _montar(cfg, W, H):
       <span style="font-family:BC;font-weight:900;font-style:italic;font-size:{58 if story else 44}px;letter-spacing:.5px">{e('destaque')}</span>
     </div>
   </div>
-  <div style="position:absolute;left:50px;right:50px;top:{ben_top}px;display:flex;gap:18px;align-items:center;background:rgba(5,9,25,.78);border:2px solid rgba(255,184,0,.45);border-radius:24px;padding:{'26px 26px' if story else '18px 20px'}">{bens}</div>
+  {ben_html}
   {rodape}
 </div>'''
 
