@@ -99,6 +99,45 @@ def montar(cfg, W, H, foto):
 </div>'''
 
 
+def montar_inferior(cfg, W, H, foto):
+    """Layout INFERIOR (como a referência do dono "Por que não indicamos uma bateria apenas pelo preço?"):
+    foto do produto em cima, degradê para azul embaixo, logo no canto direito, título branco em itálico embaixo
+    e 1 a 2 blocos com barra amarela. Campos: titulo, amarelas (opcional, padrão nenhuma), blocos [[linha amarela, linha branca], [LINHA BRANCA]]."""
+    story = H > 1500
+    e = html.escape
+    tint, solido = CORES.get(cfg.get('cor', 'azul'), CORES['azul'])
+    pos = cfg.get('posicao_foto', 'center 40%')
+    tit = cfg.get('titulo', [])
+    am = set(cfg.get('amarelas', []))
+    mx = max((len(t) for t in tit), default=1)
+    fs_t = min(88 if story else 78, int((1500 if story else 1480) / max(mx, 1)))
+    linhas = ''.join(f'<div style="color:{Y if i in am else "#fff"}">{e(t)}</div>' for i, t in enumerate(tit))
+    blocos = ''
+    for b in cfg.get('blocos', []):
+        if len(b) >= 2:
+            txt = (f'<div style="color:{Y};font-family:PO;font-weight:700;font-size:{40 if story else 34}px;letter-spacing:-.5px">{e(b[0])}</div>'
+                   f'<div style="color:#fff;font-family:PO;font-weight:700;font-size:{38 if story else 32}px;letter-spacing:-.5px">{e(b[1])}</div>')
+        else:
+            txt = f'<div style="color:#fff;font-family:PO;font-weight:700;font-size:{38 if story else 32}px;text-transform:uppercase;letter-spacing:-.5px">{e(b[0])}</div>'
+        blocos += (f'<div style="display:flex;gap:22px;align-items:stretch;margin-top:{34 if story else 26}px">'
+                   f'<div style="width:5px;border-radius:3px;background:{Y};flex:none"></div><div style="line-height:1.3">{txt}</div></div>')
+    logo = 'file://' + os.path.join(RAIZ, 'marca', 'logo.png')
+    fh = int(H * (0.62 if story else 0.66))
+    return f'''<div style="width:{W}px;height:{H}px;position:relative;overflow:hidden;background:{solido}">
+  <img src="file://{foto}" style="position:absolute;left:0;top:0;width:100%;height:{fh}px;object-fit:cover;object-position:{pos};filter:saturate(1.05) contrast(1.04)">
+  <div style="position:absolute;left:0;top:0;width:100%;height:{fh + 2}px;background:linear-gradient(180deg,{tint}.25) 0%,{tint}.05) 30%,{tint}.35) 62%,{solido} 100%)"></div>
+  <img src="{logo}" style="position:absolute;right:70px;top:{150 if story else 80}px;width:{260 if story else 220}px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))">
+  <div style="position:absolute;left:80px;right:60px;bottom:{330 if story else 150}px">
+    <div style="font-family:EX;font-weight:900;font-style:italic;font-size:{fs_t}px;line-height:1.08;letter-spacing:-1px;text-shadow:0 4px 18px rgba(0,0,0,.55)">{linhas}</div>
+    {blocos}
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:{120 if story else 92}px;display:flex;align-items:center;justify-content:space-between;padding:0 70px;box-sizing:border-box;
+       font-family:EX;font-weight:800;font-style:italic;font-size:{38 if story else 32}px;color:#fff;background:linear-gradient(90deg,{tint}.95),{tint}.6))">
+    <span><span style="color:{Y}">WhatsApp</span> (88) 9.8865-5130</span><span style="font-family:PO;font-weight:500;font-size:{28 if story else 24}px">@liderbateriasepneus</span>
+  </div>
+</div>'''
+
+
 def montar_perguntas(cfg, W, H, foto):
     """Layout "DÚVIDAS QUE RECEBEMOS": título centralizado em 2 cores + perguntas em etiquetas amarelas alternando lados."""
     story = H > 1500
@@ -146,7 +185,7 @@ def main():
     fp = os.path.join(tmp, 'foto.jpg'); ft.save(fp, quality=95)
     jobs = []
     for nome, W, H in (('feed', 1080, 1350), ('story', 1080, 1920)):
-        page = f"<!doctype html><html><head><meta charset='utf-8'><style>{fontes()}body{{margin:0}}</style></head><body>{(montar_perguntas if cfg.get('perguntas') else montar)(cfg, W, H, fp)}</body></html>"
+        page = f"<!doctype html><html><head><meta charset='utf-8'><style>{fontes()}body{{margin:0}}</style></head><body>{(montar_perguntas if cfg.get('perguntas') else montar_inferior if cfg.get('blocos') else montar)(cfg, W, H, fp)}</body></html>"
         p = os.path.join(tmp, nome + '.html'); open(p, 'w').write(page)
         jobs.append((p, os.path.join(tmp, nome + '.png'), H, os.path.join(out, nome + '.jpg')))
     js = os.path.join(tmp, 'shot.js')
