@@ -16,6 +16,10 @@ arte.json:
   "lista_posicao": "baixo",              # opcional: baixo (padrão) | topo (lista logo abaixo do subtítulo)
   "cor": "azul"                          # azul | noite | grafite | royal
 }
+Modo PERGUNTAS ("dúvidas que recebemos todo dia"): em vez de titulo/lista, passe
+  "titulo_duplo": [["DÚVIDAS QUE", "A GENTE OUVE"], ["TODO DIA", "NA LÍDER"]],   # [branco, amarelo] por linha
+  "perguntas": ["...?", "...?", "...?", "...?"],                                 # 3 a 5, alternam esquerda/direita
+  "cta": ["Tem dúvida?", "Chama no zap que a gente responde."]
 Regras: só fotos da pasta fotos/; textos verdadeiros e confirmados no CLAUDE.md.
 """
 import json, os, sys, subprocess, tempfile, html
@@ -91,6 +95,43 @@ def montar(cfg, W, H, foto):
 </div>'''
 
 
+def montar_perguntas(cfg, W, H, foto):
+    """Layout "DÚVIDAS QUE RECEBEMOS": título centralizado em 2 cores + perguntas em etiquetas amarelas alternando lados."""
+    story = H > 1500
+    e = html.escape
+    tint, solido = CORES.get(cfg.get('cor', 'azul'), CORES['azul'])
+    pos = cfg.get('posicao_foto', 'center 40%')
+    logo = 'file://' + os.path.join(RAIZ, 'marca', 'logo.png')
+    # título: cada linha é [parte branca, parte amarela]
+    tit = ''.join(f'<div>{e(a)} <span style="color:{Y}">{e(b)}</span></div>' for a, b in cfg.get('titulo_duplo', []))
+    pergs = cfg.get('perguntas', [])
+    n = max(1, len(pergs))
+    nl = len(cfg.get('titulo_duplo', []))
+    y0 = (290 + 80 * nl + 60) if story else (175 + 69 * nl + 45)
+    y1 = 1365 if story else (H - 330)
+    passo = (y1 - y0) / max(1, n - 1) if n > 1 else 0
+    tags = ''
+    for i, q in enumerate(pergs):
+        lado = 'left:70px' if i % 2 == 0 else 'right:70px'
+        tags += (f'<div style="position:absolute;{lado};top:{int(y0 + i*passo)}px;max-width:{820 if story else 760}px;background:{Y};color:#0B1440;'
+                 f'font-family:EX;font-weight:800;font-style:italic;font-size:{40 if story else 34}px;line-height:1.1;padding:{"18px 26px" if story else "14px 22px"};'
+                 f'border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.45)">{e(q)}</div>')
+    cta_a, cta_b = cfg.get('cta', ['Tem dúvida?', 'Chama no zap que a gente responde.'])
+    return f'''<div style="width:{W}px;height:{H}px;position:relative;overflow:hidden;background:{solido}">
+  <img src="file://{foto}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{pos};filter:blur(3px) saturate(1.05);transform:scale(1.03)">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,{tint}.92) 0%,{tint}.55) 30%,{tint}.45) 60%,{tint}.92) 100%)"></div>
+  <img src="{logo}" style="position:absolute;left:50%;transform:translateX(-50%);top:{150 if story else 60}px;width:{280 if story else 230}px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))">
+  <div style="position:absolute;left:50px;right:50px;top:{290 if story else 175}px;text-align:center;font-family:EX;font-weight:900;font-style:italic;font-size:{74 if story else 64}px;line-height:1.08;color:#fff;letter-spacing:-1px;text-shadow:0 4px 18px rgba(0,0,0,.5)">{tit}</div>
+  {tags}
+  <div style="position:absolute;left:60px;right:60px;bottom:{330 if story else 140}px;text-align:center;font-family:PO;font-style:italic;font-size:{42 if story else 36}px;color:#fff;line-height:1.3;text-shadow:0 3px 12px rgba(0,0,0,.6)">
+    <b style="font-weight:700">{e(cta_a)}</b> <span style="font-weight:500">{e(cta_b)}</span></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:{120 if story else 92}px;display:flex;align-items:center;justify-content:space-between;padding:0 70px;box-sizing:border-box;
+       font-family:EX;font-weight:800;font-style:italic;font-size:{38 if story else 32}px;color:#fff;background:linear-gradient(90deg,{tint}.95),{tint}.6))">
+    <span><span style="color:{Y}">WhatsApp</span> (88) 9.8865-5130</span><span style="font-family:PO;font-weight:500;font-size:{28 if story else 24}px">@liderbateriasepneus</span>
+  </div>
+</div>'''
+
+
 def main():
     cfg = json.load(open(sys.argv[1]))
     out = os.path.abspath(sys.argv[2]); os.makedirs(out, exist_ok=True)
@@ -101,7 +142,7 @@ def main():
     fp = os.path.join(tmp, 'foto.jpg'); ft.save(fp, quality=95)
     jobs = []
     for nome, W, H in (('feed', 1080, 1350), ('story', 1080, 1920)):
-        page = f"<!doctype html><html><head><meta charset='utf-8'><style>{fontes()}body{{margin:0}}</style></head><body>{montar(cfg, W, H, fp)}</body></html>"
+        page = f"<!doctype html><html><head><meta charset='utf-8'><style>{fontes()}body{{margin:0}}</style></head><body>{(montar_perguntas if cfg.get('perguntas') else montar)(cfg, W, H, fp)}</body></html>"
         p = os.path.join(tmp, nome + '.html'); open(p, 'w').write(page)
         jobs.append((p, os.path.join(tmp, nome + '.png'), H, os.path.join(out, nome + '.jpg')))
     js = os.path.join(tmp, 'shot.js')
