@@ -71,6 +71,8 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - `posts/AAAA-MM-DD/`: artes e `legenda.txt` de cada dia
 - `historico.md`: um registro por dia (tema, foto usada, título). Leia antes de escolher o tema, para não repetir.
 
+⚖️ **EQUILÍBRIO PNEU x BATERIA (pedido do dono em 09/11/2026: "foque também em story e feed de pneu de carro e moto, vi que temos mais post de bateria")**: a partir de 10/11, PELO MENOS METADE do feed da semana e PELO MENOS 3 dos Stories de produto/dica do dia são de PNEU (carro ou moto, revezando). Antes de escolher o tema, conte no historico.md os posts dos últimos 7 dias: se bateria passou de pneu, o próximo feed E os próximos Stories de produto são de pneu. Dicas de pneu (DOT/idade do pneu, TWI 1,6 mm, calibragem com pneu frio a cada 15 dias, rodízio, bolha/corte na lateral, pneu de moto rachado, rua x uso misto) entram no lugar das de bateria quando o placar estiver desequilibrado. Nos Reels, alterne: se o último foi de bateria, o próximo é de pneu. Semana 09–14/11 já tem 4 feeds de bateria pré-agendados; então TODOS os Stories de produto e as dicas dos Stories de 10 a 14/11 devem ser de PNEU (carro e moto), e os Reels de 13/11 e 16/11 de pneu.
+
 ## Rotina diária (a tarefa roda às 5h37; tudo é agendado para o MESMO dia)
 
 Por dia (pedido do dono da loja):
