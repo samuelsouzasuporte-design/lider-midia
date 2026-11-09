@@ -75,8 +75,16 @@ def supersaw(freqs, n):
             xl += s * (1 - pan) * 0.5; xr += s * (1 + pan) * 0.5
     return xl, xr
 
+TIMBRE = (SEED // 3) % 3   # 0 pluck serrilhado, 1 sino (FM), 2 órgão/quadrada
+
 def pluck(freq, n):
     tt = t_(n)
+    if TIMBRE == 1:   # sino FM
+        mod = np.sin(2 * np.pi * freq * 3.5 * tt) * 2.2 * np.exp(-tt * 6)
+        return np.sin(2 * np.pi * freq * tt + mod) * np.exp(-tt * 5) * 0.8
+    if TIMBRE == 2:   # órgão / quadrada suave
+        sq = np.sign(np.sin(2 * np.pi * freq * tt)) * 0.5 + np.sin(2 * np.pi * freq * 2 * tt) * 0.3
+        return lp(sq, 2500) * np.exp(-tt * 7)
     x = saw(freq, n) * 0.6 + saw(freq * 2, n, 0.003) * 0.25
     cut = 600 + 5000 * np.exp(-tt * 18)
     # time-varying lowpass approximation: blend of two filtered versions
@@ -106,10 +114,16 @@ PROGS = [
     [(50, [50, 53, 57]), (46, [46, 50, 53]), (53, [53, 57, 60]), (48, [48, 52, 55])],   # Dm Bb F C
     [(52, [52, 55, 59]), (48, [48, 52, 55]), (55, [55, 59, 62]), (50, [50, 54, 57])],   # Em C G D
     [(57, [57, 60, 64]), (55, [55, 59, 62]), (53, [53, 57, 60]), (52, [52, 56, 59])],   # Am G F E
+    [(48, [48, 52, 55]), (55, [55, 59, 62]), (57, [57, 60, 64]), (53, [53, 57, 60])],   # C G Am F (pop)
+    [(55, [55, 59, 62]), (52, [52, 55, 59]), (48, [48, 52, 55]), (50, [50, 54, 57])],   # G Em C D
+    [(53, [53, 57, 60]), (55, [55, 59, 62]), (52, [52, 55, 59]), (57, [57, 60, 64])],   # F G Em Am
+    [(50, [50, 53, 57]), (55, [55, 59, 62]), (48, [48, 52, 55]), (57, [57, 61, 64])],   # Dm G C A (nordestino)
 ]
+# cada seed muda acordes, tom, batida, timbre e arpejo (pedido do dono 09/11: música sempre diferente nos Stories)
 prog = PROGS[SEED % len(PROGS)]
-# transposição leve por seed
-_tr = [0, 2, -2, 3, -3][SEED % 5]
+_tr = [0, 2, -2, 3, -3, 5, -5][(SEED // len(PROGS)) % 7]
+ESTILO = (SEED // 5) % 4      # 0 house, 1 piseiro/dembow, 2 half-time (trap leve), 3 xote/forró eletrônico
+ARP_I = (SEED // 2) % 5
 prog = [(r + _tr, [m + _tr for m in ch]) for r, ch in prog]
 DROP = 2 * BAR  # drop after 2-bar intro
 
@@ -128,7 +142,12 @@ for bar in range(NBARS):
     padL[idx(t0):idx(t0) + n] += lp(xl, cut) * env
     padR[idx(t0):idx(t0) + n] += lp(xr, cut) * env
     # pluck arpeggio 16ths
-    arp = [ch[0] + 12, ch[1] + 12, ch[2] + 12, ch[1] + 12, ch[0] + 24, ch[2] + 12, ch[1] + 12, ch[2] + 12]
+    a0, a1, a2 = ch[0] + 12, ch[1] + 12, ch[2] + 12
+    arp = [[a0, a1, a2, a1, a0 + 12, a2, a1, a2],
+           [a0, a2, a1, a2, a0, a2, a1 + 12, a2],
+           [a2, a1, a0, a1, a2, a0 + 12, a2, a1],
+           [a0, a0 + 12, a1, a2, a0, a0 + 12, a2, a1],
+           [a1, a2, a0 + 12, a2, a1, a0, a1, a2]][ARP_I]
     for s in range(16):
         f = mtof(arp[s % 8])
         p = pluck(f, idx(BEAT * 0.5))
@@ -137,19 +156,35 @@ for bar in range(NBARS):
     if intro:
         continue
     # drums
+    def duck(tb):
+        s_ = idx(tb); e_ = min(N, s_ + idx(BEAT))
+        ramp = np.minimum(1, t_(e_ - s_) / (BEAT * 0.55)) ** 1.5
+        side[s_:e_] = np.minimum(side[s_:e_], 0.25 + 0.75 * ramp)
     for b in range(4):
         tb = t0 + b * BEAT
-        if not breakdown:
-            addst(kick(), tb, 0.9)
-            s = idx(tb); e = min(N, s + idx(BEAT))
-            ramp = np.minimum(1, t_(e - s) / (BEAT * 0.55)) ** 1.5
-            side[s:e] = np.minimum(side[s:e], 0.25 + 0.75 * ramp)
-        addst(hat(True), tb + BEAT / 2, 0.55, 0.2)
-        if b in (1, 3):
-            addst(clap(), tb, 0.8 if not breakdown else 0.5)
-        for h in range(4):
-            if h != 2:
-                addst(hat(), tb + h * BEAT / 4, 0.4 if h else 0.25, -0.3)
+        if ESTILO == 0:      # house 4x4
+            if not breakdown: addst(kick(), tb, 0.9); duck(tb)
+            addst(hat(True), tb + BEAT / 2, 0.55, 0.2)
+            if b in (1, 3): addst(clap(), tb, 0.8 if not breakdown else 0.5)
+            for h in range(4):
+                if h != 2: addst(hat(), tb + h * BEAT / 4, 0.4 if h else 0.25, -0.3)
+        elif ESTILO == 1:    # piseiro / dembow: bumbo em todo tempo + caixa "tum-ta...ta"
+            if not breakdown: addst(kick(), tb, 0.85); duck(tb)
+            addst(clap(), tb + BEAT * 0.75, 0.55 if not breakdown else 0.35)
+            if b % 2 == 1: addst(clap(), tb + BEAT * 0.5 - BEAT * 0.5, 0.45)
+            for h in range(2): addst(hat(), tb + h * BEAT / 2, 0.35, -0.2)
+        elif ESTILO == 2:    # half-time: bumbo no 1, palma no 3, chimbal rápido
+            if b == 0 and not breakdown: addst(kick(), tb, 0.95); duck(tb)
+            if b == 2: addst(clap(), tb, 0.85 if not breakdown else 0.5)
+            if b == 3 and not breakdown: addst(kick(), tb + BEAT / 2, 0.7)
+            for h in range(4 if b % 2 == 0 else 6):
+                addst(hat(), tb + h * BEAT / (4 if b % 2 == 0 else 6), 0.32, 0.25)
+        else:                # xote/forró eletrônico: bumbo no 1 e no "e" do 2, triângulo (chimbal aberto/fechado)
+            if not breakdown and b in (0, 2): addst(kick(), tb, 0.9); duck(tb)
+            if not breakdown and b in (1, 3): addst(kick(), tb + BEAT / 2, 0.6)
+            if b in (1, 3): addst(clap(), tb, 0.6 if not breakdown else 0.4)
+            for h in range(4):
+                addst(hat(h % 2 == 1), tb + h * BEAT / 4, 0.3 if h % 2 else 0.22, 0.3)
     # bass: offbeat 8ths
     if not breakdown:
         for e8 in range(8):

@@ -78,7 +78,9 @@ def sons(seed, tmp):
 
 def main():
     src, dst = sys.argv[1], sys.argv[2]
-    seed = sys.argv[3] if len(sys.argv) > 3 else '9'
+    seed = sys.argv[3] if len(sys.argv) > 3 else None
+    if seed is None:   # sem seed: escolhe uma música nunca usada (dono pediu música sempre diferente)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import musica_seed; seed = str(musica_seed.proxima(os.path.basename(sys.argv[2])))
     c = json.load(open(src)); c['tipo'] = 'meme'
     tmp = tempfile.mkdtemp()
     A = render(c, tmp, 'A')                                     # completo

@@ -7,7 +7,9 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 
 def main():
     src, out = sys.argv[1], sys.argv[2]
-    seed = sys.argv[3] if len(sys.argv) > 3 else '5'
+    seed = sys.argv[3] if len(sys.argv) > 3 else None
+    if seed is None:   # sem seed: escolhe uma música nunca usada (dono pediu música sempre diferente)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import musica_seed; seed = str(musica_seed.proxima(os.path.basename(sys.argv[2])))
     tmp = tempfile.mkdtemp()
     wav = os.path.join(tmp, 'm.wav')
     subprocess.run([sys.executable, os.path.join(AQUI, 'reels', 'musica.py'), wav, seed], check=True, stdout=subprocess.DEVNULL)
