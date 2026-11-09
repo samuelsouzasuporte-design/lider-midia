@@ -13,6 +13,7 @@ arte.json:
   "subtitulo": "Antes de trocar, a gente confere com você:",
   "lista": ["Teste da bateria atual", "Amperagem certa", "Modelo do carro", "Encaixe e polos"],
   "selo": "ARRASTA PRO LADO ➜",         # opcional (capa de carrossel) — ou "1/5"
+  "lista_posicao": "baixo",              # opcional: baixo (padrão) | topo (lista logo abaixo do subtítulo)
   "cor": "azul"                          # azul | noite | grafite | royal
 }
 Regras: só fotos da pasta fotos/; textos verdadeiros e confirmados no CLAUDE.md.
@@ -55,22 +56,34 @@ def montar(cfg, W, H, foto):
     selo_html = (f'<div style="position:absolute;right:{60}px;top:{150 if story else 70}px;background:{Y};color:#0B0B0B;font-family:EX;font-weight:800;font-style:italic;'
                  f'font-size:{34 if story else 28}px;padding:10px 22px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.4)">{e(selo)}</div>') if selo else ''
     logo = 'file://' + os.path.join(RAIZ, 'marca', 'logo.png')
+    if cfg.get('lista_posicao') == 'topo':   # texto em cima: escurece só a parte de cima e deixa a cena de baixo aparecer
+        grad = f'linear-gradient(180deg,{tint}.92) 0%,{tint}.80) 40%,{tint}.15) 62%,{tint}0) 80%)'
+    else:
+        grad = f'linear-gradient(90deg,{tint}.96) 0%,{tint}.88) 38%,{tint}.45) 68%,{tint}.10) 100%)'
+    bloco = (f'<div style="display:flex;gap:28px;align-items:stretch">'
+             f'<div style="width:7px;border-radius:4px;background:{Y}"></div>'
+             f'<div style="font-family:EX;font-weight:600;font-size:{50 if story else 44}px;line-height:1.32;color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.7)">{lista}</div></div>')
+    chev = (f'<svg width="{40 if story else 34}" height="{24 if story else 20}" viewBox="0 0 24 14" style="margin-top:18px" fill="none" stroke="#fff" stroke-width="3" '
+            f'stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l9 8 9-8"/></svg>')
+    if cfg.get('lista_posicao') == 'topo':   # lista logo abaixo do subtítulo (quando a parte de baixo da foto é a cena principal)
+        lista_topo = f'<div style="margin-top:{26 if story else 20}px;margin-left:30px">{bloco}</div>'
+        lista_baixo = ''
+    else:
+        lista_topo = chev
+        lista_baixo = f'<div style="position:absolute;left:{110 if story else 100}px;bottom:{330 if story else 150}px">{bloco}</div>'
     top = 360 if story else 225
     return f'''<div style="width:{W}px;height:{H}px;position:relative;overflow:hidden;background:{solido}">
   <img src="file://{foto}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{pos};filter:saturate(1.05)">
-  <div style="position:absolute;inset:0;background:linear-gradient(90deg,{tint}.96) 0%,{tint}.88) 38%,{tint}.45) 68%,{tint}.10) 100%)"></div>
+  <div style="position:absolute;inset:0;background:{grad}"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,{tint}.55) 0%,{tint}0) 22%,{tint}0) 70%,{tint}.75) 100%)"></div>
   <img src="{logo}" style="position:absolute;left:70px;top:{150 if story else 70}px;width:{300 if story else 250}px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))">
   {selo_html}
   <div style="position:absolute;left:70px;right:90px;top:{top}px">
     <div style="font-family:EX;font-weight:900;font-style:italic;font-size:{fs_t}px;line-height:1.1;letter-spacing:-1px;text-shadow:0 4px 18px rgba(0,0,0,.45)">{linhas}</div>
     <div style="margin-top:{34 if story else 26}px;font-family:PO;font-weight:700;font-style:italic;font-size:{44 if story else 38}px;line-height:1.25;color:#fff;max-width:{760 if story else 700}px;text-shadow:0 3px 12px rgba(0,0,0,.5)">{e(cfg.get('subtitulo', ''))}</div>
-    <svg width="{40 if story else 34}" height="{24 if story else 20}" viewBox="0 0 24 14" style="margin-top:18px" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l9 8 9-8"/></svg>
+    {lista_topo}
   </div>
-  <div style="position:absolute;left:{110 if story else 100}px;bottom:{330 if story else 150}px;display:flex;gap:28px;align-items:stretch">
-    <div style="width:7px;border-radius:4px;background:{Y}"></div>
-    <div style="font-family:EX;font-weight:600;font-size:{50 if story else 44}px;line-height:1.32;color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.6)">{lista}</div>
-  </div>
+  {lista_baixo}
   <div style="position:absolute;left:0;right:0;bottom:0;height:{120 if story else 92}px;display:flex;align-items:center;justify-content:space-between;padding:0 70px;box-sizing:border-box;
        font-family:EX;font-weight:800;font-style:italic;font-size:{38 if story else 32}px;color:#fff;background:linear-gradient(90deg,{tint}.95),{tint}.6))">
     <span><span style="color:{Y}">WhatsApp</span> (88) 9.8865-5130</span><span style="font-family:PO;font-weight:500;font-size:{28 if story else 24}px">@liderbateriasepneus</span>
