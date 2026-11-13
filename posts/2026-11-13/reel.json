@@ -1,0 +1,30 @@
+{
+  "musica_seed": 135,
+  "gancho": ["VAI PEGAR ESTRADA", "COM ESSE PNEU?"],
+  "tema1": ["PNEU DE CARRO", "nacionais e importados"],
+  "tema2": ["PNEU DE MOTO", "marcas originais"],
+  "pausa": ["ENVIAMOS PRA", "CRATEÚS E REGIÃO", "pneu de carro e moto"],
+  "palavras": ["CONFERE O SULCO", "CALIBRA FRIO", "SEGUE A GENTE", "VEM PRA LÍDER!"],
+  "segmentos": [
+    ["loja-IMG_8327.mp4", 2.0, 1.0],
+    ["loja-IMG_8326.mp4", 3.0, 1.3],
+    ["loja-IMG_7023_1.mp4", 5.0, 1.3],
+    ["loja-IMG_8392.mp4", 4.0, 1.3],
+    ["loja-IMG_6295.mp4", 2.0, 1.3],
+    ["loja-IMG_8394.mp4", 2.0, 1.3],
+    ["loja-IMG_8328.mp4", 1.0, 1.3],
+    ["loja-IMG_8394.mp4", 7.0, 1.3],
+    ["loja-IMG_8328.mp4", 8.0, 1.3],
+    ["loja-IMG_8341.mp4", 6.0, 1.0],
+    ["loja-IMG_8327.mp4", 12.0, 1.0],
+    ["loja-IMG_8392.mp4", 12.0, 1.4],
+    ["loja-IMG_8329.mp4", 0.0, 0.9],
+    ["loja-IMG_8395.mp4", 0.5, 1.4],
+    ["loja-IMG_8326.mp4", 10.0, 1.4],
+    ["loja-IMG_8394.mp4", 11.0, 1.4],
+    ["loja-IMG_7023_1.mp4", 14.0, 1.4],
+    ["loja-IMG_8327.mp4", 17.0, 1.4],
+    ["loja-IMG_6295.mp4", 15.0, 1.4],
+    ["loja-IMG_8326.mp4", 12.5, 0.8]
+  ]
+}
