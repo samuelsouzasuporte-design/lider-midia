@@ -79,7 +79,7 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 - Fluxo: copy-design (só a página escolhida) → read-design → edit-design (trocar textos pelos da Líder, logo = asset MAHazE-JoE8, foto REAL da loja no lugar da foto de banco) → mostrar ao dono → commit → export-design (jpg) → agendar no Metricool com a URL do export (o proxy bloqueia baixar do Canva; o Metricool importa a URL).
 - O Canva é plano GRÁTIS: "remover fundo" não funciona lá. Recorte local: `rembg` com sessão `isnet-general-use` (já instalado), salvar em `canva/`, push e upload-asset-from-url pela URL raw.
 - Nos modelos: TIRAR preço, "% de desconto", garantia, "Start-Stop", marcas não confirmadas (Cral, Kondor, Heliar só em moto, Freedom etc.), "em até 50 minutos", pessoas de banco de imagens. Manter só informações confirmadas neste arquivo.
-- Artes feitas: DAHazKuKihM (bateria "Seu carro está demorando pra ligar?", foto real Moura sem fundo — APROVADA e agendada no feed de SEG 16/11 10:00) e DAHazF3J9oc (pneu "4 cuidados que salvam seu pneu", ainda com pneu de banco — dono decide).
+- Artes feitas: DAHazKuKihM (bateria "Seu carro está demorando pra ligar?", foto real Moura sem fundo — APROVADA e agendada no feed de SÁB 14/11 10:00; a dica CCA foi para SEG 16/11 10:00) e DAHazF3J9oc (pneu "4 cuidados que salvam seu pneu", ainda com pneu de banco — dono decide).
 - Usar 2–3 artes do Canva por dia, sem repetir o mesmo modelo na semana; registrar o design_id no historico.md.
 
 ## Rotina diária (a tarefa roda às 5h37; tudo é agendado para o MESMO dia)
