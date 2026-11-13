@@ -74,6 +74,14 @@ Ele é **público**, porque o Metricool busca as imagens por link direto:
 
 ⚖️ **EQUILÍBRIO PNEU x BATERIA (dono, 09/11: "foque também em pneu"; CORRIGIDO em 12/11: "percebi que desde ontem você só coloca pneu")**: o objetivo é EQUILÍBRIO, nunca um assunto só. Regra fixa a partir de 13/11: (1) nos 3 Stories de produto do dia (08:30, 10:00, 14:00), SEMPRE os dois assuntos — 2 de um e 1 do outro, invertendo a maioria a cada dia (dia ímpar: 2 pneu + 1 bateria; dia par: 2 bateria + 1 pneu); (2) a dica das 12:30 alterna pneu/bateria a cada dia; (3) no feed da semana, metade pneu e metade bateria (conte os pré-agendados); (4) Reels alternam: se o último foi de bateria, o próximo é de pneu; (5) dentro de pneu, revezar carro e moto; dentro de bateria, carro, moto e linha pesada. Story pré-agendado conta no placar do dia (ex.: 12/11 14:00 trator = bateria). A regra antiga "10 a 14/11 só pneu" está CANCELADA. (6) ORDEM (dono, 13/11: "está saindo somente pneu, tem que diversificar"): NUNCA 2 publicações seguidas do mesmo assunto — o 1º Story de produto (08:30) e o 10:00 devem ser de assuntos diferentes, e o dono precisa ver pneu E bateria antes das 10:00.
 
+## 🎨 CANVA (conectado em 13/11/2026 — pedido do dono: "mudar o designer e as cores, deixar profissional")
+- A conta do Canva da loja tem PACKS de modelos: "Cópia de 200 Posts Prontos - Baterias Automotivas" (DAGzU2G0664, quadrado), "Cópia de Pack de Posts Baterias Automotivas (1080 x 1350 px)" (DAGujsMCjUs, 43 pág.), "Cópia de Loja de Pneus - Feed (1080x1350)" (DAGuAW6mgAA, 60 pág.), "Cópia de Loja de Pneus - Stories" (DAGuAX9SBsc, 20 pág.), "150 Posts Oficina - Auto Peças (1080x1350)" (DAGujJmwLNg).
+- Fluxo: copy-design (só a página escolhida) → read-design → edit-design (trocar textos pelos da Líder, logo = asset MAHazE-JoE8, foto REAL da loja no lugar da foto de banco) → mostrar ao dono → commit → export-design (jpg) → agendar no Metricool com a URL do export (o proxy bloqueia baixar do Canva; o Metricool importa a URL).
+- O Canva é plano GRÁTIS: "remover fundo" não funciona lá. Recorte local: `rembg` com sessão `isnet-general-use` (já instalado), salvar em `canva/`, push e upload-asset-from-url pela URL raw.
+- Nos modelos: TIRAR preço, "% de desconto", garantia, "Start-Stop", marcas não confirmadas (Cral, Kondor, Heliar só em moto, Freedom etc.), "em até 50 minutos", pessoas de banco de imagens. Manter só informações confirmadas neste arquivo.
+- Artes feitas: DAHazKuKihM (bateria "Seu carro está demorando pra ligar?", foto real Moura sem fundo, 13/11 — aguardando dono escolher o dia) e DAHazF3J9oc (pneu "4 cuidados que salvam seu pneu", ainda com pneu de banco — dono decide).
+- Usar 2–3 artes do Canva por dia, sem repetir o mesmo modelo na semana; registrar o design_id no historico.md.
+
 ## Rotina diária (a tarefa roda às 5h37; tudo é agendado para o MESMO dia)
 
 Por dia (pedido do dono da loja):
